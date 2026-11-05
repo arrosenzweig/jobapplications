@@ -16,7 +16,7 @@
    cat:    'tech' | 'consulting' | 'other'
    ============================================================ */
 
-const BUILD_DATE = '2026-11-04';
+const BUILD_DATE = '2026-11-05';
 
 /* ---------------- TARGET COMPANY LIST ---------------- */
 const BASE_COMPANIES = [
@@ -155,47 +155,59 @@ const SEED_ROLES = [
 /* ============================================================
    CONSULTING — strategy track
    ============================================================ */
-{cat:'consulting', track:'strategy', company:'Oliver Wyman', title:'MBA Summer Associate 2027',
- location:'New York, Boston, Chicago, San Francisco, LA, Dallas, Houston, Atlanta, DC',
- deadline:'2026-11-07', status:'rolling', url:'https://careers.oliverwyman.com/early-careers',
- why:'Generalist strategy summer associate — corporate strategy, growth and operating-model casework with unusually broad industry exposure for a firm its size. LA is a staffed office.',
- note:'ESTIMATED AND URGENT. Last cycle the firm-wide date was 12:30pm EST Friday 7 Nov. If Oliver Wyman recruits on the SOM campus you apply by the SOM deadline instead — confirm with the CDO today.'},
+{cat:'consulting', track:'strategy', company:'Oliver Wyman', title:'MBA Summer Associate 2027 — Health & Life Sciences',
+ location:'New York, NY (also listed Boston, Chicago, San Francisco)',
+ deadline:'2026-11-05', status:'closed', url:'https://careers.marsh.com/global/en/job/MAMCGLOBALR363378EXTERNALENGLOBAL/Oliver-Wyman-2027-MBA-Summer-Associate-Health-Life-Sciences',
+ why:'10-week summer associate internship in the Health & Life Sciences practice — client-facing strategy work, but industry-specific rather than the generalist seat.',
+ note:'VERIFIED 5 Nov 2026: FILLED. The official Marsh McLennan careers page for this req now reads "this job has been filled." No GENERALIST Oliver Wyman MBA Summer Associate req exists for 2027 — only this HLS one, and it is gone. My earlier 7 Nov date came from last cycle and was wrong. If you want Oliver Wyman, the only route left is the SOM CDO board or a direct note to campus recruiting. No sponsorship offered on this req.'},
 
 {cat:'consulting', track:'strategy', company:'BCG', title:'Summer Consultant (1st-year MBA), Summer 2027',
  location:'All US offices — Miami and Los Angeles both available',
  deadline:'2026-11-10', status:'confirmed', url:'https://careers.bcg.com/global/en/on-campus/united-states-associate-job-opportunities',
  why:'The benchmark MBA strategy internship. One or two client cases over ~10 weeks spanning corporate strategy, growth and operations. Office preference is part of the application and BCG staffs both Miami and LA.',
- note:'CONFIRMED 10 Nov 2026. The undergraduate cycle closed 2 Jun 2026; this is the MBA window. Highest-priority item on this dashboard.'},
+ note:'VERIFIED 5 Nov 2026: CONFIRMED 10 Nov 2026, 11:59pm — one application covers 22 US offices. IMPORTANT ROUTE NOTE: BCG’s public US associate page explicitly says MBA candidates are NOT eligible to apply through it and that BCG contacts MBA candidates directly. Apply via the SOM campus page on careers.bcg.com or the CDO — not the general board. Highest-priority item on this dashboard.'},
 
 {cat:'consulting', track:'strategy', company:'Bain', title:'Summer Associate (1st-year MBA), Summer 2027',
  location:'All US offices — Los Angeles available; Miami via the Atlanta/Southeast system',
  deadline:'2026-11-11', status:'confirmed', url:'https://www.bain.com/careers/find-a-role/?experience=MBA',
  why:'Ten-week case-team role on live corporate and business-unit strategy work. Bain weights the office-fit conversation heavily, so name LA explicitly and give a reason.',
- note:'CONFIRMED 11 Nov 2026. One source says only "expected November 2026", so verify the exact hour on the Bain portal.'},
+ note:'VERIFIED 5 Nov 2026: CONFIRMED 11 Nov 2026 on the Management Consulted firm-confirmed table (prior cycle was 13 Nov 2025, consistent). Verify the exact hour on the Bain portal and check whether SOM runs its own window.'},
 
 {cat:'consulting', track:'strategy', company:'AlixPartners', title:'MBA Intern — Turnaround & Restructuring, Summer 2027',
- location:'New York, Chicago, Dallas, Detroit',
- deadline:'2026-11-12', status:'confirmed', url:'https://www.alixpartners.com/careers/students-and-recent-graduates/internships/',
+ location:'New York · Chicago · Dallas · Houston',
+ deadline:'2026-11-12', status:'confirmed', url:'https://www.alixpartners.com/careers/7810004003/turnaround--restructuring-mba-intern/',
  why:'Operations strategy under pressure — liquidity, cost structure and operating-model turnaround for distressed companies. The most operationally hands-on strategy internship on this list.',
- note:'CONFIRMED expiry 12 Nov 2026. Internship runs 7 Jun – 13 Aug 2027.'},
+ note:'VERIFIED 5 Nov 2026: CONFIRMED 12 Nov 2026 — and it is ON THE YALE SOM CDO BOARD, so apply through SOM. Internship runs 7 Jun – 13 Aug 2027. Requires MBA graduation Dec 2027–Aug 2028. Posted salary $35,000 for the term. Locations corrected — Houston, not Detroit.'},
 
 {cat:'consulting', track:'strategy', company:'AlixPartners', title:'MBA Intern — Strategy & Analysis, Summer 2027',
- location:'New York, Chicago, Dallas, Detroit',
- deadline:'2026-11-12', status:'rolling', url:'https://www.alixpartners.com/careers/students-and-recent-graduates/internships/',
- why:'The pure-strategy half of AlixPartners: growth strategy, commercial diligence and performance improvement. Closer to your stated targets than the restructuring track.',
- note:'ESTIMATED — assumed to share the 12 Nov expiry of its sister req. Same 7 Jun – 13 Aug 2027 dates. Verify in the portal.'},
+ location:'Any US location (weekly travel to the project site)',
+ deadline:'', status:'rolling', url:'https://www.alixpartners.com/careers/students-and-recent-graduates/internships/',
+ why:'The pure-strategy half of AlixPartners: growth strategy, commercial diligence and performance improvement. Closer to your stated targets than the restructuring track, and location-flexible, which suits your Miami/LA preference.',
+ note:'VERIFIED 5 Nov 2026: NO DEADLINE PUBLISHED and applications are OPEN on AlixPartners’ own internships page. My earlier assumption that it shared the 12 Nov expiry was wrong — this req is separate and has no stated close. 10-week programme, 7 Jun – 13 Aug 2027. Apply early anyway; seats go on a rolling basis.'},
 
 {cat:'consulting', track:'strategy', company:'BCG', title:'BCG X — Summer Consultant / Product Strategy, Summer 2027',
  location:'US offices — strongest in NY, SF, Boston',
  deadline:'2026-11-17', status:'confirmed', url:'https://careers.bcg.com/global/en/on-campus/united-states-associate-job-opportunities',
  why:'BCG’s build-and-design unit. Product strategy with real engineering adjacency — digital product, AI ventures and new-business building rather than classic slide-based casework.',
- note:'CONFIRMED 17 Nov 2026. A separate application from the core Summer Consultant req; you may apply to both, but BCG will ask which you prefer.'},
+ note:'VERIFIED 5 Nov 2026: 17 Nov 2026, a week later than the core BCG req — corroborated by one specialist source only, so treat as likely rather than certain. A separate application from the core Summer Consultant req; you may apply to both, but BCG will ask which you prefer. Same MBA routing caveat: go via the SOM campus page.'},
 
 {cat:'consulting', track:'strategy', company:'PwC', title:'Strategy& — Strategy Consulting Senior Associate Intern, Summer 2027',
  location:'Rosemont IL, New York, Chicago, Dallas, San Francisco, Boston, Los Angeles',
  deadline:'2026-11-18', status:'confirmed', url:'https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/Strategy--Strategy-Consulting-Senior-Associate-Intern---Summer-2027_765647WD',
  why:'Strategy&’s MBA-level intern track and a direct corporate-strategy hit: growth strategy, deals diligence and operating-model design for Fortune 500 clients. $84k–$202k prorated.',
- note:'CONFIRMED posting end date 18 Nov 2026. One of ~16 Senior Associate reqs posted 2 Oct. One tracker says 17 Nov — apply by the 17th to be safe.'},
+ note:'VERIFIED 5 Nov 2026 on PwC’s own Workday: posting end date 18 Nov 2026, posted 2 Oct. One guide says MBA applications close 17 Nov at 5pm ET — APPLY BY 17 NOV to be safe. PwC also closes reqs by office as offers are accepted, so a posting can shut before its listed date.'},
+
+{cat:'consulting', track:'strategy', company:'PwC', title:'Strategy& — Deals Strategy Senior Associate Intern, Summer 2027',
+ location:'Multiple US offices',
+ deadline:'2026-11-18', status:'confirmed', url:'https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/Strategy--Deals-Strategy-Senior-Associate-Intern---Summer-2027_765700WD',
+ why:'Commercial due diligence and deal-side strategy — market attractiveness, growth cases and synergy analysis for PE and corporate acquirers. A distinct req from the Strategy Consulting track and a strong corporate-strategy fit.',
+ note:'FOUND 5 Nov 2026 during verification — this req was not on the dashboard before. VERIFIED posting end date 18 Nov 2026 on PwC’s own Workday (req 765700WD), posted 2 Oct. Apply by 17 Nov to be safe.'},
+
+{cat:'consulting', track:'strategy', company:'PwC', title:'Strategy& — Sustainability Strategy Senior Associate Intern, Summer 2027',
+ location:'Multiple US offices',
+ deadline:'2026-11-18', status:'confirmed', url:'https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/Strategy--Sustainability-Strategy-Senior-Associate-Intern---Summer-2027_765703WD',
+ why:'Corporate strategy through a decarbonisation and transition lens — portfolio choices, operating-model change and growth strategy for climate-exposed businesses.',
+ note:'FOUND 5 Nov 2026 during verification. VERIFIED apply-by 18 Nov 2026 (req 765703WD). Sits inside Strategy& rather than the separate Sustainability consulting practice, so the casework is strategy-led.'},
 
 {cat:'consulting', track:'strategy', company:'PwC', title:'Strategy& — Strategy Consulting Intern, Summer 2027',
  location:'Multiple US offices',
@@ -223,9 +235,9 @@ const SEED_ROLES = [
 
 {cat:'consulting', track:'strategy', company:'McKinsey', title:'Summer Associate (MBA), Summer 2027',
  location:'All US offices — Miami and Los Angeles both available',
- deadline:'2026-11-30', status:'rolling', url:'https://www.mckinsey.com/careers/search-jobs?filters=InterestedIn:Internships',
+ deadline:'2026-11-12', status:'confirmed', url:'https://www.mckinsey.com/careers/search-jobs?filters=InterestedIn:Internships',
  why:'The flagship MBA strategy internship: ~10 weeks on a single client study spanning corporate, business-unit or operations strategy. Office preference is part of the application and both Miami and LA take Summer Associates.',
- note:'ESTIMATED. McKinsey sets school-specific deadlines rather than one national date; the MBA window typically closes Nov–Dec. Confirm the exact SOM date with the Career Development Office — do not take this one from a dashboard.'},
+ note:'VERIFIED 5 Nov 2026 — DATE MOVED UP 18 DAYS. Two independent sources now give 12 Nov 2026 for Summer Associate (1Y MBA); my earlier 30 Nov estimate was wrong and would have cost you the application. Window was confirmed still open as of 26 Oct. McKinsey can also set school-specific dates, and missing a school deadline means the application is not considered — confirm the SOM date with the CDO immediately.'},
 
 {cat:'consulting', track:'strategy', company:'Kearney', title:'2027 Kearney Summer Associate',
  location:'Chicago, New York, San Francisco, Dallas, Atlanta, DC',
@@ -313,15 +325,21 @@ const SEED_ROLES = [
 
 {cat:'consulting', track:'strategy', company:'L.E.K. Consulting', title:'Summer Associate 2027 (MBA)',
  location:'Boston, New York, Chicago, San Francisco, Los Angeles',
- deadline:'2026-11-15', status:'notposted', url:'https://www.lek.com/careers/apply-now',
- why:'Strategy boutique with real strength in commercial due diligence, growth strategy and healthcare. LA is a major L.E.K. office.',
- note:'NOT CONFIRMED. No MBA-specific 2027 deadline surfaced; one timeline put applications around mid-Sep 2026, which would mean the window has passed. Check the SOM CDO board and the L.E.K. portal this week — the date shown is a placeholder, not a fact.'},
+ deadline:'', status:'rolling', url:'https://www.lek.com/careers/apply-now',
+ why:'Strategy boutique with real strength in commercial due diligence, growth strategy and healthcare. LA is a major L.E.K. office, which matters for your location preference.',
+ note:'VERIFIED 5 Nov 2026 — GOOD NEWS, STILL OPEN. The MBA Summer Consultant (US) posting opened 3 Aug 2026 with NO published closing date. My earlier read that the window had passed was wrong — that was the UNDERGRAD Summer Associate track, which closed ~15 Sep. L.E.K. sets deadlines per school in the fall, so get the SOM date from the CDO.'},
 
-{cat:'consulting', track:'strategy', company:'Alvarez & Marsal', title:'MBA Summer Associate 2027',
- location:'New York, Chicago, Houston, Dallas, Los Angeles, Miami',
- deadline:'2026-11-15', status:'notposted', url:'https://www.alvarezandmarsal.com/careers',
- why:'Restructuring, performance improvement and operations strategy, with strong Miami and LA presence — one of the few firms where both of your preferred cities are genuinely staffed.',
- note:'NOT POSTED / UNCONFIRMED. No 2027 MBA deadline surfaced. The firm has a documented pattern of rolling review with a general mid-November cutoff, which is where the placeholder comes from. Email A&M campus recruiting directly.'},
+{cat:'consulting', track:'strategy', company:'Alvarez & Marsal', title:'Summer 2027 Associate — Public Sector Services',
+ location:'Washington, DC',
+ deadline:'2026-12-15', status:'confirmed', url:'https://careers.alvarezandmarsal.com/jobs/18120866-summer-2027-associate-public-sector-services-pss',
+ why:'Performance improvement and operations strategy for government and public-sector clients. Narrower than A&M’s corporate work and DC-only, but it is the one A&M graduate req actually open.',
+ note:'VERIFIED 5 Nov 2026: CONFIRMED on A&M’s own careers site — accepting applications until 15 DECEMBER at midnight EST, posted 27 Aug. 7-week internship for graduate students finishing within ~a year; A&M calls it the main pathway to a full-time offer. My earlier mid-Nov placeholder was wrong in both directions.'},
+
+{cat:'consulting', track:'strategy', company:'Alvarez & Marsal', title:'2027 Summer Intern — Corporate Performance Improvement',
+ location:'New York, NY',
+ deadline:'2026-09-16', status:'closed', url:'https://careers.alvarezandmarsal.com/search/job-requisition-type/campus-recruiting/jobs',
+ why:'The A&M req that actually matched your targets — operations strategy, margin and performance turnaround for corporate clients.',
+ note:'VERIFIED 5 Nov 2026: CLOSED 16 Sep 2026. Required graduation Dec 2027–Jun 2028, so you were eligible — the window simply passed before this search began. Worth an email to A&M campus recruiting asking whether a second wave runs, since the PSS req is still open.'},
 
 {cat:'consulting', track:'strategy', company:'FTI Consulting', title:'Summer 2027 Consulting Internship',
  location:'New York, Washington DC, Chicago, Houston, Los Angeles',
@@ -370,16 +388,16 @@ const SEED_ROLES = [
    TECH — strategy track
    ============================================================ */
 {cat:'tech', track:'strategy', company:'Salesforce', title:'Summer 2027 Intern — MBA Business Value & Strategic Selling Consultant',
- location:'New York, NY · San Francisco, CA',
- deadline:'2026-11-10', status:'rolling', url:'https://careers.salesforce.com/en/jobs/?search=MBA%20Business%20Value',
- why:'Business-case and value-engineering work: quantifying ROI and building the commercial argument for enterprise deals. Strategy-adjacent and genuinely MBA-gated (expected graduation Spring 2028).',
- note:'ESTIMATED — URGENT. One MBA tech-recruiting tracker put Salesforce’s MBA deadline at 20 Oct, which may already have passed. No visa sponsorship on this req. Check the live posting immediately.'},
+ location:'New York, NY — Healthcare & Life Sciences and Financial Services tracks',
+ deadline:'2026-11-15', status:'rolling', url:'https://careers.salesforce.com/en/jobs/?search=MBA%20Business%20Value',
+ why:'Business-case and value-engineering work: quantifying ROI and building the commercial argument for enterprise deals. Strategy-adjacent and genuinely MBA-gated. Runs June to August/September 2027.',
+ note:'VERIFIED 5 Nov 2026 — SOURCES CONFLICT, CHECK TODAY. Two Summer 2027 reqs (HLS and Financial Services) were posted 1 Oct 2026 and one aggregator still lists them open with no close date; another shows an apply-by of 20 Oct, now passed. EXPERIENCE FLAG: some listings ask 5–7+ yrs pre-MBA experience, others 3+. No visa sponsorship.'},
 
 {cat:'tech', track:'strategy', company:'Stripe', title:'MBA Intern — Partnerships & Strategic Business Development',
  location:'Seattle, WA · San Francisco, CA · New York, NY',
- deadline:'2026-11-15', status:'rolling', url:'https://stripe.com/jobs/search?query=MBA',
+ deadline:'', status:'notposted', url:'https://stripe.com/jobs/search?query=MBA',
  why:'Corporate development and partnership strategy: evaluating partners, shaping product roadmaps around them and structuring commercial deals. Financial Partnerships and Payments & Commerce teams.',
- note:'ESTIMATED AND TIGHT. Stripe opened Summer 2027 applications 31 Aug 2026; interviews run Sep–Nov and offers flow by late October. You may be behind the main wave — apply now and say so.'},
+ note:'VERIFIED 5 Nov 2026 — CORRECTION: NO MBA REQ IS LIVE. Stripe’s Summer 2027 postings are Software Engineering (opened 31 Aug), US Data Analyst and PhD Data Scientist (1 Oct), and a high-school programme. The MBA Partnerships listing I had came from a prior cycle. Stripe reviews on a rolling basis and reposts, so watch the board — but do not plan around this one.'},
 
 {cat:'tech', track:'strategy', company:'Block (Square)', title:'Business / Operations Intern — Summer 2027',
  location:'San Francisco, CA · New York, NY · Oakland, CA (remote-friendly)',
@@ -391,13 +409,13 @@ const SEED_ROLES = [
  location:'Santa Clara, CA',
  deadline:'2026-11-20', status:'rolling', url:'https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite?q=Product%20Management%20MBA%20Intern',
  why:'Product strategy with a business-strategy core — the posting lists market sizing, segmentation and pricing analysis as the actual intern work, defining AI systems for enterprise and cloud customers. The most strategy-weighted of NVIDIA’s MBA reqs.',
- note:'ESTIMATED — VERIFY URGENTLY. Aggregators showed an original apply-by around mid-Oct 2026, so this may already be closed or re-posted. MBA graduating winter 2027–summer 2028. $38–$94/hr.'},
+ note:'VERIFIED 5 Nov 2026 — STATUS GENUINELY UNCLEAR. One aggregator shows "Apply by 17 Oct" (passed); another says "still accepting applications". NVIDIA’s own page states no deadline. Open jobs.nvidia.com and check this req directly before writing it off. MBA graduating winter 2027–summer 2028. $38–$94/hr.'},
 
-{cat:'tech', track:'strategy', company:'Nvidia', title:'Product Management MBA Intern, Laptop (RTX / GeForce) — Summer 2027',
+{cat:'tech', track:'strategy', company:'Nvidia', title:'Product Management MBA Intern, Gaming, Content Creation & PC AI — Summer 2027',
  location:'Santa Clara, CA',
  deadline:'2026-11-20', status:'rolling', url:'https://jobs.nvidia.com/careers/job/893397725881',
- why:'Posting names "develop product strategy, go-to-market plans" alongside roadmap prioritisation for RTX and GeForce laptop products — product strategy with real commercial ownership.',
- note:'ESTIMATED — same verification caveat as the Data Center req.'},
+ why:'Posting names "develop product strategy, go-to-market plans" alongside roadmap prioritisation for the GeForce / RTX Spark line — product strategy with real commercial ownership.',
+ note:'VERIFIED 5 Nov 2026 — title has changed from "Laptop" to "Gaming, Content Creation and PC AI"; same GeForce/Spark team. Requires an MBA graduating winter 2027 or summer 2028. No published deadline; estimate stands. Check jobs.nvidia.com directly.'},
 
 {cat:'tech', track:'strategy', company:'Nvidia', title:'Product Manager MBA Intern, Enterprise AI — Summer 2027',
  location:'Santa Clara, CA',
@@ -616,6 +634,12 @@ const SEED_ROLES = [
  deadline:'2026-12-15', status:'rolling', url:'https://www.amazon.jobs/en/search?base_query=finance+MBA+intern+2027',
  why:'Corporate finance rotation feeding Amazon’s FP&A and business-finance organisation.',
  note:'ESTIMATED. Same MBA conferral window as the PM reqs (Dec 2027–Jun 2028).'},
+
+{cat:'tech', track:'other', company:'Nvidia', title:'Technical Product Marketing MBA Intern, AI Infrastructure — Summer 2027',
+ location:'Santa Clara, CA',
+ deadline:'2027-05-01', status:'confirmed', url:'https://jobs.nvidia.com/careers/job/893398510317',
+ why:'Positioning and technical marketing for NVIDIA’s AI infrastructure line. Marketing rather than strategy — but it is the NVIDIA MBA req whose status is least in doubt.',
+ note:'FOUND 5 Nov 2026 during verification — POSTED 3 NOV 2026, the freshest NVIDIA MBA req, with a validThrough date of 1 May 2027 on NVIDIA’s own careers page. If the PM reqs turn out to have closed, this is the live NVIDIA door.'},
 
 {cat:'tech', track:'other', company:'Nvidia', title:'Product Marketing Management MBA Intern — Summer 2027',
  location:'Santa Clara, CA',
