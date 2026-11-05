@@ -201,7 +201,7 @@
   <header>
     <h1>MBA Summer 2027 Internship Tracker</h1>
     <p>Product, business, corporate &amp; operations strategy — screened on job description, not just title</p>
-    <div class="meta">Yale SOM · Class of 2028 · Seed research 4 Nov 2026 ·
+    <div class="meta">Yale SOM · Class of 2028 · <span id="seedDate"></span> ·
       <span id="roleTotal"></span> · <span id="coTotal"></span> ·
       <span id="savedNote" style="color:var(--ok)"></span></div>
   </header>
@@ -300,7 +300,10 @@
 
 <script src="data.js"></script>
 <script>
-const TODAY = new Date(BUILD_DATE+'T00:00:00');
+/* Countdowns run off the real current date, not the research date, so
+   "in N days" stays correct every time the dashboard is opened.
+   BUILD_DATE is only the timestamp of the seed research. */
+const TODAY = (()=>{ const d=new Date(); d.setHours(0,0,0,0); return d; })();
 const CATS = {tech:'Tech', consulting:'Consulting', other:'Other Industries'};
 const ROLE_TABS = ['tech','consulting','other','consider','archived'];
 const esc = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -746,6 +749,10 @@ document.getElementById('newName').addEventListener('keydown',e=>{
 document.getElementById('clearAdded').addEventListener('click',()=>{
   if(confirm('Remove all companies you have added? The original list stays.')){ S.companies=[]; save(); renderCos(); }
 });
+
+document.getElementById('seedDate').textContent =
+  'Seed research ' + fmt(BUILD_DATE) + ' · opened ' +
+  TODAY.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
 
 renderAll();
 </script>
