@@ -6,8 +6,8 @@ Interactive tracker for Summer 2027 MBA internships in **product, business, corp
 operations strategy**, screened across 85 target companies on the job description — not just
 the title. Built for a Yale SOM Class of 2028 search.
 
-Seed research **4 November 2026**; all deadlines closing within 14 days re-verified against
-live postings **5 November 2026** (notes on those rows begin `VERIFIED 5 Nov 2026`).
+Seed research **4 November 2026**. Every dated role re-verified against live postings and
+school career boards **5 November 2026** — those rows carry a note beginning `VERIFIED 5 Nov 2026`.
 
 ## Tabs
 
