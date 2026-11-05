@@ -32,62 +32,66 @@
   body{margin:0;background:var(--bg);color:var(--ink);
     font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     -webkit-font-smoothing:antialiased}
-  .wrap{max-width:1680px;margin:0 auto;padding:26px 20px 80px}
-  header h1{font-size:25px;margin:0 0 4px;letter-spacing:-.02em}
-  header p{margin:0;color:var(--ink-2);font-size:14px}
-  .meta{margin-top:9px;font-size:12.5px;color:var(--ink-3)}
+  .wrap{max-width:1720px;margin:0 auto;padding:24px 18px 90px}
+  .hdrow{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+  header h1{font-size:24px;margin:0 0 3px;letter-spacing:-.02em}
+  header p{margin:0;color:var(--ink-2);font-size:13.5px}
+  .meta{margin-top:8px;font-size:12.5px;color:var(--ink-3)}
+  .hdbtns{margin-left:auto;display:flex;gap:7px;flex-wrap:wrap}
 
-  /* urgent banner */
-  .alert{margin:18px 0 0;background:var(--urgent-soft);border:1px solid var(--urgent);
-    border-left-width:4px;border-radius:9px;padding:13px 16px}
-  .alert h2{margin:0 0 7px;font-size:13px;font-weight:700;color:var(--urgent);
+  .alert{margin:16px 0 0;background:var(--urgent-soft);border:1px solid var(--urgent);
+    border-left-width:4px;border-radius:9px;padding:12px 15px}
+  .alert h2{margin:0 0 6px;font-size:12.5px;font-weight:700;color:var(--urgent);
     text-transform:uppercase;letter-spacing:.06em}
-  .alert ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.75}
+  .alert ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.7}
   .alert a{color:var(--ink);font-weight:650}
   .alert .d{color:var(--urgent);font-weight:700}
 
-  /* tabs */
-  .tabs{display:flex;gap:3px;margin:22px 0 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
-  .tab{appearance:none;border:0;background:none;cursor:pointer;padding:11px 17px;font-size:14px;
+  .tabs{display:flex;gap:3px;margin:20px 0 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .tab{appearance:none;border:0;background:none;cursor:pointer;padding:10px 15px;font-size:13.5px;
     font-weight:600;color:var(--ink-2);border-bottom:2px solid transparent;margin-bottom:-1px;
-    border-radius:6px 6px 0 0}
+    border-radius:6px 6px 0 0;white-space:nowrap}
   .tab:hover{color:var(--ink);background:var(--line-2)}
   .tab[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
-  .tab .cnt{font-weight:500;color:var(--ink-3);font-size:12px;margin-left:5px}
-  .panel{display:none;padding-top:20px}
+  .tab .cnt{font-weight:500;color:var(--ink-3);font-size:11.5px;margin-left:5px}
+  .panel{display:none;padding-top:18px}
   .panel.active{display:block}
 
-  /* stats */
-  .stats{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:16px}
+  .stats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
   .stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
-    padding:10px 14px;min-width:112px}
-  .stat .n{font-size:21px;font-weight:650;letter-spacing:-.02em;line-height:1.15}
-  .stat .l{font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+    padding:9px 13px;min-width:106px}
+  .stat .n{font-size:20px;font-weight:650;letter-spacing:-.02em;line-height:1.15}
+  .stat .l{font-size:10.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
   .stat.is-urgent .n{color:var(--urgent)}
   .stat.is-ok .n{color:var(--ok)}
+  .prog{height:5px;background:var(--line-2);border-radius:4px;overflow:hidden;margin-top:6px;width:100%}
+  .prog i{display:block;height:100%;background:var(--ok);border-radius:4px;transition:width .25s}
 
-  /* controls */
-  .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px;
-    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:11px 13px}
-  input[type=search],select,input[type=text]{font:inherit;font-size:13.5px;padding:7px 10px;
-    border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--ink);min-width:145px}
-  input[type=search]{min-width:250px}
-  input:focus,select:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:transparent}
+  .controls{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:13px;
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:10px 12px}
+  input[type=search],select,input[type=text],input[type=date],textarea{font:inherit;font-size:13.5px;
+    padding:7px 10px;border:1px solid var(--line);border-radius:7px;background:var(--bg);
+    color:var(--ink);min-width:138px}
+  input[type=search]{min-width:240px}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:transparent}
   .chk{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--ink-2);cursor:pointer;user-select:none}
   .chk input{accent-color:var(--accent);width:15px;height:15px;cursor:pointer}
-  .btn{font:inherit;font-size:13px;font-weight:550;padding:7px 12px;border-radius:7px;
-    border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}
+  .btn{font:inherit;font-size:12.5px;font-weight:550;padding:7px 11px;border-radius:7px;
+    border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;white-space:nowrap}
   .btn:hover{background:var(--line-2)}
   .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
   .btn-primary:hover{filter:brightness(1.08)}
+  .btn-ok{background:var(--ok);border-color:var(--ok);color:#fff}
+  .btn-ok:hover{filter:brightness(1.08)}
+  .btn-danger{color:var(--urgent);border-color:var(--urgent)}
+  .btn-danger:hover{background:var(--urgent-soft)}
   .spacer{flex:1}
-  .count{font-size:13px;color:var(--ink-3);white-space:nowrap}
+  .count{font-size:12.5px;color:var(--ink-3);white-space:nowrap}
 
-  /* table */
   .tablecard{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
   .scroll{overflow-x:auto}
   table{border-collapse:collapse;width:100%;font-size:13.5px}
-  thead th{text-align:left;padding:10px 12px;font-size:11px;font-weight:650;color:var(--ink-3);
+  thead th{text-align:left;padding:10px 11px;font-size:10.5px;font-weight:650;color:var(--ink-3);
     text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--line);
     background:var(--panel);position:sticky;top:0;z-index:2;white-space:nowrap}
   thead th.sortable{cursor:pointer;user-select:none}
@@ -95,73 +99,97 @@
   thead th .arr{opacity:.35;margin-left:3px;font-size:10px}
   thead th[data-dir] .arr{opacity:1;color:var(--accent)}
   th.ctr,td.ctr{text-align:center}
-  tbody td{padding:11px 12px;border-bottom:1px solid var(--line-2);vertical-align:top}
+  tbody td{padding:11px;border-bottom:1px solid var(--line-2);vertical-align:top}
   tbody tr:last-child td{border-bottom:0}
   tbody tr:hover{background:var(--line-2)}
-  tbody tr.closed{opacity:.5}
   tbody tr.done{background:var(--ok-soft)}
-  tbody tr.done:hover{background:var(--ok-soft);filter:brightness(.98)}
+  tbody tr.arch{opacity:.62}
   .co{font-weight:650;white-space:nowrap}
-  .co .tag{display:inline-block;font-size:9.5px;font-weight:600;padding:1px 6px;border-radius:20px;
+  .co .tag{display:inline-block;font-size:9px;font-weight:700;padding:1px 5px;border-radius:20px;
     margin-left:5px;vertical-align:1px;background:var(--star-soft);color:var(--star);
     text-transform:uppercase;letter-spacing:.04em}
+  .co .tag.added{background:var(--accent-soft);color:var(--accent)}
+  .co .tag.mine{background:var(--ok-soft);color:var(--ok)}
   .title a{color:var(--ink);text-decoration:none;font-weight:600}
   .title a:hover{color:var(--accent);text-decoration:underline}
-  .why{display:block;color:var(--ink-2);font-size:12px;margin-top:4px;max-width:460px;line-height:1.45}
-  .conf{display:block;font-size:11px;color:var(--ink-3);margin-top:4px;max-width:460px;line-height:1.45}
-  .loc{color:var(--ink-2);font-size:12.5px;max-width:190px}
+  .why{display:block;color:var(--ink-2);font-size:12px;margin-top:4px;max-width:470px;line-height:1.45}
+  .conf{display:block;font-size:11px;color:var(--ink-3);margin-top:4px;max-width:470px;line-height:1.45}
+  .mynote{display:block;margin-top:6px;font-size:11.5px;color:var(--ok);background:var(--ok-soft);
+    border-radius:6px;padding:5px 8px;max-width:470px;line-height:1.45;white-space:pre-wrap}
+  .loc{color:var(--ink-2);font-size:12.5px;max-width:180px}
   .loc .pref{display:inline-block;background:var(--star-soft);color:var(--star);font-weight:650;
     padding:1px 5px;border-radius:5px;font-size:11px;margin-right:4px}
   .dl{white-space:nowrap;font-weight:600;font-variant-numeric:tabular-nums}
   .dl .sub{display:block;font-weight:450;font-size:11px;color:var(--ink-3);margin-top:3px;
-    white-space:normal;max-width:140px}
-  .pill{display:inline-block;padding:3px 8px;border-radius:20px;font-size:11px;font-weight:600;
+    white-space:normal;max-width:132px}
+  .pill{display:inline-block;padding:3px 8px;border-radius:20px;font-size:10.5px;font-weight:650;
     white-space:nowrap;margin-top:5px}
   .p-urgent{background:var(--urgent-soft);color:var(--urgent)}
   .p-warn{background:var(--warn-soft);color:var(--warn)}
   .p-ok{background:var(--ok-soft);color:var(--ok)}
   .p-closed{background:var(--closed-soft);color:var(--closed)}
-  .lnk{display:inline-block;font-size:12px;font-weight:600;color:var(--accent);text-decoration:none;
-    border:1px solid var(--line);padding:5px 9px;border-radius:6px;white-space:nowrap}
+  .lnk{display:inline-block;font-size:11.5px;font-weight:600;color:var(--accent);text-decoration:none;
+    border:1px solid var(--line);padding:5px 8px;border-radius:6px;white-space:nowrap}
   .lnk:hover{background:var(--accent-soft);border-color:var(--accent)}
-  .empty{padding:48px 20px;text-align:center;color:var(--ink-3);font-size:14px}
-
-  /* app-status checkboxes */
+  .rowbtns{display:flex;flex-direction:column;gap:5px;align-items:stretch;min-width:92px}
+  .iconbtn{font:inherit;font-size:11.5px;font-weight:600;padding:5px 8px;border-radius:6px;
+    border:1px solid var(--line);background:var(--panel);color:var(--ink-2);cursor:pointer;white-space:nowrap}
+  .iconbtn:hover{background:var(--line-2);color:var(--ink)}
+  .iconbtn.danger:hover{background:var(--urgent-soft);color:var(--urgent);border-color:var(--urgent)}
+  .iconbtn.go:hover{background:var(--ok-soft);color:var(--ok);border-color:var(--ok)}
   .appchk{width:19px;height:19px;accent-color:var(--accent);cursor:pointer;margin-top:2px}
   .appchk.sub{accent-color:var(--ok)}
+  .empty{padding:46px 20px;text-align:center;color:var(--ink-3);font-size:14px}
 
-  /* progress bar */
-  .prog{height:6px;background:var(--line-2);border-radius:4px;overflow:hidden;margin-top:7px;width:100%}
-  .prog i{display:block;height:100%;background:var(--ok);border-radius:4px;transition:width .25s}
+  .note{background:var(--accent-soft);border:1px solid var(--line);border-left:3px solid var(--accent);
+    border-radius:8px;padding:12px 15px;font-size:13px;color:var(--ink-2);margin-bottom:15px;line-height:1.55}
+  .note b{color:var(--ink)}
 
   /* company tab */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:10px}
   .cocard{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
-    padding:12px 14px;display:flex;flex-direction:column;gap:6px}
-  .cocard h3{margin:0;font-size:14.5px;font-weight:650}
-  .cocard .sector{font-size:10.5px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+    padding:11px 13px;display:flex;flex-direction:column;gap:6px}
+  .cocard h3{margin:0;font-size:14px;font-weight:650}
+  .cocard .sector{font-size:10px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
   .cocard .hits{font-size:12.5px;color:var(--ink-2)}
   .cocard .hits b{color:var(--ink)}
-  .cocard .row{display:flex;gap:8px;align-items:center;margin-top:auto;padding-top:5px}
+  .cocard .norole{font-size:11.5px;color:var(--ink-3);line-height:1.4}
+  .cocard .row{display:flex;gap:8px;align-items:center;margin-top:auto;padding-top:4px}
   .cocard .del{margin-left:auto;background:none;border:0;color:var(--ink-3);cursor:pointer;
     font-size:16px;line-height:1;padding:3px 6px;border-radius:5px}
   .cocard .del:hover{background:var(--urgent-soft);color:var(--urgent)}
   .cocard.user{border-style:dashed;border-color:var(--accent)}
+  .cocard.dim{opacity:.6}
   .addbox{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
-    padding:13px 15px;margin-bottom:16px}
+    padding:12px 14px;margin-bottom:15px}
   .addbox h3{margin:0 0 4px;font-size:14px;font-weight:650}
   .addbox p{margin:0 0 10px;font-size:12.5px;color:var(--ink-3)}
   .addrow{display:flex;gap:8px;flex-wrap:wrap}
-  .cogroup{margin-bottom:22px}
-  .cogroup > h2{font-size:13px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);
-    margin:0 0 10px;font-weight:700}
-  .note{background:var(--accent-soft);border:1px solid var(--line);border-left:3px solid var(--accent);
-    border-radius:8px;padding:12px 15px;font-size:13px;color:var(--ink-2);margin-bottom:16px;line-height:1.55}
-  .note b{color:var(--ink)}
-  footer{margin-top:24px;font-size:12px;color:var(--ink-3);line-height:1.65}
+  .cogroup{margin-bottom:20px}
+  .cogroup > h2{font-size:12.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);
+    margin:0 0 9px;font-weight:700}
+
+  /* modal */
+  .ovl{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:flex-start;
+    justify-content:center;z-index:100;overflow-y:auto;padding:30px 16px}
+  .ovl.open{display:flex}
+  .modal{background:var(--panel);border:1px solid var(--line);border-radius:12px;max-width:720px;
+    width:100%;padding:22px 24px;box-shadow:0 18px 50px rgba(0,0,0,.3)}
+  .modal h2{margin:0 0 3px;font-size:18px;letter-spacing:-.01em}
+  .modal .sub{margin:0 0 16px;font-size:12.5px;color:var(--ink-3)}
+  .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+  .f{display:flex;flex-direction:column;gap:4px}
+  .f.full{grid-column:1/-1}
+  .f label{font-size:11px;font-weight:650;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+  .f input,.f select,.f textarea{width:100%;min-width:0}
+  .f textarea{resize:vertical;min-height:62px;line-height:1.5}
+  .f .hint{font-size:11px;color:var(--ink-3)}
+  .mbtns{display:flex;gap:8px;margin-top:18px;align-items:center}
+  .mbtns .spacer{flex:1}
+  @media(max-width:700px){ .fgrid{grid-template-columns:1fr} }
   @media(max-width:760px){
-    .wrap{padding:16px 12px 60px}
-    .why,.conf{max-width:none}
+    .wrap{padding:14px 11px 60px}
+    .why,.conf,.mynote{max-width:none}
     input[type=search]{min-width:100%}
   }
 </style>
@@ -169,13 +197,22 @@
 <body>
 <div class="wrap">
 
-<header>
-  <h1>MBA Summer 2027 Internship Tracker</h1>
-  <p>Product, business, corporate &amp; operations strategy roles — screened on job description, not just title</p>
-  <div class="meta">Yale SOM · Class of 2028 · Researched 4 November 2026 ·
-    <span id="roleTotal"></span> roles across <span id="coTotal"></span> target companies ·
-    Miami / LA flagged where offered</div>
-</header>
+<div class="hdrow">
+  <header>
+    <h1>MBA Summer 2027 Internship Tracker</h1>
+    <p>Product, business, corporate &amp; operations strategy — screened on job description, not just title</p>
+    <div class="meta">Yale SOM · Class of 2028 · Seed research 4 Nov 2026 ·
+      <span id="roleTotal"></span> · <span id="coTotal"></span> ·
+      <span id="savedNote" style="color:var(--ok)"></span></div>
+  </header>
+  <div class="hdbtns">
+    <button class="btn btn-primary" id="addRole">+ Add role</button>
+    <button class="btn" id="exportBtn">Export backup</button>
+    <button class="btn" id="importBtn">Import</button>
+    <button class="btn btn-danger" id="resetBtn">Reset all</button>
+    <input type="file" id="importFile" accept="application/json" style="display:none">
+  </div>
+</div>
 
 <div class="alert" id="alert"></div>
 
@@ -183,27 +220,30 @@
   <button class="tab" data-p="tech"       role="tab" aria-selected="true">Tech Roles<span class="cnt" id="c-tech"></span></button>
   <button class="tab" data-p="consulting" role="tab" aria-selected="false">Consulting Roles<span class="cnt" id="c-consulting"></span></button>
   <button class="tab" data-p="other"      role="tab" aria-selected="false">Other Industries<span class="cnt" id="c-other"></span></button>
+  <button class="tab" data-p="consider"   role="tab" aria-selected="false">Consideration<span class="cnt" id="c-consider"></span></button>
+  <button class="tab" data-p="archived"   role="tab" aria-selected="false">Archived<span class="cnt" id="c-archived"></span></button>
   <button class="tab" data-p="cos"        role="tab" aria-selected="false">Company Job Boards<span class="cnt" id="c-cos"></span></button>
 </div>
 
 <section class="panel active" id="p-tech"       role="tabpanel"></section>
 <section class="panel"        id="p-consulting" role="tabpanel"></section>
 <section class="panel"        id="p-other"      role="tabpanel"></section>
+<section class="panel"        id="p-consider"   role="tabpanel"></section>
+<section class="panel"        id="p-archived"   role="tabpanel"></section>
 
-<!-- Company boards -->
 <section class="panel" id="p-cos" role="tabpanel">
   <div class="note">
-    <b>These are the boards I search.</b> Each card links to that company's student / early-careers board,
-    filtered where the site allows it. Add a company below and it is saved in this browser — it will appear
-    here with its board link ready for the next refresh.
+    <b>Every company you asked me to watch.</b> Each card links to that company's student / early-careers
+    board. Companies where no MBA internship of any kind exists are dimmed, with the reason — they are kept
+    here so you still have the link, but they no longer clutter the role tabs.
   </div>
   <div class="addbox">
     <h3>Add a company to the target list</h3>
-    <p>Name is required. Leave the board URL blank and I'll fill it in on the next refresh.</p>
+    <p>Name is required. Leave the board URL blank and it can be filled in later.</p>
     <div class="addrow">
-      <input type="text" id="newName" placeholder="Company name" aria-label="Company name">
-      <input type="text" id="newUrl" placeholder="Careers / job board URL (optional)" aria-label="Board URL" style="min-width:270px">
-      <select id="newCat" aria-label="Category">
+      <input type="text" id="newName" placeholder="Company name">
+      <input type="text" id="newUrl" placeholder="Careers / job board URL (optional)" style="min-width:260px">
+      <select id="newCat">
         <option value="tech">Tech</option>
         <option value="consulting">Consulting</option>
         <option value="other">Other industry</option>
@@ -213,240 +253,360 @@
     </div>
   </div>
   <div id="coGroups"></div>
-  <footer>Companies you add are stored locally in this browser only. Dashed border = added by you.</footer>
 </section>
 
+</div>
+
+<!-- edit / add modal -->
+<div class="ovl" id="ovl">
+  <div class="modal">
+    <h2 id="mTitle">Edit role</h2>
+    <p class="sub" id="mSub">Everything here is editable. Changes save in this browser.</p>
+    <div class="fgrid">
+      <div class="f"><label>Company</label><input type="text" id="f_company"></div>
+      <div class="f"><label>Location</label><input type="text" id="f_location"></div>
+      <div class="f full"><label>Job title</label><input type="text" id="f_title"></div>
+      <div class="f full"><label>Link to posting</label><input type="text" id="f_url" placeholder="https://…"></div>
+      <div class="f"><label>Application deadline</label><input type="date" id="f_deadline">
+        <span class="hint">Leave blank if genuinely unknown</span></div>
+      <div class="f"><label>Deadline status</label><select id="f_status">
+        <option value="confirmed">Confirmed — employer published it</option>
+        <option value="rolling">Rolling / estimated</option>
+        <option value="notposted">Not yet posted</option>
+        <option value="closed">Closed → Archived</option>
+      </select></div>
+      <div class="f"><label>Tab</label><select id="f_cat">
+        <option value="tech">Tech</option>
+        <option value="consulting">Consulting</option>
+        <option value="other">Other industries</option>
+      </select></div>
+      <div class="f"><label>Track</label><select id="f_track">
+        <option value="strategy">Strategy — show in role tab</option>
+        <option value="other">Other function — show in Consideration</option>
+      </select></div>
+      <div class="f full"><label>Why it fits</label><textarea id="f_why"></textarea></div>
+      <div class="f full"><label>Research note / caveats</label><textarea id="f_note"></textarea></div>
+      <div class="f full"><label>My notes</label>
+        <textarea id="f_mynote" placeholder="Recruiter name, referral, interview dates, essay ideas…"></textarea></div>
+    </div>
+    <div class="mbtns">
+      <button class="btn btn-danger" id="mDelete">Delete role</button>
+      <div class="spacer"></div>
+      <button class="btn" id="mCancel">Cancel</button>
+      <button class="btn btn-primary" id="mSave">Save</button>
+    </div>
+  </div>
 </div>
 
 <script src="data.js"></script>
 <script>
 const TODAY = new Date(BUILD_DATE+'T00:00:00');
 const CATS = {tech:'Tech', consulting:'Consulting', other:'Other Industries'};
+const ROLE_TABS = ['tech','consulting','other','consider','archived'];
 const esc = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const days = d => Math.round((new Date(d+'T00:00:00')-TODAY)/86400000);
 const fmt  = d => new Date(d+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
 const PREF_RE = /miami|los angeles|santa monica|burbank|culver city|universal city|glendale/i;
-
-/* ---------- application-progress store ---------- */
-const APP_LS = 'mbaTracker.appStatus.v1';
-let APP = (()=>{ try{ return JSON.parse(localStorage.getItem(APP_LS))||{} }catch(e){ return {} } })();
-const saveApp = ()=>{ try{ localStorage.setItem(APP_LS, JSON.stringify(APP)) }catch(e){} };
 const keyOf = r => (r.company+'||'+r.title).replace(/\s+/g,' ').trim();
 
-/* ---------- prep ---------- */
-ROLES.forEach(r=>{
-  r.key = keyOf(r);
-  r.pref = PREF_RE.test(r.location);
-  r.deadlineSort = r.deadline ? new Date(r.deadline+'T00:00:00').getTime() : 8.64e15;
-  if(r.status==='closed') r.deadlineSort = -1e12;
-  r.hay = (r.company+' '+r.title+' '+r.location+' '+r.why+' '+r.note).toLowerCase();
-  r.actionable = r.status!=='none';
-});
+/* ================= store ================= */
+const LS = 'mbaTracker.v3';
+const BLANK = {edits:{}, custom:[], deleted:[], app:{}, consider:{}, companies:[], notes:{}};
+let S = (()=>{ try{ return Object.assign({}, BLANK, JSON.parse(localStorage.getItem(LS))||{}) }
+               catch(e){ return JSON.parse(JSON.stringify(BLANK)) } })();
+let saveTimer;
+function save(){
+  try{ localStorage.setItem(LS, JSON.stringify(S)); }catch(e){}
+  const n = document.getElementById('savedNote');
+  n.textContent = 'Saved ' + new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+  clearTimeout(saveTimer); saveTimer = setTimeout(()=>{ n.textContent=''; }, 4000);
+}
 
-/* ---------- urgent banner ---------- */
-(function(){
-  const soon = ROLES.filter(r=>r.deadline && r.status!=='closed' && r.status!=='none'
-                 && days(r.deadline)>=0 && days(r.deadline)<=14)
-                .sort((a,b)=>a.deadlineSort-b.deadlineSort);
-  document.getElementById('alert').innerHTML =
-    `<h2>Closing within 14 days — ${soon.length} role${soon.length===1?'':'s'}</h2><ul>` +
-    soon.map(r=>`<li><span class="d">${fmt(r.deadline)} · ${days(r.deadline)}d</span> —
-      <a href="${r.url}" target="_blank" rel="noopener">${esc(r.company)}: ${esc(r.title)}</a>
-      ${r.status==='confirmed'?'':' <em>(estimated — verify)</em>'}</li>`).join('') + '</ul>';
-})();
+/* ================= derived roles ================= */
+let ROLES = [];
+function build(){
+  const seed = SEED_ROLES.map(r=>({...r, _seed:true, key:keyOf(r)}))
+                         .filter(r=>!S.deleted.includes(r.key));
+  const custom = S.custom.map(r=>({...r, _seed:false, key:keyOf(r)}));
+  ROLES = [...seed, ...custom].map(r=>{
+    const e = S.edits[r.key]||{};
+    const m = {...r, ...e};
+    m.key = r.key;                       // key never changes once created
+    m.track = m.track || 'strategy';
+    m.pref = PREF_RE.test(m.location||'');
+    m.mynote = S.notes[r.key]||'';
+    m.app = S.app[r.key]||{};
+    m.decision = S.consider[r.key]||'';  // '', 'added', 'dismissed'
+    m.deadlineSort = m.deadline ? new Date(m.deadline+'T00:00:00').getTime() : 8.64e15;
+    m.hay = [m.company,m.title,m.location,m.why,m.note,m.mynote].join(' ').toLowerCase();
+    // routing
+    if(m.status==='closed')                        m.tab='archived';
+    else if(m.track==='other' && m.decision!=='added') m.tab = m.decision==='dismissed' ? 'hidden' : 'consider';
+    else                                           m.tab = m.cat;
+    return m;
+  });
+}
 
-/* ---------- role panel builder ---------- */
-function panelHTML(cat){
-  const cos = [...new Set(ROLES.filter(r=>r.cat===cat).map(r=>r.company))].sort((a,b)=>a.localeCompare(b));
-  return `
-  <div class="stats" id="stats-${cat}"></div>
+/* ================= panels ================= */
+function panelHTML(tab){
+  const isC = tab==='consider', isA = tab==='archived';
+  const label = isC ? 'Consideration' : isA ? 'Archived' : CATS[tab];
+  const lead = isC ? `<div class="note"><b>Other MBA internships at your target companies.</b>
+      These are real MBA-eligible reqs that sit outside product / business / corporate / operations strategy —
+      finance, marketing, supply chain, sales, HR. Press <b>Add to my list</b> to move one into its role tab
+      and track it like any other, or <b>Dismiss</b> to hide it. Nothing here counts toward your totals until you add it.</div>`
+    : isA ? `<div class="note"><b>Closed applications.</b> Roles move here automatically once their deadline
+      passes or you archive them. Kept so you can watch for a re-post, email a recruiter about a late look,
+      or plan next cycle. Press <b>Restore</b> to move one back.</div>` : '';
+
+  return lead + `
+  <div class="stats" id="stats-${tab}"></div>
   <div class="controls">
-    <input type="search" id="q-${cat}" placeholder="Search company, title, location, keywords…">
-    <select id="co-${cat}"><option value="">All companies</option>${cos.map(c=>`<option>${esc(c)}</option>`).join('')}</select>
-    <select id="st-${cat}">
+    <input type="search" id="q-${tab}" placeholder="Search company, title, location, notes…">
+    <select id="co-${tab}"><option value="">All companies</option></select>
+    ${isA||isC?'':`<select id="st-${tab}">
       <option value="">Any status</option>
       <option value="confirmed">Confirmed deadline</option>
       <option value="rolling">Rolling / estimated</option>
       <option value="notposted">Not yet posted</option>
-      <option value="closed">Closed</option>
-    </select>
-    <select id="ap-${cat}">
+    </select>`}
+    ${isC?`<select id="cat-${tab}"><option value="">All tabs</option>
+      <option value="tech">Tech</option><option value="consulting">Consulting</option>
+      <option value="other">Other industries</option></select>`:''}
+    ${isA||isC?'':`<select id="ap-${tab}">
       <option value="">Any progress</option>
       <option value="none">Not started</option>
       <option value="started">Started, not submitted</option>
       <option value="submitted">Submitted</option>
-    </select>
-    <label class="chk"><input type="checkbox" id="open-${cat}" checked> Hide closed</label>
-    <label class="chk"><input type="checkbox" id="pref-${cat}"> Miami / LA only</label>
-    <label class="chk"><input type="checkbox" id="act-${cat}" checked> Hide no-role companies</label>
+    </select>`}
+    <label class="chk"><input type="checkbox" id="pref-${tab}"> Miami / LA only</label>
+    ${isC?`<label class="chk"><input type="checkbox" id="dism-${tab}"> Show dismissed</label>`:''}
     <div class="spacer"></div>
-    <span class="count" id="count-${cat}"></span>
-    <button class="btn" id="reset-${cat}">Reset</button>
+    <span class="count" id="count-${tab}"></span>
+    <button class="btn" id="reset-${tab}">Reset filters</button>
   </div>
   <div class="tablecard"><div class="scroll"><table>
     <thead><tr>
-      <th class="ctr sortable" data-k="started" data-cat="${cat}">Started <span class="arr">▲</span></th>
-      <th class="ctr sortable" data-k="submitted" data-cat="${cat}">Submitted <span class="arr">▲</span></th>
-      <th class="sortable" data-k="deadlineSort" data-cat="${cat}" data-dir="asc">Deadline <span class="arr">▲</span></th>
-      <th class="sortable" data-k="company" data-cat="${cat}">Company <span class="arr">▲</span></th>
-      <th class="sortable" data-k="title" data-cat="${cat}">Job Title &amp; Why It Fits <span class="arr">▲</span></th>
-      <th class="sortable" data-k="location" data-cat="${cat}">Location <span class="arr">▲</span></th>
+      ${isC||isA?'':`<th class="ctr sortable" data-k="started" data-tab="${tab}">Started <span class="arr">▲</span></th>
+      <th class="ctr sortable" data-k="submitted" data-tab="${tab}">Submitted <span class="arr">▲</span></th>`}
+      <th class="sortable" data-k="deadlineSort" data-tab="${tab}" data-dir="asc">Deadline <span class="arr">▲</span></th>
+      <th class="sortable" data-k="company" data-tab="${tab}">Company <span class="arr">▲</span></th>
+      <th class="sortable" data-k="title" data-tab="${tab}">Job Title &amp; Why It Fits <span class="arr">▲</span></th>
+      <th class="sortable" data-k="location" data-tab="${tab}">Location <span class="arr">▲</span></th>
       <th>Apply</th>
+      <th>Manage</th>
     </tr></thead>
-    <tbody id="tb-${cat}"></tbody>
+    <tbody id="tb-${tab}"></tbody>
   </table></div></div>
-  <footer>
-    <b>Deadline column.</b> <span class="pill p-ok">Confirmed</span> = date published by the employer.
-    <span class="pill p-warn">Estimated</span> = rolling or undated; the date is my projection from the prior cycle
-    and the posting date — an "apply by" target, not a cliff.
-    <span class="pill p-closed">Closed</span> = window passed, kept so you can watch for a re-post or reach out directly.
-    Checkbox state is saved in this browser.
+  <footer style="margin-top:22px;font-size:12px;color:var(--ink-3);line-height:1.65">
+    <span class="pill p-ok">Confirmed</span> date published by the employer ·
+    <span class="pill p-warn">Estimated</span> rolling or undated, my projection — an "apply by" target, not a cliff ·
+    <span class="pill p-closed">Closed</span> window passed.
+    Every field is editable — press <b>Edit</b> on any row. Changes save in this browser; use
+    <b>Export backup</b> in the header to keep a copy or move to another device.
   </footer>`;
 }
 
 const SORT = {};
-['tech','consulting','other'].forEach(c=>{
-  document.getElementById('p-'+c).innerHTML = panelHTML(c);
-  SORT[c] = {k:'deadlineSort', dir:'asc'};
+ROLE_TABS.forEach(t=>{
+  document.getElementById('p-'+t).innerHTML = panelHTML(t);
+  SORT[t] = {k:'deadlineSort', dir:'asc'};
 });
 
-/* ---------- cells ---------- */
+/* ================= cells ================= */
 function badge(r){
   if(r.status==='closed')    return '<span class="pill p-closed">Closed</span>';
-  if(r.status==='none')      return '<span class="pill p-closed">No role</span>';
   if(r.status==='notposted') return '<span class="pill p-warn">Not posted</span>';
-  if(r.status==='confirmed'){
+  if(r.status==='confirmed' && r.deadline){
     const d = days(r.deadline);
     return `<span class="pill ${d<=14?'p-urgent':d<=35?'p-warn':'p-ok'}">Confirmed</span>`;
   }
   return '<span class="pill p-warn">Estimated</span>';
 }
 function dlCell(r){
-  if(!r.deadline) return `<div class="dl">—<span class="sub">${r.status==='none'?'no role posted':'rolling / not posted'}</span></div>`;
+  if(!r.deadline) return `<div class="dl">—<span class="sub">no date set</span></div>`;
   const d = days(r.deadline);
   let sub;
-  if(r.status==='closed')        sub = `closed ${Math.abs(d)} days ago`;
-  else if(r.status==='notposted')sub = 'est. — not yet posted';
-  else if(d<0)                   sub = 'date passed — verify';
-  else if(d===0)                 sub = 'TODAY';
-  else                           sub = `in ${d} day${d===1?'':'s'}`;
+  if(r.status==='closed')         sub = `closed ${Math.abs(d)} days ago`;
+  else if(r.status==='notposted') sub = 'est. — not yet posted';
+  else if(d<0)                    sub = 'date passed — verify';
+  else if(d===0)                  sub = 'TODAY';
+  else                            sub = `in ${d} day${d===1?'':'s'}`;
   return `<div class="dl">${fmt(r.deadline)}<span class="sub">${sub}</span></div>`;
 }
+function manageBtns(r){
+  const b=[];
+  if(r.tab==='consider'){
+    b.push(`<button class="iconbtn go" data-act="add" data-key="${esc(r.key)}">+ Add to list</button>`);
+    b.push(`<button class="iconbtn danger" data-act="dismiss" data-key="${esc(r.key)}">Dismiss</button>`);
+  } else if(r.tab==='archived'){
+    b.push(`<button class="iconbtn go" data-act="restore" data-key="${esc(r.key)}">Restore</button>`);
+  } else {
+    b.push(`<button class="iconbtn" data-act="archive" data-key="${esc(r.key)}">Archive</button>`);
+  }
+  if(r.decision==='dismissed')
+    b.push(`<button class="iconbtn go" data-act="undismiss" data-key="${esc(r.key)}">Un-dismiss</button>`);
+  b.push(`<button class="iconbtn" data-act="edit" data-key="${esc(r.key)}">Edit</button>`);
+  return `<div class="rowbtns">${b.join('')}</div>`;
+}
 
-/* ---------- render ---------- */
-function render(cat){
-  const g = id => document.getElementById(id+'-'+cat);
+/* ================= render ================= */
+function render(tab){
+  const g = id => document.getElementById(id+'-'+tab);
+  const isC = tab==='consider', isA = tab==='archived';
   const q = g('q').value.trim().toLowerCase();
-  const co = g('co').value, st = g('st').value, ap = g('ap').value;
-  const hideClosed = g('open').checked, prefOnly = g('pref').checked, actOnly = g('act').checked;
+  const co = g('co').value;
+  const st = g('st') ? g('st').value : '';
+  const ap = g('ap') ? g('ap').value : '';
+  const catF = g('cat') ? g('cat').value : '';
+  const prefOnly = g('pref').checked;
+  const showDism = g('dism') ? g('dism').checked : false;
 
   let rows = ROLES.filter(r=>{
-    if(r.cat!==cat) return false;
+    if(isC){ if(r.tab!=='consider' && !(showDism && r.decision==='dismissed' && r.status!=='closed')) return false; }
+    else if(r.tab!==tab) return false;
     if(q && !r.hay.includes(q)) return false;
     if(co && r.company!==co) return false;
     if(st && r.status!==st) return false;
-    if(hideClosed && r.status==='closed') return false;
-    if(actOnly && !r.actionable) return false;
+    if(catF && r.cat!==catF) return false;
     if(prefOnly && !r.pref) return false;
-    const a = APP[r.key]||{};
-    if(ap==='none' && (a.started||a.submitted)) return false;
-    if(ap==='started' && !(a.started && !a.submitted)) return false;
-    if(ap==='submitted' && !a.submitted) return false;
+    if(ap==='none' && (r.app.started||r.app.submitted)) return false;
+    if(ap==='started' && !(r.app.started && !r.app.submitted)) return false;
+    if(ap==='submitted' && !r.app.submitted) return false;
     return true;
   });
 
-  const s = SORT[cat];
+  const s = SORT[tab];
   rows.sort((a,b)=>{
     let x,y;
-    if(s.k==='started' || s.k==='submitted'){
-      x = (APP[a.key]||{})[s.k] ? 1:0; y = (APP[b.key]||{})[s.k] ? 1:0;
-    } else { x=a[s.k]; y=b[s.k]; }
-    if(typeof x==='string'){ x=x.toLowerCase(); y=y.toLowerCase(); }
+    if(s.k==='started'||s.k==='submitted'){ x=a.app[s.k]?1:0; y=b.app[s.k]?1:0; }
+    else { x=a[s.k]; y=b[s.k]; }
+    if(typeof x==='string'){ x=x.toLowerCase(); y=(y||'').toLowerCase(); }
     const c = x<y?-1:x>y?1:0;
     return s.dir==='asc'? c : -c;
   });
 
-  g('tb').innerHTML = rows.length ? rows.map(r=>{
-    const a = APP[r.key]||{};
-    return `<tr class="${r.status==='closed'?'closed':''} ${a.submitted?'done':''}">
-      <td class="ctr"><input type="checkbox" class="appchk" data-k="started"   data-key="${esc(r.key)}" ${a.started?'checked':''} title="Started application"></td>
-      <td class="ctr"><input type="checkbox" class="appchk sub" data-k="submitted" data-key="${esc(r.key)}" ${a.submitted?'checked':''} title="Submitted application"></td>
+  const nCols = isC||isA ? 6 : 8;
+  g('tb').innerHTML = rows.length ? rows.map(r=>`
+    <tr class="${isA?'arch':''} ${r.app.submitted?'done':''} ${r.decision==='dismissed'?'arch':''}">
+      ${isC||isA?'':`
+      <td class="ctr"><input type="checkbox" class="appchk" data-f="started" data-key="${esc(r.key)}" ${r.app.started?'checked':''} title="Started application"></td>
+      <td class="ctr"><input type="checkbox" class="appchk sub" data-f="submitted" data-key="${esc(r.key)}" ${r.app.submitted?'checked':''} title="Submitted application"></td>`}
       <td>${dlCell(r)}${badge(r)}</td>
-      <td class="co">${esc(r.company)}${r.pref?'<span class="tag">MIA/LA</span>':''}</td>
-      <td class="title"><a href="${r.url}" target="_blank" rel="noopener">${esc(r.title)}</a>
-        <span class="why">${esc(r.why)}</span><span class="conf">${esc(r.note)}</span></td>
+      <td class="co">${esc(r.company)}${r.pref?'<span class="tag">MIA/LA</span>':''}${
+        r.decision==='added'?'<span class="tag added">added</span>':''}${
+        !r._seed?'<span class="tag mine">mine</span>':''}</td>
+      <td class="title"><a href="${esc(r.url||'#')}" target="_blank" rel="noopener">${esc(r.title)}</a>
+        <span class="why">${esc(r.why)}</span><span class="conf">${esc(r.note)}</span>
+        ${r.mynote?`<span class="mynote">${esc(r.mynote)}</span>`:''}</td>
       <td class="loc">${r.pref?'<span class="pref">★</span>':''}${esc(r.location)}</td>
-      <td><a class="lnk" href="${r.url}" target="_blank" rel="noopener">Open ↗</a></td>
-    </tr>`;
-  }).join('') : `<tr><td colspan="7" class="empty">No roles match those filters.</td></tr>`;
+      <td>${r.url?`<a class="lnk" href="${esc(r.url)}" target="_blank" rel="noopener">Open ↗</a>`:'<span class="count">no link</span>'}</td>
+      <td>${manageBtns(r)}</td>
+    </tr>`).join('')
+    : `<tr><td colspan="${nCols}" class="empty">${isC?'Nothing left to consider — you have decided on all of them.':'No roles match those filters.'}</td></tr>`;
 
-  const all = ROLES.filter(r=>r.cat===cat);
-  const act = all.filter(r=>r.actionable && r.status!=='closed');
-  const conf = all.filter(r=>r.status==='confirmed' && days(r.deadline)>=0);
-  const soon = all.filter(r=>r.deadline && r.status!=='closed' && r.status!=='none'
-                 && days(r.deadline)>=0 && days(r.deadline)<=30);
-  const started = act.filter(r=>(APP[r.key]||{}).started).length;
-  const submitted = act.filter(r=>(APP[r.key]||{}).submitted).length;
-  const pct = act.length? Math.round(submitted/act.length*100):0;
+  // company filter options
+  const sel = g('co'), cur = sel.value;
+  const names = [...new Set(ROLES.filter(r=> isC ? (r.tab==='consider'||r.decision==='dismissed') : r.tab===tab).map(r=>r.company))].sort((a,b)=>a.localeCompare(b));
+  sel.innerHTML = '<option value="">All companies</option>'+names.map(n=>`<option>${esc(n)}</option>`).join('');
+  sel.value = names.includes(cur)? cur : '';
 
-  document.getElementById('stats-'+cat).innerHTML = `
-    <div class="stat"><div class="n">${act.length}</div><div class="l">Live roles</div></div>
+  // stats
+  const pool = ROLES.filter(r=> isC ? r.tab==='consider' : r.tab===tab);
+  const soon = pool.filter(r=>r.deadline && days(r.deadline)>=0 && days(r.deadline)<=30);
+  const started = pool.filter(r=>r.app.started).length;
+  const submitted = pool.filter(r=>r.app.submitted).length;
+  const pct = pool.length? Math.round(submitted/pool.length*100):0;
+
+  document.getElementById('stats-'+tab).innerHTML = isC ? `
+    <div class="stat"><div class="n">${pool.length}</div><div class="l">To decide</div></div>
+    <div class="stat is-ok"><div class="n">${ROLES.filter(r=>r.decision==='added').length}</div><div class="l">Added</div></div>
+    <div class="stat"><div class="n">${ROLES.filter(r=>r.decision==='dismissed').length}</div><div class="l">Dismissed</div></div>
+    <div class="stat"><div class="n">${pool.filter(r=>r.pref).length}</div><div class="l">Miami / LA</div></div>`
+  : isA ? `
+    <div class="stat"><div class="n">${pool.length}</div><div class="l">Archived</div></div>
+    <div class="stat"><div class="n">${pool.filter(r=>r.app.submitted).length}</div><div class="l">Submitted before close</div></div>
+    <div class="stat"><div class="n">${pool.filter(r=>r.pref).length}</div><div class="l">Miami / LA</div></div>`
+  : `
+    <div class="stat"><div class="n">${pool.length}</div><div class="l">Live roles</div></div>
     <div class="stat is-urgent"><div class="n">${soon.length}</div><div class="l">Due in 30 days</div></div>
-    <div class="stat"><div class="n">${conf.length}</div><div class="l">Confirmed dates</div></div>
-    <div class="stat"><div class="n">${all.filter(r=>r.pref && r.status!=='closed').length}</div><div class="l">Miami / LA</div></div>
+    <div class="stat"><div class="n">${pool.filter(r=>r.status==='confirmed').length}</div><div class="l">Confirmed dates</div></div>
+    <div class="stat"><div class="n">${pool.filter(r=>r.pref).length}</div><div class="l">Miami / LA</div></div>
     <div class="stat"><div class="n">${started}</div><div class="l">Started</div></div>
     <div class="stat is-ok"><div class="n">${submitted}</div><div class="l">Submitted
       <div class="prog"><i style="width:${pct}%"></i></div></div></div>`;
 
-  g('count').textContent = `${rows.length} of ${all.length} roles`;
-  document.getElementById('c-'+cat).textContent = act.length;
+  g('count').textContent = `${rows.length} of ${pool.length}`;
+  document.getElementById('c-'+tab).textContent = pool.length;
+}
+function renderAll(){ build(); ROLE_TABS.forEach(render); renderCos(); renderAlert(); renderTotals(); }
+
+function renderAlert(){
+  const soon = ROLES.filter(r=>r.tab!=='archived' && r.tab!=='hidden' && r.tab!=='consider'
+                 && r.deadline && days(r.deadline)>=0 && days(r.deadline)<=14)
+                .sort((a,b)=>a.deadlineSort-b.deadlineSort);
+  document.getElementById('alert').style.display = soon.length? 'block':'none';
+  document.getElementById('alert').innerHTML =
+    `<h2>Closing within 14 days — ${soon.length} role${soon.length===1?'':'s'}</h2><ul>`+
+    soon.map(r=>`<li><span class="d">${fmt(r.deadline)} · ${days(r.deadline)}d</span> —
+      <a href="${esc(r.url||'#')}" target="_blank" rel="noopener">${esc(r.company)}: ${esc(r.title)}</a>
+      ${r.status==='confirmed'?'':' <em>(estimated — verify)</em>'}
+      ${r.app.submitted?' ✅ submitted':''}</li>`).join('')+'</ul>';
+}
+function renderTotals(){
+  const live = ROLES.filter(r=>['tech','consulting','other'].includes(r.tab)).length;
+  document.getElementById('roleTotal').textContent = live+' live roles';
 }
 
-/* ---------- wiring ---------- */
-['tech','consulting','other'].forEach(cat=>{
-  ['q','co','st','ap','open','pref','act'].forEach(id=>
-    document.getElementById(id+'-'+cat).addEventListener('input',()=>render(cat)));
-
-  document.getElementById('reset-'+cat).addEventListener('click',()=>{
-    document.getElementById('q-'+cat).value='';
-    ['co','st','ap'].forEach(i=>document.getElementById(i+'-'+cat).value='');
-    document.getElementById('open-'+cat).checked=true;
-    document.getElementById('act-'+cat).checked=true;
-    document.getElementById('pref-'+cat).checked=false;
-    SORT[cat]={k:'deadlineSort',dir:'asc'};
-    document.querySelectorAll(`th.sortable[data-cat="${cat}"]`).forEach(x=>{
-      x.removeAttribute('data-dir'); x.querySelector('.arr').textContent='▲'; });
-    render(cat);
+/* ================= wiring ================= */
+ROLE_TABS.forEach(tab=>{
+  ['q','co','st','ap','cat','pref','dism'].forEach(id=>{
+    const el = document.getElementById(id+'-'+tab);
+    if(el) el.addEventListener('input',()=>render(tab));
   });
-
-  document.querySelectorAll(`th.sortable[data-cat="${cat}"]`).forEach(th=>{
+  document.getElementById('reset-'+tab).addEventListener('click',()=>{
+    ['q','co','st','ap','cat'].forEach(i=>{ const el=document.getElementById(i+'-'+tab); if(el) el.value=''; });
+    ['pref','dism'].forEach(i=>{ const el=document.getElementById(i+'-'+tab); if(el) el.checked=false; });
+    SORT[tab]={k:'deadlineSort',dir:'asc'};
+    document.querySelectorAll(`th.sortable[data-tab="${tab}"]`).forEach(x=>{
+      x.removeAttribute('data-dir'); x.querySelector('.arr').textContent='▲'; });
+    render(tab);
+  });
+  document.querySelectorAll(`th.sortable[data-tab="${tab}"]`).forEach(th=>{
     th.addEventListener('click',()=>{
-      const k=th.dataset.k, s=SORT[cat];
-      if(s.k===k){ s.dir = s.dir==='asc'?'desc':'asc'; } else { s.k=k; s.dir = (k==='started'||k==='submitted')?'desc':'asc'; }
-      document.querySelectorAll(`th.sortable[data-cat="${cat}"]`).forEach(x=>{
+      const k=th.dataset.k, s=SORT[tab];
+      if(s.k===k) s.dir = s.dir==='asc'?'desc':'asc';
+      else { s.k=k; s.dir=(k==='started'||k==='submitted')?'desc':'asc'; }
+      document.querySelectorAll(`th.sortable[data-tab="${tab}"]`).forEach(x=>{
         x.removeAttribute('data-dir'); x.querySelector('.arr').textContent='▲'; });
       th.setAttribute('data-dir',s.dir);
       th.querySelector('.arr').textContent = s.dir==='asc'?'▲':'▼';
-      render(cat);
+      render(tab);
     });
   });
-
-  // checkbox delegation
-  document.getElementById('tb-'+cat).addEventListener('change',e=>{
-    const el = e.target;
-    if(!el.classList.contains('appchk')) return;
-    const key = el.dataset.key, field = el.dataset.k;
-    APP[key] = APP[key] || {};
-    APP[key][field] = el.checked;
-    // submitting implies started
-    if(field==='submitted' && el.checked) APP[key].started = true;
-    // un-starting clears submitted
-    if(field==='started' && !el.checked) APP[key].submitted = false;
-    saveApp(); render(cat);
+  const tb = document.getElementById('tb-'+tab);
+  tb.addEventListener('change',e=>{
+    const el=e.target; if(!el.classList.contains('appchk')) return;
+    const k=el.dataset.key, f=el.dataset.f;
+    S.app[k] = S.app[k]||{};
+    S.app[k][f] = el.checked;
+    if(f==='submitted' && el.checked) S.app[k].started = true;
+    if(f==='started' && !el.checked)  S.app[k].submitted = false;
+    save(); renderAll();
+  });
+  tb.addEventListener('click',e=>{
+    const b=e.target.closest('[data-act]'); if(!b) return;
+    const k=b.dataset.key, act=b.dataset.act;
+    if(act==='add')        S.consider[k]='added';
+    else if(act==='dismiss')   S.consider[k]='dismissed';
+    else if(act==='undismiss') delete S.consider[k];
+    else if(act==='archive'){ S.edits[k]=Object.assign({},S.edits[k],{status:'closed'}); }
+    else if(act==='restore'){ S.edits[k]=Object.assign({},S.edits[k],{status:'rolling'}); }
+    else if(act==='edit'){ openModal(k); return; }
+    save(); renderAll();
   });
 });
 
-/* ---------- tabs ---------- */
 document.querySelectorAll('.tab').forEach(t=>{
   t.addEventListener('click',()=>{
     document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected', x===t));
@@ -454,63 +614,140 @@ document.querySelectorAll('.tab').forEach(t=>{
   });
 });
 
-/* ---------- company tab ---------- */
-const LS='mbaTracker.userCompanies.v2';
-const getUser=()=>{ try{ return JSON.parse(localStorage.getItem(LS))||[] }catch(e){ return [] } };
-const setUser=a=>{ try{ localStorage.setItem(LS,JSON.stringify(a)) }catch(e){} };
+/* ================= modal ================= */
+const F = ['company','title','location','url','deadline','status','cat','track','why','note'];
+let editingKey = null;
+function openModal(key){
+  editingKey = key;
+  const r = key ? ROLES.find(x=>x.key===key) : null;
+  document.getElementById('mTitle').textContent = r? 'Edit role' : 'Add a role';
+  document.getElementById('mSub').textContent = r
+    ? 'Everything here is editable. Changes save in this browser.'
+    : 'Add a role you found yourself. It behaves exactly like the researched ones.';
+  F.forEach(f=>{ document.getElementById('f_'+f).value = r ? (r[f]||'') : (f==='status'?'rolling':f==='track'?'strategy':f==='cat'?'tech':''); });
+  document.getElementById('f_mynote').value = r ? (r.mynote||'') : '';
+  document.getElementById('mDelete').style.display = r? 'inline-block':'none';
+  document.getElementById('ovl').classList.add('open');
+  document.getElementById('f_company').focus();
+}
+function closeModal(){ document.getElementById('ovl').classList.remove('open'); editingKey=null; }
+document.getElementById('mCancel').addEventListener('click',closeModal);
+document.getElementById('ovl').addEventListener('click',e=>{ if(e.target.id==='ovl') closeModal(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+document.getElementById('addRole').addEventListener('click',()=>openModal(null));
 
+document.getElementById('mSave').addEventListener('click',()=>{
+  const v = {}; F.forEach(f=> v[f] = document.getElementById('f_'+f).value.trim());
+  if(!v.company || !v.title){ alert('Company and job title are both required.'); return; }
+  const mynote = document.getElementById('f_mynote').value;
+  if(editingKey){
+    S.edits[editingKey] = Object.assign({}, S.edits[editingKey], v);
+    if(mynote) S.notes[editingKey] = mynote; else delete S.notes[editingKey];
+  } else {
+    const nk = keyOf(v);
+    if(ROLES.some(r=>r.key===nk)){ alert('A role with that company and title already exists.'); return; }
+    S.custom.push(v);
+    if(mynote) S.notes[nk] = mynote;
+    const idx = S.deleted.indexOf(nk); if(idx>-1) S.deleted.splice(idx,1);
+  }
+  save(); closeModal(); renderAll();
+});
+document.getElementById('mDelete').addEventListener('click',()=>{
+  if(!editingKey) return;
+  if(!confirm('Delete this role from the dashboard? Use Archive instead if the deadline simply passed.')) return;
+  const ci = S.custom.findIndex(r=>keyOf(r)===editingKey);
+  if(ci>-1) S.custom.splice(ci,1); else if(!S.deleted.includes(editingKey)) S.deleted.push(editingKey);
+  delete S.edits[editingKey]; delete S.app[editingKey];
+  delete S.consider[editingKey]; delete S.notes[editingKey];
+  save(); closeModal(); renderAll();
+});
+
+/* ================= export / import / reset ================= */
+document.getElementById('exportBtn').addEventListener('click',()=>{
+  const blob = new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'mba-tracker-backup-'+new Date().toISOString().slice(0,10)+'.json';
+  a.click(); URL.revokeObjectURL(a.href);
+});
+document.getElementById('importBtn').addEventListener('click',()=>document.getElementById('importFile').click());
+document.getElementById('importFile').addEventListener('change',e=>{
+  const f = e.target.files[0]; if(!f) return;
+  const rd = new FileReader();
+  rd.onload = () => {
+    try{
+      const d = JSON.parse(rd.result);
+      if(typeof d!=='object' || d===null) throw new Error('not an object');
+      S = Object.assign({}, BLANK, d);
+      ['edits','app','consider','notes'].forEach(k=>{ if(typeof S[k]!=='object'||S[k]===null) S[k]={}; });
+      ['custom','deleted','companies'].forEach(k=>{ if(!Array.isArray(S[k])) S[k]=[]; });
+      save(); renderAll(); alert('Backup imported.');
+    }catch(err){ alert('That file could not be read as a tracker backup.'); }
+    e.target.value='';
+  };
+  rd.readAsText(f);
+});
+document.getElementById('resetBtn').addEventListener('click',()=>{
+  if(!confirm('Reset everything back to the researched seed data?\n\nThis clears your checkboxes, notes, edits, added roles and Consideration decisions. Export a backup first if you want to keep them.')) return;
+  S = JSON.parse(JSON.stringify(BLANK)); save(); renderAll();
+});
+
+/* ================= companies ================= */
 function renderCos(){
-  const all = [...BASE_COMPANIES.map(c=>({...c,user:false})), ...getUser().map(c=>({...c,user:true}))];
+  const all = [...BASE_COMPANIES.map(c=>({...c,user:false})), ...S.companies.map(c=>({...c,user:true}))];
   let total = 0;
   document.getElementById('coGroups').innerHTML = Object.keys(CATS).map(cat=>{
     const list = all.filter(c=>c.cat===cat).sort((a,b)=>a.name.localeCompare(b.name,'en',{sensitivity:'base'}));
     total += list.length;
-    return `<div class="cogroup"><h2>${CATS[cat]} — ${list.length} companies</h2><div class="grid">` +
+    return `<div class="cogroup"><h2>${CATS[cat]} — ${list.length} companies</h2><div class="grid">`+
       list.map(c=>{
         const hits = ROLES.filter(r=>r.company.toLowerCase()===c.name.toLowerCase());
-        const live = hits.filter(r=>r.actionable && r.status!=='closed');
-        const label = !hits.length ? 'Not yet searched'
-          : live.length ? `<b>${live.length}</b> live role${live.length===1?'':'s'}`
-          : 'Searched — no MBA strategy role';
-        return `<div class="cocard ${c.user?'user':''}">
+        const live = hits.filter(r=>['tech','consulting','other'].includes(r.tab));
+        const cons = hits.filter(r=>r.tab==='consider');
+        const noRole = NO_ROLE_COMPANIES[c.name];
+        let label;
+        if(live.length||cons.length){
+          const bits=[];
+          if(live.length) bits.push(`<b>${live.length}</b> live role${live.length===1?'':'s'}`);
+          if(cons.length) bits.push(`<b>${cons.length}</b> to consider`);
+          label = bits.join(' · ');
+        } else if(noRole) label = `<span class="norole">${esc(noRole)}</span>`;
+        else if(hits.length) label = 'All roles archived or decided';
+        else label = 'Not yet searched';
+        return `<div class="cocard ${c.user?'user':''} ${(!live.length&&!cons.length&&noRole)?'dim':''}">
           <h3>${esc(c.name)}</h3>
           <div class="sector">${CATS[c.cat]||'Other'}${c.user?' · added by you':''}</div>
           <div class="hits">${label}</div>
           <div class="row">
             ${c.url?`<a class="lnk" href="${esc(c.url)}" target="_blank" rel="noopener">Job board ↗</a>`
-                   :'<span class="hits" style="color:var(--ink-3)">No board URL yet</span>'}
+                   :'<span class="count">No board URL yet</span>'}
             ${c.user?`<button class="del" data-del="${esc(c.name)}" title="Remove">×</button>`:''}
           </div></div>`;
-      }).join('') + '</div></div>';
+      }).join('')+'</div></div>';
   }).join('');
-
   document.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',()=>{
-    setUser(getUser().filter(x=>x.name!==b.dataset.del)); renderCos();
+    S.companies = S.companies.filter(x=>x.name!==b.dataset.del); save(); renderCos();
   }));
   document.getElementById('c-cos').textContent = total;
-  document.getElementById('coTotal').textContent = total;
+  document.getElementById('coTotal').textContent = total+' companies';
 }
 document.getElementById('addCo').addEventListener('click',()=>{
   const n=document.getElementById('newName').value.trim(); if(!n) return;
   let u=document.getElementById('newUrl').value.trim();
   if(u && !/^https?:\/\//i.test(u)) u='https://'+u;
-  const list=getUser();
-  const exists = list.some(x=>x.name.toLowerCase()===n.toLowerCase())
-              || BASE_COMPANIES.some(x=>x.name.toLowerCase()===n.toLowerCase());
-  if(!exists){ list.push({name:n,url:u,cat:document.getElementById('newCat').value}); setUser(list); }
+  const dup = S.companies.some(x=>x.name.toLowerCase()===n.toLowerCase())
+           || BASE_COMPANIES.some(x=>x.name.toLowerCase()===n.toLowerCase());
+  if(!dup){ S.companies.push({name:n,url:u,cat:document.getElementById('newCat').value}); save(); }
   document.getElementById('newName').value=''; document.getElementById('newUrl').value='';
   renderCos();
 });
 document.getElementById('newName').addEventListener('keydown',e=>{
   if(e.key==='Enter') document.getElementById('addCo').click(); });
 document.getElementById('clearAdded').addEventListener('click',()=>{
-  if(confirm('Remove all companies you have added? The original list stays.')){ setUser([]); renderCos(); }
+  if(confirm('Remove all companies you have added? The original list stays.')){ S.companies=[]; save(); renderCos(); }
 });
 
-/* ---------- go ---------- */
-['tech','consulting','other'].forEach(render);
-renderCos();
-document.getElementById('roleTotal').textContent = ROLES.filter(r=>r.actionable).length + ' roles';
+renderAll();
 </script>
 </body>
 </html>
