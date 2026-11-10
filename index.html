@@ -111,6 +111,18 @@
   .co .tag.added{background:var(--accent-soft);color:var(--accent)}
   .co .tag.mine{background:var(--ok-soft);color:var(--ok)}
   .co .tag.cat{background:var(--line-2);color:var(--ink-3)}
+  /* labelled research-note fields */
+  .conf .nline{display:block;margin-top:3px;line-height:1.45}
+  .conf .nlabel{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.05em;
+    padding:1px 5px;border-radius:4px;margin-right:6px;vertical-align:1px;
+    background:var(--line-2);color:var(--ink-3);white-space:nowrap}
+  .conf .nlabel.flag{background:var(--warn-soft);color:var(--warn)}
+  .conf .ntext{font-size:11.5px;color:var(--ink-3)}
+  .sandbox-banner{background:var(--warn-soft);color:var(--warn);border:1px solid var(--warn);
+    border-radius:8px;padding:8px 13px;margin:12px 0 0;font-size:12.5px;font-weight:650}
+  .pending{display:inline-block;font-size:10px;font-weight:650;padding:2px 7px;border-radius:20px;
+    margin-left:6px;vertical-align:1px;background:var(--ok-soft);color:var(--ok);white-space:nowrap;
+    font-variant-numeric:tabular-nums}
   /* Job titles are the primary link: they must read as clickable at a glance. */
   .title a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;
     text-underline-offset:2px;text-decoration-color:color-mix(in srgb,var(--accent) 38%,transparent);
@@ -312,7 +324,7 @@
 
 <!-- Bump ?v= whenever data.js changes, otherwise browsers serve a stale cached copy
      and the dashboard silently shows old deadlines. -->
-<script src="data.js?v=2026-11-10d"></script>
+<script src="data.js?v=2026-11-10f"></script>
 <script>
 /* Countdowns run off the real current date, not the research date, so
    "in N days" stays correct every time the dashboard is opened.
@@ -321,13 +333,18 @@ const TODAY = (()=>{ const d=new Date(); d.setHours(0,0,0,0); return d; })();
 const CATS = {tech:'Tech', consulting:'Consulting', other:'Other Industries'};
 const ROLE_TABS = ['all','tech','consulting','other','consider','applied','archived'];
 const CAT_TABS  = ['tech','consulting','other'];   // what "All Roles" pools together
+const APPLIED_DELAY_MS = 5*60*1000;                // grace period before a submitted role moves
 const esc = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const days = d => Math.round((new Date(d+'T00:00:00')-TODAY)/86400000);
 const fmt  = d => new Date(d+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
 const keyOf = r => (r.company+'||'+r.title).replace(/\s+/g,' ').trim();
 
 /* ================= store ================= */
-const LS = 'mbaTracker.v3';
+/* Your saved state lives under this key. Opening the page with ?sandbox=1 swaps
+   it for a throwaway key, so the dashboard can be exercised and tested without
+   ever reading or writing your real checkboxes, notes and decisions. */
+const SANDBOX = new URLSearchParams(location.search).has('sandbox');
+const LS = SANDBOX ? 'mbaTracker.sandbox' : 'mbaTracker.v3';
 const BLANK = {edits:{}, custom:[], deleted:[], app:{}, consider:{}, companies:[], notes:{}};
 let S = (()=>{ try{ return Object.assign({}, BLANK, JSON.parse(localStorage.getItem(LS))||{}) }
                catch(e){ return JSON.parse(JSON.stringify(BLANK)) } })();
@@ -366,11 +383,28 @@ function build(){
     const past = m.deadline && days(m.deadline) < 0;
     m.autoArchived  = !!past && m.status === 'confirmed';
     m.lapsedGuess   = !!past && m.status === 'rolling';
-    // Applied wins over everything: once you have submitted, the role leaves its
-    // industry tab and lives in Applied, even if its deadline later passes.
-    if(m.app.submitted)                                m.tab='applied';
+    // --- applied, after a grace period -----------------------------------
+    // Ticking Submitted does not whisk the row away immediately: it stays put
+    // for APPLIED_DELAY_MS so a mis-click is easy to undo and you can see what
+    // you just did. Rows ticked before this feature existed have no timestamp
+    // and are treated as already elapsed.
+    const subAt = m.app.submittedAt;
+    m.appliedPending = !!(m.app.submitted && subAt && (Date.now()-subAt) < APPLIED_DELAY_MS);
+    m.appliedAt      = subAt ? subAt + APPLIED_DELAY_MS : 0;
+    const appliedReady = !!m.app.submitted && !m.appliedPending;
+
+    // --- an un-adopted Consideration role that expires leaves the board ----
+    // You never opted into these, so once the date is gone they are noise, not
+    // history. Only Consideration roles you pressed "Add to my list" on are
+    // worth archiving. Reachable again via "Show dismissed & expired".
+    const otherUnadopted = m.track==='other' && m.decision!=='added';
+    m.expiredUnadopted = otherUnadopted && !!past && !appliedReady;
+
+    if(appliedReady)                                   m.tab='applied';
+    else if(otherUnadopted && (m.decision==='dismissed' || m.expiredUnadopted))
+                                                       m.tab='hidden';
     else if(m.status==='closed' || m.autoArchived)     m.tab='archived';
-    else if(m.track==='other' && m.decision!=='added') m.tab = m.decision==='dismissed' ? 'hidden' : 'consider';
+    else if(otherUnadopted)                            m.tab='consider';
     else                                               m.tab = m.cat;
     return m;
   });
@@ -382,14 +416,20 @@ function panelHTML(tab){
   const lead = isAll ? `<div class="note"><b>Every live role, all industries in one list.</b>
       Tech, consulting and other industries pooled and sorted by deadline. Consideration roles are
       excluded until you press <b>Add to my list</b> on them; submitted roles move to <b>Applied</b>.</div>`
-    : isApp ? `<div class="note"><b>Roles you have submitted.</b> Ticking <b>Submitted</b> anywhere moves
-      a role here and out of its industry tab. Untick it to send it back.</div>`
+    : isApp ? `<div class="note"><b>Roles you have submitted.</b> Ticking <b>Submitted</b> starts a
+      <b>5-minute</b> timer — the row stays in its industry tab with a countdown, then moves here.
+      Untick inside those five minutes and nothing happens, so a mis-click costs you nothing.</div>`
     : isC ? `<div class="note"><b>Other MBA internships at your target companies.</b>
       These are real MBA-eligible reqs that sit outside product / business / corporate / operations strategy —
       finance, marketing, supply chain, sales, HR. Press <b>Add to my list</b> to move one into its role tab
-      and track it like any other, or <b>Dismiss</b> to hide it. Nothing here counts toward your totals until you add it.</div>`
+      and track it like any other, or <b>Dismiss</b> to hide it. Nothing here counts toward your totals until you add it.
+      <br>A role here whose deadline passes <b>leaves the dashboard entirely</b> — you never opted into it, so it
+      is noise rather than history. Only ones you added get archived. Tick <b>Show dismissed &amp; expired</b>
+      to see them again.</div>`
     : isA ? `<div class="note"><b>Closed applications.</b> A role lands here the day after its
       <b>confirmed</b> deadline passes — no action needed from you — or when you archive it by hand.
+      Consideration roles reach this tab only if you added them to your list first; ones you never
+      adopted drop off the dashboard instead.
       <br>Roles whose date was only my <b>estimate</b> are deliberately NOT auto-archived: an estimate has
       been wrong in the costly direction before, so a lapsed guess stays in its own tab flagged
       <span class="pill p-urgent">Estimate lapsed — verify</span> rather than quietly disappearing.
@@ -415,7 +455,7 @@ function panelHTML(tab){
       <option value="none">Not started</option>
       <option value="started">Started, not submitted</option>
     </select>`}
-    ${isC?`<label class="chk"><input type="checkbox" id="dism-${tab}"> Show dismissed</label>`:''}
+    ${isC?`<label class="chk"><input type="checkbox" id="dism-${tab}"> Show dismissed &amp; expired</label>`:''}
     <div class="spacer"></div>
     <span class="count" id="count-${tab}"></span>
     <button class="btn" id="reset-${tab}">Reset filters</button>
@@ -453,6 +493,7 @@ ROLE_TABS.forEach(t=>{
 
 /* ================= cells ================= */
 function badge(r){
+  if(r.expiredUnadopted)     return '<span class="pill p-closed">Expired — never added</span>';
   if(r.autoArchived)         return '<span class="pill p-closed">Deadline passed</span>';
   if(r.status==='closed')    return '<span class="pill p-closed">Closed</span>';
   if(r.lapsedGuess)          return '<span class="pill p-urgent">Estimate lapsed — verify</span>';
@@ -476,6 +517,21 @@ function dlCell(r){
   else                            sub = `in ${d} day${d===1?'':'s'}`;
   return `<div class="dl">${fmt(r.deadline)}<span class="sub">${sub}</span></div>`;
 }
+/* Notes are stored as newline-separated "LABEL: text" fields. Render each on its
+   own line with the label called out, so the eye can jump to the one it wants. */
+const FLAG_LABELS = /FLAG|CONFLICT|CORRECTION/;
+function noteHTML(note){
+  if(!note) return '';
+  const rows = String(note).split('\n').map(l=>l.trim()).filter(Boolean).map(line=>{
+    const m = line.match(/^([A-Z][A-Z0-9 &/-]*):\s*([\s\S]*)$/);
+    if(!m) return `<span class="nline"><span class="ntext">${esc(line)}</span></span>`;
+    const cls = FLAG_LABELS.test(m[1]) ? 'nlabel flag' : 'nlabel';
+    return `<span class="nline"><span class="${cls}">${esc(m[1])}</span>`+
+           `<span class="ntext">${esc(m[2])}</span></span>`;
+  });
+  return `<span class="conf">${rows.join('')}</span>`;
+}
+
 function manageBtns(r){
   const b=[];
   if(r.tab==='consider'){
@@ -505,7 +561,7 @@ function render(tab){
   const inPool = r => isAll ? CAT_TABS.includes(r.tab) : r.tab===tab;
 
   let rows = ROLES.filter(r=>{
-    if(isC){ if(r.tab!=='consider' && !(showDism && r.decision==='dismissed' && r.status!=='closed')) return false; }
+    if(isC){ if(r.tab!=='consider' && !(showDism && (r.decision==='dismissed' || r.expiredUnadopted))) return false; }
     else if(!inPool(r)) return false;
     if(q && !r.hay.includes(q)) return false;
     if(co && r.company!==co) return false;
@@ -540,8 +596,9 @@ function render(tab){
       <td class="title"><a href="${esc(r.url)}" target="_blank" rel="noopener noreferrer"
           title="${r.viaBoard?'Opens the careers board — search there for this role':'Opens the job posting'}"
         >${esc(r.title)}<span class="ext">↗</span></a>${
-        r.viaBoard?'<span class="via" title="No stable direct link exists for this req — this opens the board">via board</span>':''}
-        <span class="conf">${esc(r.note)}</span>
+        r.viaBoard?'<span class="via" title="No stable direct link exists for this req — this opens the board">via board</span>':''}${
+        r.appliedPending?`<span class="pending" data-at="${r.appliedAt}" title="Untick Submitted to cancel">moving to Applied in …</span>`:''}
+        ${noteHTML(r.note)}
         ${r.mynote?`<span class="mynote">${esc(r.mynote)}</span>`:''}</td>
       <td class="loc">${esc(r.location)}</td>
       <td>${r.url?`<a class="lnk" href="${esc(r.url)}" target="_blank" rel="noopener">Open ↗</a>`:'<span class="count">no link</span>'}</td>
@@ -640,8 +697,11 @@ ROLE_TABS.forEach(tab=>{
     const k=el.dataset.key, f=el.dataset.f;
     S.app[k] = S.app[k]||{};
     S.app[k][f] = el.checked;
-    if(f==='submitted' && el.checked) S.app[k].started = true;
-    if(f==='started' && !el.checked)  S.app[k].submitted = false;
+    if(f==='submitted'){
+      if(el.checked){ S.app[k].started = true; S.app[k].submittedAt = Date.now(); }
+      else delete S.app[k].submittedAt;
+    }
+    if(f==='started' && !el.checked){ S.app[k].submitted = false; delete S.app[k].submittedAt; }
     save(); renderAll();
   });
   tb.addEventListener('click',e=>{
@@ -801,7 +861,34 @@ document.getElementById('seedDate').textContent =
   'Seed research ' + fmt(BUILD_DATE) + ' · opened ' +
   TODAY.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
 
+/* ---- live countdown for roles waiting to move into Applied ----
+   Updates the pill text each second without re-rendering the table (which
+   would fight with typing and selection), and only does a full re-render at
+   the moment a role actually crosses into Applied. */
+function tickPending(){
+  const pills = document.querySelectorAll('.pending');
+  if(!pills.length) return;
+  const now = Date.now();
+  let due = false;
+  pills.forEach(el=>{
+    const left = (+el.dataset.at) - now;
+    if(left <= 0){ due = true; return; }
+    const m = Math.floor(left/60000), s = Math.floor(left%60000/1000);
+    el.textContent = `moving to Applied in ${m}:${String(s).padStart(2,'0')}`;
+  });
+  if(due) renderAll();
+}
+setInterval(tickPending, 1000);
+
+if(SANDBOX){
+  const b=document.createElement('div');
+  b.className='sandbox-banner';
+  b.textContent='SANDBOX MODE — this page is using throwaway storage. Nothing here touches your real checkboxes, notes or decisions.';
+  document.querySelector('.wrap').insertBefore(b, document.getElementById('alert'));
+}
+
 renderAll();
+tickPending();
 </script>
 </body>
 </html>
