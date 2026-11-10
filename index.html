@@ -110,8 +110,16 @@
     text-transform:uppercase;letter-spacing:.04em}
   .co .tag.added{background:var(--accent-soft);color:var(--accent)}
   .co .tag.mine{background:var(--ok-soft);color:var(--ok)}
-  .title a{color:var(--ink);text-decoration:none;font-weight:600}
-  .title a:hover{color:var(--accent);text-decoration:underline}
+  /* Job titles are the primary link: they must read as clickable at a glance. */
+  .title a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;
+    text-underline-offset:2px;text-decoration-color:color-mix(in srgb,var(--accent) 38%,transparent);
+    font-weight:650;cursor:pointer}
+  .title a:hover,.title a:focus-visible{text-decoration-color:var(--accent);background:var(--accent-soft);
+    border-radius:4px;box-shadow:0 0 0 3px var(--accent-soft)}
+  .title a .ext{font-size:10px;opacity:.75;margin-left:3px;text-decoration:none;display:inline-block}
+  .title .via{display:inline-block;font-size:9.5px;font-weight:650;padding:1px 5px;border-radius:20px;
+    margin-left:6px;vertical-align:1.5px;background:var(--warn-soft);color:var(--warn);
+    text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
   .why{display:block;color:var(--ink-2);font-size:12px;margin-top:4px;max-width:470px;line-height:1.45}
   .conf{display:block;font-size:11px;color:var(--ink-3);margin-top:4px;max-width:470px;line-height:1.45}
   .mynote{display:block;margin-top:6px;font-size:11.5px;color:var(--ok);background:var(--ok-soft);
@@ -300,7 +308,7 @@
 
 <!-- Bump ?v= whenever data.js changes, otherwise browsers serve a stale cached copy
      and the dashboard silently shows old deadlines. -->
-<script src="data.js?v=2026-11-10"></script>
+<script src="data.js?v=2026-11-10b"></script>
 <script>
 /* Countdowns run off the real current date, not the research date, so
    "in N days" stays correct every time the dashboard is opened.
@@ -342,6 +350,8 @@ function build(){
     m.mynote = S.notes[r.key]||'';
     m.app = S.app[r.key]||{};
     m.decision = S.consider[r.key]||'';  // '', 'added', 'dismissed'
+    // Does the link land on the exact posting, or on a careers board you still have to search?
+    m.viaBoard = !m.url || /(search-results|SearchJobs|searchjobs|jobsearch|\?q=|keywords=|query=|open-positions|all-jobs|careers\/jobs\?|job_type|search-jobs|earlycareers|\/university|\/students|find-a-role|external\/jobs|jobs\?search|job-search|\/careers\/?$)/i.test(m.url);
     m.deadlineSort = m.deadline ? new Date(m.deadline+'T00:00:00').getTime() : 8.64e15;
     m.hay = [m.company,m.title,m.location,m.why,m.note,m.mynote].join(' ').toLowerCase();
     // routing
@@ -407,6 +417,9 @@ function panelHTML(tab){
     <span class="pill p-ok">Confirmed</span> date published by the employer ·
     <span class="pill p-warn">Estimated</span> rolling or undated, my projection — an "apply by" target, not a cliff ·
     <span class="pill p-closed">Closed</span> window passed.
+    <br><b>Click any job title to open its posting</b> in a new tab. A
+    <span class="via">via board</span> tag means no stable direct link exists for that req, so the
+    link opens the company's careers board and you search there.
     Every field is editable — press <b>Edit</b> on any row. Changes save in this browser; use
     <b>Export backup</b> in the header to keep a copy or move to another device.
   </footer>`;
@@ -501,7 +514,10 @@ function render(tab){
       <td class="co">${esc(r.company)}${r.pref?'<span class="tag">MIA/LA</span>':''}${
         r.decision==='added'?'<span class="tag added">added</span>':''}${
         !r._seed?'<span class="tag mine">mine</span>':''}</td>
-      <td class="title"><a href="${esc(r.url||'#')}" target="_blank" rel="noopener">${esc(r.title)}</a>
+      <td class="title"><a href="${esc(r.url)}" target="_blank" rel="noopener noreferrer"
+          title="${r.viaBoard?'Opens the careers board — search there for this role':'Opens the job posting'}"
+        >${esc(r.title)}<span class="ext">↗</span></a>${
+        r.viaBoard?'<span class="via" title="No stable direct link exists for this req — this opens the board">via board</span>':''}
         <span class="why">${esc(r.why)}</span><span class="conf">${esc(r.note)}</span>
         ${r.mynote?`<span class="mynote">${esc(r.mynote)}</span>`:''}</td>
       <td class="loc">${r.pref?'<span class="pref">★</span>':''}${esc(r.location)}</td>
