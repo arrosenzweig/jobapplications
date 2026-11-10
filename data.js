@@ -503,9 +503,9 @@ const SEED_ROLES = [
 
 {cat:'tech', track:'strategy', company:'Google', title:'MBA Intern, Summer 2027 (general business track)',
  location:'Multiple US offices',
- deadline:'2026-11-06', status:'confirmed', url:'https://www.google.com/about/careers/applications/jobs/results/121103710599160518-mba-intern-summer-2027',
+ deadline:'2026-11-13', status:'confirmed', url:'https://www.google.com/about/careers/applications/jobs/results/121103710599160518-mba-intern-summer-2027',
  why:'Umbrella req routing into Business Strategy, Product Management, Corporate Development, Finance, Marketing, Operations, People Ops and Sales — a single door onto three of your four target functions, with team preference expressed in the application. THIS is the US req.',
- note:'VERIFIED 5 Nov 2026 — DUE TOMORROW, 6 NOV. The US MBA Intern, Summer 2027 posting states applications are due by 6 Nov 2026, with interviews rolling through Q1 2027. My earlier 31 Dec estimate was badly wrong. Requires attending an MBA programme IN THE US; 12 consecutive weeks May–Sep 2027. Handshake lists Chicago and Seattle. Google warns reqs also close early once projects fill.'},
+ note:'RE-CHECKED 10 Nov 2026 — DEADLINE IS 13 NOV, NOT 6 NOV. The live Google listing now reads "complete your application by November 13, 2026"; my 5 Nov reading of 6 Nov was either wrong or has since been extended. STILL OPEN as of today. The US MBA Intern, Summer 2027 posting states applications are due by 6 Nov 2026, with interviews rolling through Q1 2027. My earlier 31 Dec estimate was badly wrong. Requires attending an MBA programme IN THE US; 12 consecutive weeks May–Sep 2027. Handshake lists Chicago and Seattle. Google warns reqs also close early once projects fill.'},
 
 {cat:'tech', track:'strategy', company:'Meta', title:'Business Product Strategy Intern (MBA)',
  location:'Menlo Park, CA',
