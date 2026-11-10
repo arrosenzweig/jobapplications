@@ -104,7 +104,11 @@
   tbody tr:hover{background:var(--line-2)}
   tbody tr.done{background:var(--ok-soft)}
   tbody tr.arch{opacity:.62}
-  .co{font-weight:650;white-space:nowrap}
+  /* Company is a short label, not a paragraph: cap it and let it wrap. */
+  .co{font-weight:650;width:116px;max-width:116px;min-width:96px;overflow-wrap:break-word}
+  .research{max-width:430px;min-width:230px}
+  .needres{display:inline-block;font-size:11.5px;font-weight:650;padding:3px 9px;border-radius:20px;
+    background:var(--warn-soft);color:var(--warn)}
   .co .tag{display:inline-block;font-size:9px;font-weight:700;padding:1px 5px;border-radius:20px;
     margin-left:5px;vertical-align:1px;background:var(--star-soft);color:var(--star);
     text-transform:uppercase;letter-spacing:.04em}
@@ -229,7 +233,6 @@
     <button class="btn btn-primary" id="addRole">+ Add role</button>
     <button class="btn" id="exportBtn">Export backup</button>
     <button class="btn" id="importBtn">Import</button>
-    <button class="btn btn-danger" id="resetBtn">Reset all</button>
     <input type="file" id="importFile" accept="application/json" style="display:none">
   </div>
 </div>
@@ -290,7 +293,7 @@
       <div class="f"><label>Company</label><input type="text" id="f_company"></div>
       <div class="f"><label>Location</label><input type="text" id="f_location"></div>
       <div class="f full"><label>Job title</label><input type="text" id="f_title"></div>
-      <div class="f full"><label>Link to posting</label><input type="text" id="f_url" placeholder="https://…"></div>
+      <div class="f full url-only"><label>Link to posting</label><input type="text" id="f_url" placeholder="https://…"></div>
       <div class="f"><label>Application deadline</label><input type="date" id="f_deadline">
         <span class="hint">Leave blank if genuinely unknown</span></div>
       <div class="f"><label>Deadline status</label><select id="f_status">
@@ -310,7 +313,7 @@
       </select></div>
       <div class="f full"><label>Why it fits</label><textarea id="f_why"></textarea></div>
       <div class="f full"><label>Research note / caveats</label><textarea id="f_note"></textarea></div>
-      <div class="f full"><label>My notes</label>
+      <div class="f full url-only"><label>My notes</label>
         <textarea id="f_mynote" placeholder="Recruiter name, referral, interview dates, essay ideas…"></textarea></div>
     </div>
     <div class="mbtns">
@@ -324,7 +327,7 @@
 
 <!-- Bump ?v= whenever data.js changes, otherwise browsers serve a stale cached copy
      and the dashboard silently shows old deadlines. -->
-<script src="data.js?v=2026-11-10f"></script>
+<script src="data.js?v=2026-11-10g"></script>
 <script>
 /* Countdowns run off the real current date, not the research date, so
    "in N days" stays correct every time the dashboard is opened.
@@ -334,6 +337,7 @@ const CATS = {tech:'Tech', consulting:'Consulting', other:'Other Industries'};
 const ROLE_TABS = ['all','tech','consulting','other','consider','applied','archived'];
 const CAT_TABS  = ['tech','consulting','other'];   // what "All Roles" pools together
 const APPLIED_DELAY_MS = 5*60*1000;                // grace period before a submitted role moves
+const PENDING_CO = 'Pending research';             // company placeholder for URL-only additions
 const esc = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const days = d => Math.round((new Date(d+'T00:00:00')-TODAY)/86400000);
 const fmt  = d => new Date(d+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
@@ -373,6 +377,7 @@ function build(){
     // Does the link land on the exact posting, or on a careers board you still have to search?
     m.viaBoard = !m.url || /(search-results|SearchJobs|searchjobs|jobsearch|\?q=|keywords=|query=|open-positions|all-jobs|careers\/jobs\?|job_type|search-jobs|earlycareers|\/university|\/students|find-a-role|external\/jobs|jobs\?search|job-search|\/careers\/?$)/i.test(m.url);
     m.deadlineSort = m.deadline ? new Date(m.deadline+'T00:00:00').getTime() : 8.64e15;
+    m.needsResearch = m.company === PENDING_CO;
     m.hay = [m.company,m.title,m.location,m.why,m.note,m.mynote].join(' ').toLowerCase();
     // --- auto-archiving ---------------------------------------------------
     // A date in the past only retires a role when that date was CONFIRMED by the
@@ -468,7 +473,7 @@ function panelHTML(tab){
       <th class="sortable" data-k="company" data-tab="${tab}">Company <span class="arr">▲</span></th>
       <th class="sortable" data-k="title" data-tab="${tab}">Job Title <span class="arr">▲</span></th>
       <th class="sortable" data-k="location" data-tab="${tab}">Location <span class="arr">▲</span></th>
-      <th>Apply</th>
+      <th>Research</th>
       <th>Manage</th>
     </tr></thead>
     <tbody id="tb-${tab}"></tbody>
@@ -596,12 +601,13 @@ function render(tab){
       <td class="title"><a href="${esc(r.url)}" target="_blank" rel="noopener noreferrer"
           title="${r.viaBoard?'Opens the careers board — search there for this role':'Opens the job posting'}"
         >${esc(r.title)}<span class="ext">↗</span></a>${
-        r.viaBoard?'<span class="via" title="No stable direct link exists for this req — this opens the board">via board</span>':''}${
-        r.appliedPending?`<span class="pending" data-at="${r.appliedAt}" title="Untick Submitted to cancel">moving to Applied in …</span>`:''}
-        ${noteHTML(r.note)}
-        ${r.mynote?`<span class="mynote">${esc(r.mynote)}</span>`:''}</td>
+        r.appliedPending?`<span class="pending" data-at="${r.appliedAt}" title="Untick Submitted to cancel">moving to Applied in …</span>`:''}</td>
       <td class="loc">${esc(r.location)}</td>
-      <td>${r.url?`<a class="lnk" href="${esc(r.url)}" target="_blank" rel="noopener">Open ↗</a>`:'<span class="count">no link</span>'}</td>
+      <td class="research">${r.needsResearch
+          ? '<span class="needres">Needs research — ask Claude to fill this in</span>'
+          : noteHTML(r.note)}${
+        r.viaBoard?'<span class="via" title="No stable direct link exists for this req — the link opens the board">via board</span>':''}${
+        r.mynote?`<span class="mynote">${esc(r.mynote)}</span>`:''}</td>
       <td>${manageBtns(r)}</td>
     </tr>`).join('')
     : `<tr><td colspan="${nCols}" class="empty">${isC?'Nothing left to consider — you have decided on all of them.':'No roles match those filters.'}</td></tr>`;
@@ -730,15 +736,23 @@ let editingKey = null;
 function openModal(key){
   editingKey = key;
   const r = key ? ROLES.find(x=>x.key===key) : null;
-  document.getElementById('mTitle').textContent = r? 'Edit role' : 'Add a role';
-  document.getElementById('mSub').textContent = r
-    ? 'Everything here is editable. Changes save in this browser.'
-    : 'Add a role you found yourself. It behaves exactly like the researched ones.';
+  const adding = !r;
+  // Adding asks for the URL and nothing else — the rest gets researched and filled in.
+  document.getElementById('mTitle').textContent = adding ? 'Add a role' : 'Edit role';
+  document.getElementById('mSub').innerHTML = adding
+    ? 'Paste the link to the posting. That is all you need to enter — the row is parked as '+
+      '<b>Needs research</b> until the details are filled in.<br>' +
+      '<b>The page cannot research on its own</b> — it is a static file with no internet access. ' +
+      'Ask Claude to "research the pending roles" and the company, title, deadline and eligibility get written in.'
+    : 'Everything here is editable. Changes save in this browser.';
+  document.querySelectorAll('#ovl .f').forEach(el=>{
+    el.style.display = (adding && !el.classList.contains('url-only')) ? 'none' : '';
+  });
   F.forEach(f=>{ document.getElementById('f_'+f).value = r ? (r[f]||'') : (f==='status'?'rolling':f==='track'?'strategy':f==='cat'?'tech':''); });
   document.getElementById('f_mynote').value = r ? (r.mynote||'') : '';
   document.getElementById('mDelete').style.display = r? 'inline-block':'none';
   document.getElementById('ovl').classList.add('open');
-  document.getElementById('f_company').focus();
+  document.getElementById(adding ? 'f_url' : 'f_company').focus();
 }
 function closeModal(){ document.getElementById('ovl').classList.remove('open'); editingKey=null; }
 document.getElementById('mCancel').addEventListener('click',closeModal);
@@ -748,15 +762,29 @@ document.getElementById('addRole').addEventListener('click',()=>openModal(null))
 
 document.getElementById('mSave').addEventListener('click',()=>{
   const v = {}; F.forEach(f=> v[f] = document.getElementById('f_'+f).value.trim());
-  if(!v.company || !v.title){ alert('Company and job title are both required.'); return; }
   const mynote = document.getElementById('f_mynote').value;
   if(editingKey){
+    if(!v.company || !v.title){ alert('Company and job title are both required.'); return; }
     S.edits[editingKey] = Object.assign({}, S.edits[editingKey], v);
     if(mynote) S.notes[editingKey] = mynote; else delete S.notes[editingKey];
   } else {
-    const nk = keyOf(v);
-    if(ROLES.some(r=>r.key===nk)){ alert('A role with that company and title already exists.'); return; }
-    S.custom.push(v);
+    // URL-only add: park a stub that is obviously awaiting research.
+    let url = v.url;
+    if(!url){ alert('Paste the link to the posting.'); return; }
+    if(!/^https?:\/\//i.test(url)) url = 'https://' + url;
+    let host = '';
+    try{ host = new URL(url).hostname.replace(/^www\./,''); }catch(e){ alert('That does not look like a web address.'); return; }
+    const stub = {
+      company: PENDING_CO,
+      title: url.replace(/^https?:\/\//,'').slice(0,90),
+      location: '', url, deadline: '', status: 'notposted',
+      cat: 'tech', track: 'strategy', why: '',
+      note: 'RESEARCH: Added by you from a link on '+new Date().toLocaleDateString('en-US',{day:'numeric',month:'short',year:'numeric'})+
+            '. Source: '+host+'.\nNEXT: Ask Claude to research the pending roles — company, title, location, deadline and eligibility will be filled in here.'
+    };
+    const nk = keyOf(stub);
+    if(ROLES.some(r=>r.key===nk)){ alert('That link is already on the board.'); return; }
+    S.custom.push(stub);
     if(mynote) S.notes[nk] = mynote;
     const idx = S.deleted.indexOf(nk); if(idx>-1) S.deleted.splice(idx,1);
   }
@@ -797,10 +825,8 @@ document.getElementById('importFile').addEventListener('change',e=>{
   };
   rd.readAsText(f);
 });
-document.getElementById('resetBtn').addEventListener('click',()=>{
-  if(!confirm('Reset everything back to the researched seed data?\n\nThis clears your checkboxes, notes, edits, added roles and Consideration decisions. Export a backup first if you want to keep them.')) return;
-  S = JSON.parse(JSON.stringify(BLANK)); save(); renderAll();
-});
+/* There is deliberately no "reset everything" control. Wiping saved state is not
+   recoverable, and it has already cost real data once. Import a backup instead. */
 
 /* ================= companies ================= */
 function renderCos(){
