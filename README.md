@@ -65,8 +65,17 @@ data.js      seed company list and role database
 README.md
 ```
 
-When editing `data.js`, bump the `?v=` on its `<script>` tag in `index.html` — otherwise
-browsers serve a cached copy and the dashboard silently shows old deadlines.
+### Deploying
+
+Run `python release.py` before committing any change to `index.html` or `data.js`. It stamps a
+build id into both `index.html` and `version.json`, and points the `data.js?v=` query at the
+same id.
+
+This matters because GitHub Pages serves `index.html` with `Cache-Control: max-age=600`, so a
+browser can show a stale copy for ten minutes after a deploy. The page fetches `version.json`
+with a cache-busting query on load and every five minutes; if the published build id differs
+from the one compiled into the page, it shows a **Reload now** banner. Skipping `release.py`
+means a deploy can land invisibly.
 
 Browser edits layer on top of `data.js` in `localStorage` — editing the seed file is only
 needed for a wholesale research refresh. Role entry shape:
