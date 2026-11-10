@@ -189,9 +189,17 @@
   .addbox h3{margin:0 0 4px;font-size:14px;font-weight:650}
   .addbox p{margin:0 0 10px;font-size:12.5px;color:var(--ink-3)}
   .addrow{display:flex;gap:8px;flex-wrap:wrap}
-  .cogroup{margin-bottom:20px}
-  .cogroup > h2{font-size:12.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);
-    margin:0 0 9px;font-weight:700}
+  .cogroup{margin-bottom:30px}
+  .cogroup > h2{font-size:15px;letter-spacing:-.01em;color:var(--ink);margin:0 0 12px;font-weight:700;
+    padding-bottom:8px;border-bottom:2px solid var(--line);display:flex;align-items:baseline;gap:10px}
+  .cogroup > h2 .cogcount{font-size:11.5px;font-weight:600;color:var(--ink-3);
+    text-transform:uppercase;letter-spacing:.05em;margin-left:auto}
+  .cosub{font-size:11px;font-weight:650;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;
+    margin:16px 0 9px;display:flex;align-items:center;gap:10px}
+  .cosub::after{content:'';flex:1;height:1px;background:var(--line)}
+  .cocard .mineflag{font-size:9px;font-weight:700;padding:1px 5px;border-radius:20px;margin-left:6px;
+    background:var(--accent-soft);color:var(--accent);text-transform:uppercase;letter-spacing:.04em;
+    vertical-align:2px}
 
   /* modal */
   .ovl{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:flex-start;
@@ -327,7 +335,7 @@
 
 <!-- Bump ?v= whenever data.js changes, otherwise browsers serve a stale cached copy
      and the dashboard silently shows old deadlines. -->
-<script src="data.js?v=2026-11-10g"></script>
+<script src="data.js?v=2026-11-10h"></script>
 <script>
 /* Countdowns run off the real current date, not the research date, so
    "in N days" stays correct every time the dashboard is opened.
@@ -829,37 +837,52 @@ document.getElementById('importFile').addEventListener('change',e=>{
    recoverable, and it has already cost real data once. Import a backup instead. */
 
 /* ================= companies ================= */
+function coCard(c, dim){
+  const hits = ROLES.filter(r=>r.company.toLowerCase()===c.name.toLowerCase());
+  const live = hits.filter(r=>CAT_TABS.includes(r.tab));
+  const cons = hits.filter(r=>r.tab==='consider');
+  const applied = hits.filter(r=>r.tab==='applied');
+  const noRole = NO_ROLE_COMPANIES[c.name];
+  let label;
+  if(live.length||cons.length||applied.length){
+    const bits=[];
+    if(live.length)    bits.push(`<b>${live.length}</b> live role${live.length===1?'':'s'}`);
+    if(cons.length)    bits.push(`<b>${cons.length}</b> to consider`);
+    if(applied.length) bits.push(`<b>${applied.length}</b> applied`);
+    label = bits.join(' · ');
+  } else if(noRole)     label = `<span class="norole">${esc(noRole)}</span>`;
+  else if(hits.length)  label = 'All roles archived or decided';
+  else                  label = 'Not yet searched';
+  return `<div class="cocard ${c.user?'user':''} ${dim?'dim':''}">
+      <h3>${esc(c.name)}${c.user?'<span class="mineflag">added</span>':''}</h3>
+      <div class="hits">${label}</div>
+      <div class="row">
+        ${c.url?`<a class="lnk" href="${esc(c.url)}" target="_blank" rel="noopener noreferrer">Job board ↗</a>`
+               :'<span class="count">No board URL yet</span>'}
+        ${c.user?`<button class="del" data-del="${esc(c.name)}" title="Remove">×</button>`:''}
+      </div></div>`;
+}
+
 function renderCos(){
   const all = [...BASE_COMPANIES.map(c=>({...c,user:false})), ...S.companies.map(c=>({...c,user:true}))];
+  const byName = (a,b)=>a.name.localeCompare(b.name,'en',{sensitivity:'base'});
+  const hasSomething = c => ROLES.some(r=>r.company.toLowerCase()===c.name.toLowerCase()
+                            && (CAT_TABS.includes(r.tab) || r.tab==='consider' || r.tab==='applied'));
   let total = 0;
+
   document.getElementById('coGroups').innerHTML = Object.keys(CATS).map(cat=>{
-    const list = all.filter(c=>c.cat===cat).sort((a,b)=>a.name.localeCompare(b.name,'en',{sensitivity:'base'}));
+    const list = all.filter(c=>c.cat===cat);
     total += list.length;
-    return `<div class="cogroup"><h2>${CATS[cat]} — ${list.length} companies</h2><div class="grid">`+
-      list.map(c=>{
-        const hits = ROLES.filter(r=>r.company.toLowerCase()===c.name.toLowerCase());
-        const live = hits.filter(r=>['tech','consulting','other'].includes(r.tab));
-        const cons = hits.filter(r=>r.tab==='consider');
-        const noRole = NO_ROLE_COMPANIES[c.name];
-        let label;
-        if(live.length||cons.length){
-          const bits=[];
-          if(live.length) bits.push(`<b>${live.length}</b> live role${live.length===1?'':'s'}`);
-          if(cons.length) bits.push(`<b>${cons.length}</b> to consider`);
-          label = bits.join(' · ');
-        } else if(noRole) label = `<span class="norole">${esc(noRole)}</span>`;
-        else if(hits.length) label = 'All roles archived or decided';
-        else label = 'Not yet searched';
-        return `<div class="cocard ${c.user?'user':''} ${(!live.length&&!cons.length&&noRole)?'dim':''}">
-          <h3>${esc(c.name)}</h3>
-          <div class="sector">${CATS[c.cat]||'Other'}${c.user?' · added by you':''}</div>
-          <div class="hits">${label}</div>
-          <div class="row">
-            ${c.url?`<a class="lnk" href="${esc(c.url)}" target="_blank" rel="noopener">Job board ↗</a>`
-                   :'<span class="count">No board URL yet</span>'}
-            ${c.user?`<button class="del" data-del="${esc(c.name)}" title="Remove">×</button>`:''}
-          </div></div>`;
-      }).join('')+'</div></div>';
+    // Companies with something to apply to come first, alphabetically.
+    // Everything else sinks to the bottom of its industry, greyed.
+    const live = list.filter(hasSomething).sort(byName);
+    const none = list.filter(c=>!hasSomething(c)).sort(byName);
+    return `<div class="cogroup">
+      <h2>${CATS[cat]}<span class="cogcount">${live.length} with roles${none.length?` · ${none.length} without`:''}</span></h2>
+      ${live.length?`<div class="grid">${live.map(c=>coCard(c,false)).join('')}</div>`:''}
+      ${none.length?`<div class="cosub">Nothing open right now — boards kept for monitoring</div>
+        <div class="grid">${none.map(c=>coCard(c,true)).join('')}</div>`:''}
+    </div>`;
   }).join('');
   document.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',()=>{
     S.companies = S.companies.filter(x=>x.name!==b.dataset.del); save(); renderCos();
