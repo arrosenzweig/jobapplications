@@ -308,7 +308,7 @@
 
 <!-- Bump ?v= whenever data.js changes, otherwise browsers serve a stale cached copy
      and the dashboard silently shows old deadlines. -->
-<script src="data.js?v=2026-11-10b"></script>
+<script src="data.js?v=2026-11-10c"></script>
 <script>
 /* Countdowns run off the real current date, not the research date, so
    "in N days" stays correct every time the dashboard is opened.
@@ -354,10 +354,18 @@ function build(){
     m.viaBoard = !m.url || /(search-results|SearchJobs|searchjobs|jobsearch|\?q=|keywords=|query=|open-positions|all-jobs|careers\/jobs\?|job_type|search-jobs|earlycareers|\/university|\/students|find-a-role|external\/jobs|jobs\?search|job-search|\/careers\/?$)/i.test(m.url);
     m.deadlineSort = m.deadline ? new Date(m.deadline+'T00:00:00').getTime() : 8.64e15;
     m.hay = [m.company,m.title,m.location,m.why,m.note,m.mynote].join(' ').toLowerCase();
-    // routing
-    if(m.status==='closed')                        m.tab='archived';
+    // --- auto-archiving ---------------------------------------------------
+    // A date in the past only retires a role when that date was CONFIRMED by the
+    // employer. An "estimated" date is my guess, and guesses have been wrong in
+    // the costly direction before (Google read 6 Nov, was actually 13 Nov), so a
+    // lapsed estimate must never silently hide a role that is still open. Those
+    // stay in their tab, flagged, until you decide.
+    const past = m.deadline && days(m.deadline) < 0;
+    m.autoArchived  = !!past && m.status === 'confirmed';
+    m.lapsedGuess   = !!past && m.status === 'rolling';
+    if(m.status==='closed' || m.autoArchived)          m.tab='archived';
     else if(m.track==='other' && m.decision!=='added') m.tab = m.decision==='dismissed' ? 'hidden' : 'consider';
-    else                                           m.tab = m.cat;
+    else                                               m.tab = m.cat;
     return m;
   });
 }
@@ -370,9 +378,13 @@ function panelHTML(tab){
       These are real MBA-eligible reqs that sit outside product / business / corporate / operations strategy —
       finance, marketing, supply chain, sales, HR. Press <b>Add to my list</b> to move one into its role tab
       and track it like any other, or <b>Dismiss</b> to hide it. Nothing here counts toward your totals until you add it.</div>`
-    : isA ? `<div class="note"><b>Closed applications.</b> Roles move here automatically once their deadline
-      passes or you archive them. Kept so you can watch for a re-post, email a recruiter about a late look,
-      or plan next cycle. Press <b>Restore</b> to move one back.</div>` : '';
+    : isA ? `<div class="note"><b>Closed applications.</b> A role lands here the day after its
+      <b>confirmed</b> deadline passes — no action needed from you — or when you archive it by hand.
+      <br>Roles whose date was only my <b>estimate</b> are deliberately NOT auto-archived: an estimate has
+      been wrong in the costly direction before, so a lapsed guess stays in its own tab flagged
+      <span class="pill p-urgent">Estimate lapsed — verify</span> rather than quietly disappearing.
+      <br>Kept here so you can watch for a re-post, email a recruiter about a late look, or plan next
+      cycle. Press <b>Restore</b> to move one back.</div>` : '';
 
   return lead + `
   <div class="stats" id="stats-${tab}"></div>
@@ -433,7 +445,9 @@ ROLE_TABS.forEach(t=>{
 
 /* ================= cells ================= */
 function badge(r){
+  if(r.autoArchived)         return '<span class="pill p-closed">Deadline passed</span>';
   if(r.status==='closed')    return '<span class="pill p-closed">Closed</span>';
+  if(r.lapsedGuess)          return '<span class="pill p-urgent">Estimate lapsed — verify</span>';
   if(r.status==='notposted') return '<span class="pill p-warn">Not posted</span>';
   if(r.status==='confirmed' && r.deadline){
     const d = days(r.deadline);
@@ -445,7 +459,9 @@ function dlCell(r){
   if(!r.deadline) return `<div class="dl">—<span class="sub">no date set</span></div>`;
   const d = days(r.deadline);
   let sub;
-  if(r.status==='closed')         sub = `closed ${Math.abs(d)} days ago`;
+  if(r.autoArchived)              sub = `auto-archived · closed ${Math.abs(d)} day${Math.abs(d)===1?'':'s'} ago`;
+  else if(r.status==='closed')    sub = `closed ${Math.abs(d)} days ago`;
+  else if(r.lapsedGuess)          sub = `passed ${Math.abs(d)}d ago — estimated date, verify the posting`;
   else if(r.status==='notposted') sub = 'est. — not yet posted';
   else if(d<0)                    sub = 'date passed — verify';
   else if(d===0)                  sub = 'TODAY';

@@ -46,6 +46,8 @@ Nothing requires going back to the source files.
 | `Estimated` | Rolling or undated; a projection from the prior cycle and the posting date |
 | `Not posted` | Expected this cycle, req not live yet |
 | `Closed` | Window passed → Archived tab |
+| `Deadline passed` | A **confirmed** date lapsed — auto-moved to Archived, no action needed |
+| `Estimate lapsed — verify` | An **estimated** date lapsed. Deliberately NOT auto-archived, because an estimate being wrong would otherwise hide a live role |
 
 **Verify against the live posting before relying on any date.** School-specific deadlines —
 McKinsey, Bain, BCG, Oliver Wyman — should be confirmed with the Yale SOM Career Development
