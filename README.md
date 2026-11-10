@@ -11,17 +11,16 @@ school career boards **5 November 2026** — those rows carry a note beginning `
 
 ## Tabs
 
-| Tab | What's in it |
+| Tab | What it holds |
 |---|---|
-| **Tech Roles** | Strategy / product reqs across the tech target list |
-| **Consulting Roles** | MBA summer associate reqs across 30 consulting firms |
-| **Other Industries** | Airlines, hospitality, media, gaming and industrials |
-| **Consideration** | Other MBA internships at the same companies — finance, marketing, supply chain, sales, HR. **Add to my list** promotes one into its role tab; **Dismiss** hides it |
-| **Archived** | Closed applications, moved here automatically. **Restore** brings one back |
-| **Company Job Boards** | Every target company with a direct board link. Companies with no MBA internship at all are dimmed, with the reason |
+| **All Roles** | Every live role, all industries pooled, sorted by deadline. The default view |
+| **Tech** / **Consulting** / **Other Industries** | The same roles split by industry |
+| **Consideration** | Non-strategy MBA internships at the same companies. Excluded from All Roles until you press **Add to my list** |
+| **Applied** | Roles you have submitted. Ticking **Submitted** moves a role here and out of its industry tab |
+| **Archived** | Closed roles, auto-moved the day after a confirmed deadline passes |
+| **Company Job Boards** | Every target company with a direct board link |
 
-Companies where no MBA internship of any kind exists no longer appear in the role tabs — only
-on the Company Job Boards tab, so you keep the link without the clutter.
+US roles only. A red banner lists anything closing **within 3 days**.
 
 ## It's fully editable in the browser
 

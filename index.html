@@ -110,6 +110,7 @@
     text-transform:uppercase;letter-spacing:.04em}
   .co .tag.added{background:var(--accent-soft);color:var(--accent)}
   .co .tag.mine{background:var(--ok-soft);color:var(--ok)}
+  .co .tag.cat{background:var(--line-2);color:var(--ink-3)}
   /* Job titles are the primary link: they must read as clickable at a glance. */
   .title a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;
     text-underline-offset:2px;text-decoration-color:color-mix(in srgb,var(--accent) 38%,transparent);
@@ -120,7 +121,6 @@
   .title .via{display:inline-block;font-size:9.5px;font-weight:650;padding:1px 5px;border-radius:20px;
     margin-left:6px;vertical-align:1.5px;background:var(--warn-soft);color:var(--warn);
     text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
-  .why{display:block;color:var(--ink-2);font-size:12px;margin-top:4px;max-width:470px;line-height:1.45}
   .conf{display:block;font-size:11px;color:var(--ink-3);margin-top:4px;max-width:470px;line-height:1.45}
   .mynote{display:block;margin-top:6px;font-size:11.5px;color:var(--ok);background:var(--ok-soft);
     border-radius:6px;padding:5px 8px;max-width:470px;line-height:1.45;white-space:pre-wrap}
@@ -225,18 +225,22 @@
 <div class="alert" id="alert"></div>
 
 <div class="tabs" role="tablist">
-  <button class="tab" data-p="tech"       role="tab" aria-selected="true">Tech Roles<span class="cnt" id="c-tech"></span></button>
-  <button class="tab" data-p="consulting" role="tab" aria-selected="false">Consulting Roles<span class="cnt" id="c-consulting"></span></button>
+  <button class="tab" data-p="all"        role="tab" aria-selected="true">All Roles<span class="cnt" id="c-all"></span></button>
+  <button class="tab" data-p="tech"       role="tab" aria-selected="false">Tech<span class="cnt" id="c-tech"></span></button>
+  <button class="tab" data-p="consulting" role="tab" aria-selected="false">Consulting<span class="cnt" id="c-consulting"></span></button>
   <button class="tab" data-p="other"      role="tab" aria-selected="false">Other Industries<span class="cnt" id="c-other"></span></button>
   <button class="tab" data-p="consider"   role="tab" aria-selected="false">Consideration<span class="cnt" id="c-consider"></span></button>
+  <button class="tab" data-p="applied"    role="tab" aria-selected="false">Applied<span class="cnt" id="c-applied"></span></button>
   <button class="tab" data-p="archived"   role="tab" aria-selected="false">Archived<span class="cnt" id="c-archived"></span></button>
   <button class="tab" data-p="cos"        role="tab" aria-selected="false">Company Job Boards<span class="cnt" id="c-cos"></span></button>
 </div>
 
-<section class="panel active" id="p-tech"       role="tabpanel"></section>
+<section class="panel active" id="p-all"        role="tabpanel"></section>
+<section class="panel"        id="p-tech"       role="tabpanel"></section>
 <section class="panel"        id="p-consulting" role="tabpanel"></section>
 <section class="panel"        id="p-other"      role="tabpanel"></section>
 <section class="panel"        id="p-consider"   role="tabpanel"></section>
+<section class="panel"        id="p-applied"    role="tabpanel"></section>
 <section class="panel"        id="p-archived"   role="tabpanel"></section>
 
 <section class="panel" id="p-cos" role="tabpanel">
@@ -308,18 +312,18 @@
 
 <!-- Bump ?v= whenever data.js changes, otherwise browsers serve a stale cached copy
      and the dashboard silently shows old deadlines. -->
-<script src="data.js?v=2026-11-10c"></script>
+<script src="data.js?v=2026-11-10d"></script>
 <script>
 /* Countdowns run off the real current date, not the research date, so
    "in N days" stays correct every time the dashboard is opened.
    BUILD_DATE is only the timestamp of the seed research. */
 const TODAY = (()=>{ const d=new Date(); d.setHours(0,0,0,0); return d; })();
 const CATS = {tech:'Tech', consulting:'Consulting', other:'Other Industries'};
-const ROLE_TABS = ['tech','consulting','other','consider','archived'];
+const ROLE_TABS = ['all','tech','consulting','other','consider','applied','archived'];
+const CAT_TABS  = ['tech','consulting','other'];   // what "All Roles" pools together
 const esc = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const days = d => Math.round((new Date(d+'T00:00:00')-TODAY)/86400000);
 const fmt  = d => new Date(d+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
-const PREF_RE = /miami|los angeles|santa monica|burbank|culver city|universal city|glendale/i;
 const keyOf = r => (r.company+'||'+r.title).replace(/\s+/g,' ').trim();
 
 /* ================= store ================= */
@@ -346,7 +350,6 @@ function build(){
     const m = {...r, ...e};
     m.key = r.key;                       // key never changes once created
     m.track = m.track || 'strategy';
-    m.pref = PREF_RE.test(m.location||'');
     m.mynote = S.notes[r.key]||'';
     m.app = S.app[r.key]||{};
     m.decision = S.consider[r.key]||'';  // '', 'added', 'dismissed'
@@ -363,7 +366,10 @@ function build(){
     const past = m.deadline && days(m.deadline) < 0;
     m.autoArchived  = !!past && m.status === 'confirmed';
     m.lapsedGuess   = !!past && m.status === 'rolling';
-    if(m.status==='closed' || m.autoArchived)          m.tab='archived';
+    // Applied wins over everything: once you have submitted, the role leaves its
+    // industry tab and lives in Applied, even if its deadline later passes.
+    if(m.app.submitted)                                m.tab='applied';
+    else if(m.status==='closed' || m.autoArchived)     m.tab='archived';
     else if(m.track==='other' && m.decision!=='added') m.tab = m.decision==='dismissed' ? 'hidden' : 'consider';
     else                                               m.tab = m.cat;
     return m;
@@ -372,9 +378,13 @@ function build(){
 
 /* ================= panels ================= */
 function panelHTML(tab){
-  const isC = tab==='consider', isA = tab==='archived';
-  const label = isC ? 'Consideration' : isA ? 'Archived' : CATS[tab];
-  const lead = isC ? `<div class="note"><b>Other MBA internships at your target companies.</b>
+  const isC = tab==='consider', isA = tab==='archived', isAll = tab==='all', isApp = tab==='applied';
+  const lead = isAll ? `<div class="note"><b>Every live role, all industries in one list.</b>
+      Tech, consulting and other industries pooled and sorted by deadline. Consideration roles are
+      excluded until you press <b>Add to my list</b> on them; submitted roles move to <b>Applied</b>.</div>`
+    : isApp ? `<div class="note"><b>Roles you have submitted.</b> Ticking <b>Submitted</b> anywhere moves
+      a role here and out of its industry tab. Untick it to send it back.</div>`
+    : isC ? `<div class="note"><b>Other MBA internships at your target companies.</b>
       These are real MBA-eligible reqs that sit outside product / business / corporate / operations strategy —
       finance, marketing, supply chain, sales, HR. Press <b>Add to my list</b> to move one into its role tab
       and track it like any other, or <b>Dismiss</b> to hide it. Nothing here counts toward your totals until you add it.</div>`
@@ -397,16 +407,14 @@ function panelHTML(tab){
       <option value="rolling">Rolling / estimated</option>
       <option value="notposted">Not yet posted</option>
     </select>`}
-    ${isC?`<select id="cat-${tab}"><option value="">All tabs</option>
+    ${isC||isAll||isApp?`<select id="cat-${tab}"><option value="">All industries</option>
       <option value="tech">Tech</option><option value="consulting">Consulting</option>
       <option value="other">Other industries</option></select>`:''}
-    ${isA||isC?'':`<select id="ap-${tab}">
+    ${isA||isC||isApp?'':`<select id="ap-${tab}">
       <option value="">Any progress</option>
       <option value="none">Not started</option>
       <option value="started">Started, not submitted</option>
-      <option value="submitted">Submitted</option>
     </select>`}
-    <label class="chk"><input type="checkbox" id="pref-${tab}"> Miami / LA only</label>
     ${isC?`<label class="chk"><input type="checkbox" id="dism-${tab}"> Show dismissed</label>`:''}
     <div class="spacer"></div>
     <span class="count" id="count-${tab}"></span>
@@ -415,10 +423,10 @@ function panelHTML(tab){
   <div class="tablecard"><div class="scroll"><table>
     <thead><tr>
       ${isC||isA?'':`<th class="ctr sortable" data-k="started" data-tab="${tab}">Started <span class="arr">▲</span></th>
-      <th class="ctr sortable" data-k="submitted" data-tab="${tab}">Submitted <span class="arr">▲</span></th>`}
+      <th class="ctr sortable" data-k="submitted" data-tab="${tab}">${isApp?'Applied':'Submitted'} <span class="arr">▲</span></th>`}
       <th class="sortable" data-k="deadlineSort" data-tab="${tab}" data-dir="asc">Deadline <span class="arr">▲</span></th>
       <th class="sortable" data-k="company" data-tab="${tab}">Company <span class="arr">▲</span></th>
-      <th class="sortable" data-k="title" data-tab="${tab}">Job Title &amp; Why It Fits <span class="arr">▲</span></th>
+      <th class="sortable" data-k="title" data-tab="${tab}">Job Title <span class="arr">▲</span></th>
       <th class="sortable" data-k="location" data-tab="${tab}">Location <span class="arr">▲</span></th>
       <th>Apply</th>
       <th>Manage</th>
@@ -487,26 +495,24 @@ function manageBtns(r){
 /* ================= render ================= */
 function render(tab){
   const g = id => document.getElementById(id+'-'+tab);
-  const isC = tab==='consider', isA = tab==='archived';
+  const isC = tab==='consider', isA = tab==='archived', isAll = tab==='all', isApp = tab==='applied';
   const q = g('q').value.trim().toLowerCase();
   const co = g('co').value;
   const st = g('st') ? g('st').value : '';
   const ap = g('ap') ? g('ap').value : '';
   const catF = g('cat') ? g('cat').value : '';
-  const prefOnly = g('pref').checked;
   const showDism = g('dism') ? g('dism').checked : false;
+  const inPool = r => isAll ? CAT_TABS.includes(r.tab) : r.tab===tab;
 
   let rows = ROLES.filter(r=>{
     if(isC){ if(r.tab!=='consider' && !(showDism && r.decision==='dismissed' && r.status!=='closed')) return false; }
-    else if(r.tab!==tab) return false;
+    else if(!inPool(r)) return false;
     if(q && !r.hay.includes(q)) return false;
     if(co && r.company!==co) return false;
     if(st && r.status!==st) return false;
     if(catF && r.cat!==catF) return false;
-    if(prefOnly && !r.pref) return false;
     if(ap==='none' && (r.app.started||r.app.submitted)) return false;
     if(ap==='started' && !(r.app.started && !r.app.submitted)) return false;
-    if(ap==='submitted' && !r.app.submitted) return false;
     return true;
   });
 
@@ -527,16 +533,17 @@ function render(tab){
       <td class="ctr"><input type="checkbox" class="appchk" data-f="started" data-key="${esc(r.key)}" ${r.app.started?'checked':''} title="Started application"></td>
       <td class="ctr"><input type="checkbox" class="appchk sub" data-f="submitted" data-key="${esc(r.key)}" ${r.app.submitted?'checked':''} title="Submitted application"></td>`}
       <td>${dlCell(r)}${badge(r)}</td>
-      <td class="co">${esc(r.company)}${r.pref?'<span class="tag">MIA/LA</span>':''}${
+      <td class="co">${esc(r.company)}${
+        isAll||isApp?`<span class="tag cat">${esc(CATS[r.cat]||r.cat)}</span>`:''}${
         r.decision==='added'?'<span class="tag added">added</span>':''}${
         !r._seed?'<span class="tag mine">mine</span>':''}</td>
       <td class="title"><a href="${esc(r.url)}" target="_blank" rel="noopener noreferrer"
           title="${r.viaBoard?'Opens the careers board — search there for this role':'Opens the job posting'}"
         >${esc(r.title)}<span class="ext">↗</span></a>${
         r.viaBoard?'<span class="via" title="No stable direct link exists for this req — this opens the board">via board</span>':''}
-        <span class="why">${esc(r.why)}</span><span class="conf">${esc(r.note)}</span>
+        <span class="conf">${esc(r.note)}</span>
         ${r.mynote?`<span class="mynote">${esc(r.mynote)}</span>`:''}</td>
-      <td class="loc">${r.pref?'<span class="pref">★</span>':''}${esc(r.location)}</td>
+      <td class="loc">${esc(r.location)}</td>
       <td>${r.url?`<a class="lnk" href="${esc(r.url)}" target="_blank" rel="noopener">Open ↗</a>`:'<span class="count">no link</span>'}</td>
       <td>${manageBtns(r)}</td>
     </tr>`).join('')
@@ -544,12 +551,12 @@ function render(tab){
 
   // company filter options
   const sel = g('co'), cur = sel.value;
-  const names = [...new Set(ROLES.filter(r=> isC ? (r.tab==='consider'||r.decision==='dismissed') : r.tab===tab).map(r=>r.company))].sort((a,b)=>a.localeCompare(b));
+  const names = [...new Set(ROLES.filter(r=> isC ? (r.tab==='consider'||r.decision==='dismissed') : inPool(r)).map(r=>r.company))].sort((a,b)=>a.localeCompare(b));
   sel.innerHTML = '<option value="">All companies</option>'+names.map(n=>`<option>${esc(n)}</option>`).join('');
   sel.value = names.includes(cur)? cur : '';
 
   // stats
-  const pool = ROLES.filter(r=> isC ? r.tab==='consider' : r.tab===tab);
+  const pool = ROLES.filter(r=> isC ? r.tab==='consider' : inPool(r));
   const soon = pool.filter(r=>r.deadline && days(r.deadline)>=0 && days(r.deadline)<=30);
   const started = pool.filter(r=>r.app.started).length;
   const submitted = pool.filter(r=>r.app.submitted).length;
@@ -558,19 +565,21 @@ function render(tab){
   document.getElementById('stats-'+tab).innerHTML = isC ? `
     <div class="stat"><div class="n">${pool.length}</div><div class="l">To decide</div></div>
     <div class="stat is-ok"><div class="n">${ROLES.filter(r=>r.decision==='added').length}</div><div class="l">Added</div></div>
-    <div class="stat"><div class="n">${ROLES.filter(r=>r.decision==='dismissed').length}</div><div class="l">Dismissed</div></div>
-    <div class="stat"><div class="n">${pool.filter(r=>r.pref).length}</div><div class="l">Miami / LA</div></div>`
+    <div class="stat"><div class="n">${ROLES.filter(r=>r.decision==='dismissed').length}</div><div class="l">Dismissed</div></div>`
   : isA ? `
     <div class="stat"><div class="n">${pool.length}</div><div class="l">Archived</div></div>
-    <div class="stat"><div class="n">${pool.filter(r=>r.app.submitted).length}</div><div class="l">Submitted before close</div></div>
-    <div class="stat"><div class="n">${pool.filter(r=>r.pref).length}</div><div class="l">Miami / LA</div></div>`
+    <div class="stat"><div class="n">${pool.filter(r=>r.app.submitted).length}</div><div class="l">Submitted before close</div></div>`
+  : isApp ? `
+    <div class="stat is-ok"><div class="n">${pool.length}</div><div class="l">Applied</div></div>
+    <div class="stat"><div class="n">${CAT_TABS.reduce((n,c)=>n+ROLES.filter(r=>r.tab===c).length,0)}</div><div class="l">Still to do</div></div>
+    ${CAT_TABS.map(c=>`<div class="stat"><div class="n">${pool.filter(r=>r.cat===c).length}</div><div class="l">${CATS[c]}</div></div>`).join('')}`
   : `
     <div class="stat"><div class="n">${pool.length}</div><div class="l">Live roles</div></div>
-    <div class="stat is-urgent"><div class="n">${soon.length}</div><div class="l">Due in 30 days</div></div>
+    <div class="stat is-urgent"><div class="n">${pool.filter(r=>r.deadline && days(r.deadline)>=0 && days(r.deadline)<=3).length}</div><div class="l">Due in 3 days</div></div>
+    <div class="stat"><div class="n">${soon.length}</div><div class="l">Due in 30 days</div></div>
     <div class="stat"><div class="n">${pool.filter(r=>r.status==='confirmed').length}</div><div class="l">Confirmed dates</div></div>
-    <div class="stat"><div class="n">${pool.filter(r=>r.pref).length}</div><div class="l">Miami / LA</div></div>
     <div class="stat"><div class="n">${started}</div><div class="l">Started</div></div>
-    <div class="stat is-ok"><div class="n">${submitted}</div><div class="l">Submitted
+    <div class="stat is-ok"><div class="n">${ROLES.filter(r=>r.tab==='applied').length}</div><div class="l">Applied
       <div class="prog"><i style="width:${pct}%"></i></div></div></div>`;
 
   g('count').textContent = `${rows.length} of ${pool.length}`;
@@ -578,32 +587,36 @@ function render(tab){
 }
 function renderAll(){ build(); ROLE_TABS.forEach(render); renderCos(); renderAlert(); renderTotals(); }
 
+const ALERT_DAYS = 3;
 function renderAlert(){
-  const soon = ROLES.filter(r=>r.tab!=='archived' && r.tab!=='hidden' && r.tab!=='consider'
-                 && r.deadline && days(r.deadline)>=0 && days(r.deadline)<=14)
+  const soon = ROLES.filter(r=>CAT_TABS.includes(r.tab)
+                 && r.deadline && days(r.deadline)>=0 && days(r.deadline)<=ALERT_DAYS)
                 .sort((a,b)=>a.deadlineSort-b.deadlineSort);
-  document.getElementById('alert').style.display = soon.length? 'block':'none';
-  document.getElementById('alert').innerHTML =
-    `<h2>Closing within 14 days — ${soon.length} role${soon.length===1?'':'s'}</h2><ul>`+
-    soon.map(r=>`<li><span class="d">${fmt(r.deadline)} · ${days(r.deadline)}d</span> —
-      <a href="${esc(r.url||'#')}" target="_blank" rel="noopener">${esc(r.company)}: ${esc(r.title)}</a>
-      ${r.status==='confirmed'?'':' <em>(estimated — verify)</em>'}
-      ${r.app.submitted?' ✅ submitted':''}</li>`).join('')+'</ul>';
+  const el = document.getElementById('alert');
+  el.style.display = soon.length? 'block':'none';
+  if(!soon.length) return;
+  el.innerHTML =
+    `<h2>Closing within ${ALERT_DAYS} days — ${soon.length} role${soon.length===1?'':'s'}</h2><ul>`+
+    soon.map(r=>`<li><span class="d">${fmt(r.deadline)} · ${days(r.deadline)===0?'TODAY':days(r.deadline)+'d'}</span> —
+      <a href="${esc(r.url||'#')}" target="_blank" rel="noopener noreferrer">${esc(r.company)}: ${esc(r.title)}</a>
+      ${r.status==='confirmed'?'':' <em>(estimated — verify)</em>'}</li>`).join('')+'</ul>';
 }
 function renderTotals(){
-  const live = ROLES.filter(r=>['tech','consulting','other'].includes(r.tab)).length;
-  document.getElementById('roleTotal').textContent = live+' live roles';
+  const live = ROLES.filter(r=>CAT_TABS.includes(r.tab)).length;
+  const applied = ROLES.filter(r=>r.tab==='applied').length;
+  document.getElementById('roleTotal').textContent =
+    live+' live roles'+(applied?' · '+applied+' applied':'');
 }
 
 /* ================= wiring ================= */
 ROLE_TABS.forEach(tab=>{
-  ['q','co','st','ap','cat','pref','dism'].forEach(id=>{
+  ['q','co','st','ap','cat','dism'].forEach(id=>{
     const el = document.getElementById(id+'-'+tab);
     if(el) el.addEventListener('input',()=>render(tab));
   });
   document.getElementById('reset-'+tab).addEventListener('click',()=>{
     ['q','co','st','ap','cat'].forEach(i=>{ const el=document.getElementById(i+'-'+tab); if(el) el.value=''; });
-    ['pref','dism'].forEach(i=>{ const el=document.getElementById(i+'-'+tab); if(el) el.checked=false; });
+    ['dism'].forEach(i=>{ const el=document.getElementById(i+'-'+tab); if(el) el.checked=false; });
     SORT[tab]={k:'deadlineSort',dir:'asc'};
     document.querySelectorAll(`th.sortable[data-tab="${tab}"]`).forEach(x=>{
       x.removeAttribute('data-dir'); x.querySelector('.arr').textContent='▲'; });

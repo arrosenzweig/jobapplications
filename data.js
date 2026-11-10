@@ -299,12 +299,6 @@ const SEED_ROLES = [
  why:'Tech-and-economics strategy boutique — digital strategy, platform economics and expert work for large tech clients. A genuinely interesting hybrid if you want strategy with a technology substrate.',
  note:'ESTIMATED. Two summer 2027 student reqs live as of 12 Oct 2026. No separate MBA posting — MBAs apply through the general Summer Associate req.'},
 
-{cat:'consulting', track:'strategy', company:'Roland Berger', title:'MBA Summer Associate 2027 (1st-year MBA)',
- location:'Global / remote postings tied to INSEAD and IESE; US offices Chicago, Detroit, Boston',
- deadline:'2027-01-15', status:'rolling', url:'https://www.rolandberger.com/en/Join/All-Jobs/',
- why:'8–12 week client-project internship for first-year MBAs. European-headquartered with real industrial and automotive depth — strong for operations strategy.',
- note:'ESTIMATED — ELIGIBILITY FLAG. The MBA reqs that surfaced are tied to INSEAD and IESE rather than US schools. FAQ says no fixed hiring period; apply early. Confirm a US/SOM-eligible route first.'},
-
 {cat:'consulting', track:'strategy', company:'Deloitte', title:'Strategy Summer Associate — Corporate Strategy & Transactions / Customer & Commercial Strategy',
  location:'Multiple US offices — Miami and Los Angeles available',
  deadline:'2027-01-28', status:'confirmed', url:'https://apply.deloitte.com/en_US/careers/JobDetail/Deloitte-Strategy-Summer-Associate-Corporate-Strategy-Transactions-Customer-Commercial-Strategy/316711',
@@ -495,12 +489,6 @@ const SEED_ROLES = [
  why:'12-week MBA-gated track covering product strategy and market analysis. ServiceNow asks for 3–5 years prior work experience, so the cohort skews senior — a good sign for project quality.',
  note:'ESTIMATED. Requires graduation Dec 2027 or later for the Summer 2027 cycle. Grouped with Intuit and HubSpot as firms hiring PM interns Sep through the fall.'},
 
-{cat:'tech', track:'strategy', company:'Google', title:'[EMEA ONLY] Strategy and Operations MBA Intern, 2027',
- location:'London, UK — EMEA ONLY, not US',
- deadline:'2026-11-13', status:'confirmed', url:'https://www.google.com/about/careers/applications/jobs/results/99770582270124742-strategy-and-operations-mba-intern-2027',
- why:'One of the best title matches on your list. Deliver business insights, align cross-functional teams, execute new initiatives — Google’s internal strategy consulting arm. Prior strategy consulting or corporate strategy experience is a stated requirement.',
- note:'VERIFIED 5 Nov 2026 — THIS REQ IS NOT OPEN TO YOU. London-based, restricted to EMEA-region MBA students who must be based in the UK for the internship. Deadline 13 Nov 2026. There is NO US twin of the Strategy & Operations req — the US door is the general MBA Intern req above, which closes 6 Nov. Kept visible so you do not waste time rediscovering it.'},
-
 {cat:'tech', track:'strategy', company:'Google', title:'MBA Intern, Summer 2027 (general business track)',
  location:'Multiple US offices',
  deadline:'2026-11-13', status:'confirmed', url:'https://www.google.com/about/careers/applications/jobs/results/121103710599160518-mba-intern-summer-2027',
@@ -617,18 +605,6 @@ const SEED_ROLES = [
  why:'Marketing is listed among Google’s MBA intern functions alongside Business Strategy, Finance, Operations & Support, People Operations, Product Management and Sales.',
  note:'ESTIMATED — function confirmed on Google’s MBA listing, specific req not individually verified.'},
 
-{cat:'tech', track:'other', company:'Google', title:'[EMEA ONLY] Business Program Manager MBA Intern, 2027',
- location:'London, UK — EMEA ONLY',
- deadline:'2026-11-20', status:'confirmed', url:'https://www.google.com/about/careers/applications/jobs/results/109231596359295686-business-program-manager-mba-intern-2027',
- why:'Cross-functional programme design and execution against a business goal. Operations-flavoured but programme-management rather than strategy formulation.',
- note:'VERIFIED 5 Nov 2026: London / EMEA only, deadline 20 Nov 2026. Not open to a US-based MBA.'},
-
-{cat:'tech', track:'other', company:'Google', title:'[EMEA ONLY] Business Analyst MBA Intern, 2027',
- location:'Dublin, Ireland — EMEA ONLY',
- deadline:'2026-11-13', status:'confirmed', url:'https://www.google.com/about/careers/applications/jobs/results/82600333812867782-business-analyst-mba-intern/',
- why:'Analytics and business insight work. Dublin-based.',
- note:'VERIFIED 5 Nov 2026: Dublin / EMEA only, deadline 13 Nov 2026. Not open to a US-based MBA.'},
-
 {cat:'tech', track:'other', company:'Amazon', title:'MBA Supply Chain Internship — Summer 2027',
  location:'Seattle, WA · Bellevue, WA',
  deadline:'2026-12-15', status:'rolling', url:'https://www.amazon.jobs/en/search?base_query=MBA+supply+chain+intern+2027',
@@ -717,16 +693,10 @@ const SEED_ROLES = [
  note:'NOT YET POSTED for US MBA. Virtual info sessions are the week of 9 Nov 2026 for the Jun–Aug 2027 programme — ATTEND ONE. Eligibility reads "actively enrolled in a degree-granting program", which does include MBA; confirm on the call.'},
 
 {cat:'other', track:'strategy', company:'Expedia', title:'MBA Product Management Intern, Summer 2027',
- location:'Seattle, WA (London req also exists)',
+ location:'Seattle, WA',
  deadline:'2027-01-15', status:'rolling', url:'https://careers.expediagroup.com/earlycareers/',
  why:'Product strategy for a marketplace business — pricing, supply/demand balance and partner strategy. A strong adjacency if you want travel without the airline operating-company path.',
  note:'ESTIMATED — ELIGIBILITY FLAG. Summer 2027 reqs went live 12 Oct 2026 but require graduation Dec 2027–Jul 2028; the MBA PM req that surfaced was a London 2026 role. Programme runs 200–300 spots across 10+ tracks. Verify a US MBA req exists.'},
-
-{cat:'other', track:'strategy', company:'Booking.com', title:'Booking.com Compass — July 2027 intake',
- location:'Amsterdam, Netherlands',
- deadline:'2027-01-15', status:'notposted', url:'https://careers.booking.com/early-careers',
- why:'Compass is Booking’s early-career commercial and strategy programme. Applications opened 12 Oct 2026 for a July 2027 start.',
- note:'ELIGIBILITY FLAG. Amsterdam-based and structured as a graduate programme, not a US MBA summer internship. No US 2027 req was open as of Aug 2026. Only pursue if you would relocate and can work a July start around the SOM calendar.'},
 
 {cat:'other', track:'strategy', company:'American Airlines', title:'MBA Intern — Commercial Strategy / Financial Strategy, Summer 2027',
  location:'Fort Worth, TX',
