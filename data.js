@@ -782,6 +782,58 @@ const SEED_ROLES = [
  why:'Disney’s finance rotation and other business tracks. LA-based, which fits your location preference, but finance rather than strategy.',
  note:'DEADLINE FLAG: NOT POSTED / PARTLY CLOSED. As of 1 Nov 2026 the Accounting & Finance Rotation Program had closed and no summer 2027 tech internship had posted. Disney posts summer reqs Dec–Jan — watch for the next wave.'},
 
+/* ---- LUXURY / BEAUTY / RETAIL — programmes with real precedent, not yet open.
+   Added 11 Nov 2026 so the openings surface here rather than being remembered.
+   Every deadline below is a PLACEHOLDER: what is known is roughly when each
+   programme OPENS, which each note states. ---- */
+{cat:'other', track:'strategy', company:'Tapestry', title:'MBA Strategy & Consumer Insights Intern, Summer 2027',
+ location:'New York, NY — Hudson Yards (hybrid)',
+ deadline:'2027-01-31', status:'notposted', url:'https://careers.tapestry.com/search/',
+ why:'The closest fit to your four target functions anywhere in luxury — an explicitly MBA-level strategy and consumer-insights internship at Coach/Kate Spade/Stuart Weitzman’s parent. Programme runs 1 Jun – 6 Aug 2027.',
+ note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: NOT YET OPEN. Reqs are expected on Tapestry’s Workday board in LATE NOVEMBER 2026, based on last cycle. The date on this row is a placeholder, not a published deadline.\nROUTE: Watch careers.tapestry.com weekly from late November.\nPAY: Listings disagree — $30/hr on the careers page, $20/hr in one guide.'},
+
+{cat:'other', track:'strategy', company:'Nordstrom', title:'Global Leader Program — MBA Internship, Summer 2027',
+ location:'Seattle, WA — corporate headquarters',
+ deadline:'2027-01-31', status:'notposted', url:'https://careers.nordstrom.com/',
+ why:'MBA internship placing interns on projects across merchandising, finance, supply chain and strategy, with a path to full-time. Strategy is a named placement area, which is why this sits in the strategy track.',
+ note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: NOT YET OPEN for Summer 2027 — date shown is a placeholder.\nELIGIBILITY: Minimum 3.0 cumulative GPA; details come from a third-party listing rather than Nordstrom directly, so confirm.'},
+
+{cat:'other', track:'other', company:'Estée Lauder Companies', title:'CEO Global Presidential Program — Presidential Management Associate (MBA)',
+ location:'New York, NY',
+ deadline:'2027-01-31', status:'notposted', url:'https://www.elcompanies.com/en/careers/students',
+ why:'The deepest MBA precedent of any luxury or beauty company — the programme has run for years and feeds a two-year rotational track. Tracks are marketing, finance and supply chain rather than strategy, which is why it sits in Consideration.',
+ note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: Programme dates for Summer 2027 are already published as 7 Jun – 13 Aug 2027, but the requisition itself was not open as of 11 Nov. The date on this row is a placeholder.\nEXPERIENCE FLAG: Wants 5+ years of pre-MBA experience.\nNOTE: The careers page now folds this into a "Lauder Summer Internship" covering undergraduate and graduate levels, so confirm the MBA pathway still exists in its own right.'},
+
+{cat:'other', track:'other', company:'LVMH', title:'LVMH North America Corporate Summer Internship Cohort, 2027',
+ location:'New York, NY',
+ deadline:'2027-01-15', status:'notposted', url:'https://www.lvmh.com/en/join-us/our-job-offers',
+ why:'The LVMH programme most open to MBAs — its posting prefers "a current Master’s degree candidate (MBA or other analytical degree)". Functions span corporate affairs, data analytics, digital innovation, HR and learning & development.',
+ note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: NOT YET OPEN. Applications opened via HANDSHAKE on 24 Nov last cycle, so the window is likely days away. Placeholder date.\nROUTE: Applications go through Handshake, not lvmh.com — check Handshake from late November.\nNOTE: Moët Hennessy USA runs a separate commercial summer programme, 1 Jun – 6 Aug 2027.'},
+
+{cat:'other', track:'other', company:'PVH', title:'MBA Intern, Finance — Finance Leadership Development Program, Summer 2027',
+ location:'New York, NY',
+ deadline:'2026-12-31', status:'notposted', url:'https://careers.pvh.com/jobs',
+ why:'Calvin Klein and Tommy Hilfiger’s parent. This internship is the EXCLUSIVE entry point to PVH’s three-year Finance Leadership Development Program — finance rather than strategy, but a genuine MBA programme with a defined path.',
+ note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: Expected to open around NOVEMBER 2026 — possibly this month. Placeholder date.\nELIGIBILITY: Requires MBA graduation in 2027 per the last cycle’s posting; confirm the 2028 cohort is eligible before investing time.'},
+
+{cat:'other', track:'other', company:'Tiffany & Co.', title:'Tiffany & Co. Summer 2027 Internship Program',
+ location:'New York, NY',
+ deadline:'2027-01-31', status:'notposted', url:'https://www.tiffany.com/careers/',
+ why:'LVMH-owned, runs its own summer programme separate from the LVMH cohort. The 2026 edition ran 1 Jun – 7 Aug.',
+ note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: Nothing was open as of 10 Nov 2026; the window is expected around DECEMBER 2026. Placeholder date.\nELIGIBILITY: A 2026 listing sought MBA candidates concentrating in supply chain, business analytics or retail management.'},
+
+{cat:'other', track:'other', company:'Richemont', title:'Richemont Americas Summer Internship, 2027',
+ location:'New York · Dallas · Shelton, CT',
+ deadline:'2027-01-31', status:'notposted', url:'https://www.richemont.com/talent/students-graduates/early-career-programmes/',
+ why:'Cartier, Van Cleef & Arpels and IWC’s parent. A bespoke 10-week Americas summer internship.',
+ note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: Applications normally open in DECEMBER. Placeholder date.\nNOTE: The Richemont pages describing this look dated — confirm the current cycle before relying on the timing.'},
+
+{cat:'other', track:'other', company:'Chanel', title:'Summer MBA Intern, 2027',
+ location:'New York, NY · Piscataway, NJ',
+ deadline:'2027-01-31', status:'notposted', url:'https://cc.wd3.myworkdayjobs.com/en-US/ChanelCareers',
+ why:'Chanel runs a US summer programme and a "Summer MBA Intern" listing has appeared on LinkedIn.',
+ note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: Timing unknown — placeholder date.\nNOTE: UNCONFIRMED. The most recent Chanel US summer posting I could date (2024) targeted rising juniors and seniors, not MBAs. Treat the MBA route as unverified until you see the req.'},
+
 {cat:'other', track:'other', company:'Universal', title:'NBCUniversal Summer 2027 — marketing, finance and content tracks',
  location:'New York · Universal City, CA (Los Angeles) · Orlando, FL',
  deadline:'2027-01-15', status:'notposted', url:'https://www.nbcunicareers.com/early-careers',
