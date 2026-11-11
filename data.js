@@ -283,7 +283,7 @@ const SEED_ROLES = [
  location:'Atlanta, Boston, Chicago, Dallas, New York, San Francisco, DC (no Miami or LA)',
  deadline:'2026-12-01', status:'confirmed', url:'https://cdo.som.yale.edu/jobs/kearney-2027-kearney-summer-associate/',
  why:'Generalist MBA summer associate with a genuine operations-strategy tilt — Kearney’s heritage is supply chain, procurement and operations transformation.',
- note:'VERIFIED: 5 Nov 2026\nROUTE: Submit via the Yale SOM CDO listing, by 11:59pm CT. Round 1 and Round 2 interviews are VIRTUAL in January 2027.\nELIGIBILITY: First-year MBA required.\nNOTE: 10-week internship; You rank a practice on the application — General Practice, Strategic Operations, or Digital & Analytics. PERLab is Chicago-only and PEPI is Chicago or New York. No Miami or LA option.'},
+ note:'VERIFIED: 11 Nov 2026 — re-confirmed: due TUESDAY 1 DEC 2026, 11:59pm CT.\nROUTE: Submit via the Yale SOM CDO listing. Round 1 and Round 2 interviews are VIRTUAL in January 2027.\nELIGIBILITY: First-year MBA required.\nNOTE: 10-week internship; You rank a practice on the application — General Practice, Strategic Operations, or Digital & Analytics. PERLab is Chicago-only and PEPI is Chicago or New York. No Miami or LA option.'},
 
 {cat:'consulting', track:'strategy', company:'Booz Allen Hamilton', title:'Summer 2027 Consulting Internship (graduate-eligible reqs)',
  location:'McLean VA, Washington DC, and client sites nationwide',
@@ -423,9 +423,9 @@ const SEED_ROLES = [
    ============================================================ */
 {cat:'tech', track:'strategy', company:'Salesforce', title:'Summer 2027 Intern — MBA Business Value & Strategic Selling Consultant',
  location:'New York, NY — Healthcare & Life Sciences and Financial Services tracks',
- deadline:'2026-11-15', status:'rolling', url:'https://careers.salesforce.com/en/jobs/?search=MBA%20Business%20Value',
+ deadline:'2026-10-24', status:'closed', url:'https://careers.salesforce.com/en/jobs/?search=MBA%20Business%20Value',
  why:'Business-case and value-engineering work: quantifying ROI and building the commercial argument for enterprise deals. Strategy-adjacent and genuinely MBA-gated. Runs June to August/September 2027.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: SOURCES CONFLICT — CHECK TODAY. Two Summer 2027 reqs (HLS and Financial Services) were posted 1 Oct 2026; one aggregator still lists them open with no close date, another shows an apply-by of 20 Oct, now passed.\nEXPERIENCE FLAG: Some listings ask 5–7+ yrs pre-MBA experience, others 3+.'},
+ note:'VERIFIED: 11 Nov 2026\nNOTE: RESOLVED — CLOSED. The three New York MBA Business Value reqs (generalist, Healthcare & Life Sciences, Financial Services) ran until 20–24 Oct 2026 and are not among the eight Salesforce Summer 2027 reqs still live on 7 Nov. Last week this was flagged as conflicting; it is settled now.\nEXPERIENCE FLAG: Some listings ask 5–7+ yrs pre-MBA experience, others 3+.'},
 
 {cat:'tech', track:'strategy', company:'Stripe', title:'MBA Intern — Partnerships & Strategic Business Development',
  location:'Seattle, WA · San Francisco, CA · New York, NY',
@@ -491,19 +491,25 @@ const SEED_ROLES = [
  location:'San Francisco, CA',
  deadline:'2026-11-30', status:'rolling', url:'https://careers.adobe.com/us/en/job/R172471/2027-MBA-Intern-Corporate-Strategy',
  why:'Outstanding fit. The posting describes product strategy development, technological trend assessment, competitive landscape analysis, future positioning of Adobe, and build/buy/partner evaluation of market adjacencies — and says the intern owns and drives a project focused on Adobe’s long-term growth.',
- note:'VERIFIED: 5 Nov 2026\nROUTE: Confirm with the recruiter before investing in the application.\nDEADLINE FLAG: Live on Adobe’s careers site, posted 14 Oct 2026, no published close date. The PMM sibling req already closed 26 Oct.\nELIGIBILITY FLAG: One aggregator says graduation Dec 2026–Jun 2027 (which would EXCLUDE you), another says Dec 2027–Jun 2028 (which includes you), and Adobe’s own page shows no window.\nPAY: Pay $37–$50/hr.'},
+ note:'VERIFIED: 11 Nov 2026\nROUTE: Confirm with the recruiter before investing in the application.\nDEADLINE FLAG: POSSIBLY CLOSED — CHECK THIS ONE FIRST. A third-party copy dated 6 Oct carries an expiry of 5 NOV 2026, now passed. Adobe’s own page is still up and its Colorado notice says the window stays open “until at least” the stated date, so it may still take applications — but unlike the Product Manager req beside it, this one carries no “ongoing basis” language. The PMM sibling req already closed 26 Oct.\nELIGIBILITY FLAG: One aggregator says graduation Dec 2026–Jun 2027 (which would EXCLUDE you), another says Dec 2027–Jun 2028 (which includes you), and Adobe’s own page shows no window.\nPAY: Pay $37–$50/hr.'},
 
 {cat:'tech', track:'strategy', company:'Adobe', title:'2027 MBA Intern — Product Manager',
  location:'San Jose · San Francisco, CA',
  deadline:'2026-11-30', status:'rolling', url:'https://careers.adobe.com/us/en/job/R172261/2027-MBA-Intern-Product-Manager',
  why:'Product management with strategy ownership across Adobe’s Creative Cloud and Document Cloud lines.',
- note:'DEADLINE FLAG: Posted 30 Sep 2026 alongside the PMM req that has since closed — treat as time-sensitive.\nNOTE: ESTIMATED.'},
+ note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: NO DEADLINE — the posting states “Adobe accepts applications on an ongoing basis”. Less time pressure than the Corporate Strategy req beside it, which carries no such language.\nNOTE: Posted 30 Sep 2026.'},
+
+{cat:'tech', track:'strategy', company:'Adobe', title:'2027 MBA Intern — Corporate Development',
+ location:'San Francisco, CA (on-site)',
+ deadline:'2026-11-30', status:'rolling', url:'https://careers.adobe.com/us/en/search-results?keywords=MBA%20Intern%20Corporate%20Development',
+ why:'The M&A and partnership half of Adobe’s strategy organisation — build/buy/partner evaluation, target screening and deal support. Sits directly alongside the Corporate Strategy req and is a strong corporate-strategy fit in its own right.',
+ note:'VERIFIED: 11 Nov 2026\nNOTE: FOUND TODAY — this req was not previously on the board. Posted 26 Oct 2026.\nELIGIBILITY: Expected graduation Dec 2027 – Jun 2028, which fits you. One aggregator lists Dec 2026 – Jun 2027 instead — confirm before investing.\nPAY: $37–$50/hr.\nDEADLINE FLAG: No published close date; the date shown is an estimate.'},
 
 {cat:'tech', track:'strategy', company:'Snowflake', title:'Product Management Intern (Summer 2027)',
  location:'Menlo Park, CA',
  deadline:'2026-11-29', status:'rolling', url:'https://careers.snowflake.com/us/en/job/SNCOUSB282FC4CD041487A8444EAB095749368EXTERNALENUS322B82F64B184F86AE34007F55C4BDBF/Product-Management-Intern-Summer-2027',
  why:'Explicitly asks for MBA students and names product strategy and planning, market research, product design and data-driven decision-making as the work. 12-week summer term. One of the cleanest product-strategy reqs in enterprise software.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: CLOSES EARLIER THAN I ESTIMATED. Two boards give a listing expiry of 29–30 Nov 2026 (posted 30 Oct), not the 15 Dec I had.\nPAY: Pay reported $60–$70/hr.\nNOTE: Open to 1st and 2nd-year MBAs, 12-week summer term.'},
+ note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: STILL OPEN — Snowflake’s careers page shows this RE-POSTED on 8 NOV 2026, which supersedes the 29–30 Nov listing expiry I recorded last week. No published close date.\nPAY: Reported $60–$70/hr, or $124,800–$145,600 annualised — sources disagree.\nNOTE: Open to 1st and 2nd-year MBAs, 12-week summer term.'},
 
 {cat:'tech', track:'strategy', company:'Amazon', title:'2027 Amazon Leadership Accelerator (ALA) — Product Manager Internship',
  location:'Seattle, WA (some Arlington VA / NYC placements)',
@@ -709,10 +715,16 @@ const SEED_ROLES = [
  note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: A Harvard career-services listing gives a 30 Nov 2026 expiry (recruitment opened 30 Sep). Epic publishes no official deadline and fills roles "as soon as we find the best match", so treat 30 Nov as the outer limit, not a target.\nNOTE: EARLIER THAN I ESTIMATED.'},
 
 {cat:'other', track:'strategy', company:'Epic Games', title:'Business and Marketing Strategy Intern (MBA) — Summer 2027',
- location:'Cary, NC',
+ location:'Morrisville, NC',
  deadline:'2026-11-30', status:'rolling', url:'https://www.epicgames.com/site/careers?search=business%20marketing%20strategy',
  why:'Business strategy in the title, MBA enrollment in marketing/strategy/analytics required. Commercial strategy for Fortnite and the wider Epic ecosystem.',
  note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: Same 30 Nov 2026 listing expiry as the PM req. Rolling, filled when matched — apply well before.'},
+
+{cat:'other', track:'other', company:'Epic Games', title:'Player Marketing Intern (MBA) — Summer 2027',
+ location:'Cary, NC',
+ deadline:'2027-03-07', status:'confirmed', url:'https://www.epicgames.com/site/careers?search=player%20marketing',
+ why:'Player-facing marketing for Fortnite and the Epic ecosystem. Marketing rather than strategy, but MBA-gated and with by far the longest runway of any Epic req.',
+ note:'VERIFIED: 11 Nov 2026\nNOTE: FOUND TODAY — not previously on the board. The only Epic req with an explicit expiry date (7 Mar 2027); the two strategy reqs have none and are filled when matched.'},
 
 {cat:'other', track:'strategy', company:'Universal', title:'NBCUniversal Summer 2027 Internship — strategy tracks',
  location:'New York · Universal City, CA (Los Angeles) · Orlando, FL',
@@ -741,7 +753,7 @@ const SEED_ROLES = [
 /* ---- OTHER — closed ---- */
 {cat:'other', track:'strategy', company:'Delta', title:'MBA Intern — Commercial Strategy, Summer 2027',
  location:'Atlanta, GA (on-site required)',
- deadline:'2026-10-04', status:'closed', url:'https://careers.delta.com/university',
+ deadline:'2026-10-04', status:'closed', url:'https://delta.avature.net/careers/JobDetail?jobId=32042',
  why:'Strong strategy content: one strategic project across pricing & revenue management, network/route planning, global sales & distribution, loyalty or reservations. 12 weeks alongside the Finance MBA cohort. $9,493/month.',
  note:'ROUTE: Email the Delta campus recruiter about a late look.\nDEADLINE FLAG: CLOSED — posting ran 3 Sep and expired 4 Oct 2026.\nELIGIBILITY: Requires a first-year MBA finishing by summer 2027, graduating by summer 2028.\nNOTE: NOTE: one source says Delta MBA reqs are still live on its Avature site — worth one check.'},
 
