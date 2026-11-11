@@ -65,6 +65,17 @@ data.js      seed company list and role database
 README.md
 ```
 
+### Keeping it current
+
+The dashboard's **dates** are live — countdowns, auto-archiving and Consideration expiry
+all recalculate against the real clock each time it loads. The **research** is not: roles,
+deadlines and statuses only change when someone re-runs the check. Each row carries a
+`VERIFIED:` date saying when it was last confirmed.
+
+[`DAILY-CHECK.md`](DAILY-CHECK.md) holds the brief for a daily refresh. Ask Claude to
+"run the daily check" to execute it, or follow the instructions at the bottom of that
+file to put it on a schedule.
+
 ### Deploying
 
 Run `python release.py` before committing any change to `index.html` or `data.js`. It stamps a
