@@ -323,9 +323,9 @@ const SEED_ROLES = [
 
 {cat:'consulting', track:'strategy', company:'Analysis Group', title:'Summer Associate Intern (generalist / healthcare)',
  location:'Boston, New York, Chicago, San Francisco, Los Angeles, DC',
- deadline:'2026-12-01', status:'confirmed', url:'https://www.analysisgroup.com/careers/career-path/summer-associate-intern/',
+ deadline:'2026-11-20', status:'confirmed', url:'https://www.analysisgroup.com/careers/career-path/summer-associate-intern/',
  why:'Economic consulting with generalist and healthcare tracks. Analytical litigation and health-economics work rather than corporate strategy — on your list, but off-target for product and operations strategy.',
- note:'VERIFIED: 5 Nov 2026\nNOTE: A separate full Associate posting already closed 23 Sep 2026.\nELIGIBILITY: The Summer Associate Intern — Generalist (MBA/MA), 2027 start, carries a CONFIRMED deadline of 1 Dec 2026 and asks for graduation by summer 2028, which fits you.'},
+ note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: THE DATE DEPENDS ON THE OFFICE, and two are earlier than the 1 Dec I had. Washington DC closes 20 NOV, Boston 25 NOV, Denver 1 DEC with interviews mid-January. This row shows the EARLIEST — check the office you actually want.\nELIGIBILITY: MBA or Master’s graduating by summer 2028, which fits you.\nNOTE: The firm keeps reviewing on a rolling basis after the posted date. A separate full-time Associate posting closed 23 Sep 2026.'},
 
 {cat:'consulting', track:'strategy', company:'Charles River Associates', title:'Summer 2027 Consulting Intern (Economics and other tracks)',
  location:'Boston, New York, Chicago, DC, Los Angeles',
@@ -437,7 +437,7 @@ const SEED_ROLES = [
  location:'San Francisco, CA · New York, NY · Oakland, CA (remote-friendly)',
  deadline:'2026-11-15', status:'notposted', url:'https://block.xyz/careers/jobs?search=business%20operations%20intern',
  why:'Track covers business analytics, operations and go-to-market strategy over 12 weeks — a legitimate business/operations strategy seat, and Block is one of the more remote-friendly employers on your list.',
- note:'DEADLINE FLAG: NOT YET POSTED. Projected from the prior cycle: window late Aug–early Sep, practical deadline mid-Nov 2026. That projection is now suspect given the date — check the board this week.'},
+ note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: NO REQ FOUND after two passes — nothing MBA-specific on block.xyz and no Summer 2027 business/operations posting surfaced anywhere. The projected window (late Aug–early Sep, practical deadline mid-Nov) has effectively run out. Treat as unlikely rather than upcoming.\nNOTE: The track itself is real — business analytics, operations and go-to-market strategy over 12 weeks — but Block does not appear to have posted it this cycle.'},
 
 {cat:'tech', track:'strategy', company:'Nvidia', title:'Product Management MBA Intern, Data Center GPU — Summer 2027',
  location:'Santa Clara, CA',
@@ -768,19 +768,19 @@ const SEED_ROLES = [
  location:'Atlanta, GA (on-site required)',
  deadline:'2026-10-04', status:'rolling', url:'https://careers.delta.com/university',
  why:'Supply chain and procurement for airline operations. Operations, but sourcing and logistics rather than operations strategy.',
- note:'DEADLINE FLAG: ESTIMATED / Delta MBA reqs are reported across Finance, Commercial Strategy, Supply Chain Management, Financial Strategy and Network Scheduling on its Avature site, but the main Sep–Oct window appears to have closed.\nSTATUS FLAG: .\nNOTE: Verify directly.'},
+ note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: APPEARS STILL OPEN — unlike its Network Scheduling sibling, which is marked expired, this is still listed as an open Summer 2027 posting with no close date. The lapsed 4 Oct estimate on this row was wrong.\nELIGIBILITY: First MBA year completed by summer 2027, concentration in finance, operations, supply chain or another analytical discipline, graduating by summer 2028. Placed within a Supply Chain commodity group.\nPAY: $9,493/month.'},
 
 {cat:'other', track:'other', company:'Delta', title:'MBA Intern — Network Scheduling, Summer 2027',
  location:'Atlanta, GA (on-site required)',
- deadline:'2026-10-04', status:'rolling', url:'https://careers.delta.com/university',
+ deadline:'2026-08-31', status:'closed', url:'https://careers.delta.com/university',
  why:'Route and schedule optimisation — quantitative network planning. Genuinely analytical and arguably closer to strategy than the supply-chain track.',
- note:'STATUS FLAG: .\nNOTE: ESTIMATED / Same Avature caveat as the supply-chain req.'},
+ note:'VERIFIED: 11 Nov 2026\nNOTE: RESOLVED — CLOSED. The listing is marked expired, with an application deadline of 31 Aug 2026, the earliest of Delta’s MBA reqs. One of the three lapsed estimates, now settled.'},
 
 {cat:'other', track:'other', company:'Delta', title:'MBA Intern — Finance, Summer 2027',
  location:'Atlanta, GA (on-site required)',
  deadline:'2026-10-04', status:'rolling', url:'https://careers.delta.com/university',
  why:'Corporate finance and FP&A for the airline. $9,493/month like the other Delta MBA tracks.',
- note:'STATUS FLAG: .\nNOTE: ESTIMATED / Same Avature caveat.'},
+ note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: STILL UNRESOLVED after a second pass. Delta’s Avature site does not answer automated requests and no listing gives this req a status either way. Its siblings split both ways — Network Scheduling expired 31 Aug, Supply Chain still appears open — so neither outcome can be assumed. Check delta.avature.net directly.\nPAY: $9,493/month, as with the other Delta MBA tracks.'},
 
 {cat:'other', track:'other', company:'GE Aerospace', title:'Summer 2027 Intern — HR / Financial Management Program (master’s eligible)',
  location:'Cincinnati, OH · Evendale, OH',
