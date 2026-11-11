@@ -23,7 +23,7 @@ const BASE_COMPANIES = [
   /* --- TECH --- */
   {name:'Google',            cat:'tech', url:'https://www.google.com/about/careers/applications/jobs/results/?q=MBA%20intern%202027'},
   {name:'Amazon',            cat:'tech', url:'https://www.amazon.jobs/en/search?base_query=MBA+intern+2027'},
-  {name:'Microsoft',         cat:'tech', url:'https://careers.microsoft.com/v2/global/en/students'},
+  {name:'Microsoft',         cat:'tech', url:'https://jobs.careers.microsoft.com/global/en/search?q=MBA%20Intern&l=en_us'},
   {name:'Apple',             cat:'tech', url:'https://jobs.apple.com/en-us/search?location=united-states-USA&team=internships-STDNT-INTRN'},
   {name:'Meta',              cat:'tech', url:'https://www.metacareers.com/jobs?q=MBA%20intern&is_intern=true'},
   {name:'Nvidia',            cat:'tech', url:'https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite?q=MBA%20intern'},
@@ -105,7 +105,7 @@ const BASE_COMPANIES = [
   {name:'Delta',             cat:'other', url:'https://careers.delta.com/university'},
   {name:'Disney',            cat:'other', url:'https://www.disneycareers.com/en/category/business-strategy-and-development-jobs/391/8221792/1'},
   {name:'Epic Games',        cat:'other', url:'https://www.epicgames.com/site/earlycareers'},
-  {name:'Expedia',           cat:'other', url:'https://careers.expediagroup.com/earlycareers/'},
+  {name:'Expedia',           cat:'other', url:'https://expedia.wd108.myworkdayjobs.com/search?q=MBA'},
   {name:'Figure AI',         cat:'other', url:'https://www.figure.ai/careers'},
   {name:'GE Aerospace',      cat:'other', url:'https://careers.geaerospace.com/global/en/students'},
   {name:'Hyatt',             cat:'other', url:'https://careers.hyatt.com/en-US/careers/SearchJobs/intern'},
@@ -350,19 +350,19 @@ const SEED_ROLES = [
 /* ---- CONSULTING — other MBA tracks (Consideration) ---- */
 {cat:'consulting', track:'other', company:'PwC', title:'Senior Associate Intern — Management Consulting, Summer 2027',
  location:'Multiple US offices',
- deadline:'2026-11-18', status:'confirmed', url:'https://jobs-us.pwc.com/us/en/search-results?keywords=Senior%20Associate%20Intern%20Summer%202027',
+ deadline:'2026-11-18', status:'confirmed', url:'https://jobs-us.pwc.com/us/en/job/PUVPUIUS765632WDEXTERNALENUS/Management-Consulting-Operations-Supply-Chain-Solutions-Senior-Associate-Intern-Summer-2027',
  why:'Operations and transformation delivery rather than strategy formulation. Same MBA eligibility and pay band as the Strategy& reqs, broader client mix.',
  note:'NOTE: One of ~16 Senior Associate intern reqs PwC posted 2 Oct across Advisory, Consulting, Technology and Sustainability.'},
 
 {cat:'consulting', track:'other', company:'PwC', title:'Senior Associate Intern — Technology Consulting, Summer 2027',
  location:'Multiple US offices',
- deadline:'2026-11-18', status:'confirmed', url:'https://jobs-us.pwc.com/us/en/search-results?keywords=Technology%20Consulting%20Senior%20Associate%20Intern',
+ deadline:'2026-11-18', status:'confirmed', url:'https://jobs-us.pwc.com/us/en/job/PUVPUIUS765627WDEXTERNALENUS/Technology-Consulting-Senior-Associate-Intern-Summer-2027',
  why:'Enterprise technology delivery — cloud, ERP and digital transformation. Tech-adjacent but implementation-weighted.',
  note:''},
 
 {cat:'consulting', track:'other', company:'PwC', title:'Senior Associate Intern — Sustainability, Summer 2027',
  location:'Multiple US offices',
- deadline:'2026-11-18', status:'confirmed', url:'https://jobs-us.pwc.com/us/en/search-results?keywords=Sustainability%20Senior%20Associate%20Intern',
+ deadline:'2026-11-18', status:'confirmed', url:'https://jobs-us.pwc.com/us/en/job/PUVPUIUS765703WDEXTERNALENUS/Sustainability-Strategy-Senior-Associate-Intern-Summer-2027',
  why:'Climate and sustainability advisory — reporting, decarbonisation and transition planning.',
  note:''},
 
@@ -545,7 +545,7 @@ const SEED_ROLES = [
 
 {cat:'tech', track:'strategy', company:'Microsoft', title:'Product Manager MBA Intern, Summer 2027',
  location:'Redmond, WA · Mountain View, CA',
- deadline:'2027-02-28', status:'rolling', url:'https://careers.microsoft.com/v2/global/en/students',
+ deadline:'2027-02-28', status:'rolling', url:'https://jobs.careers.microsoft.com/global/en/search?q=Finance%20Manager%20MBA%20Internship&l=en_us',
  why:'Posting language is product strategy outright: set product vision and strategy from customer insight and competitive market analysis, then work with Product Marketing, Business Planning and Engineering on release criteria and monetisation.',
  note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: MBA roles have no published window and stay open until filled, so there is no reason to wait for December — apply now.\nELIGIBILITY: CORRECTION: the "first week of each month" rule applies to Microsoft EXPLORE, a second-year UNDERGRADUATE programme, NOT the MBA track.\nNOTE: Needs one quarter/semester remaining after the internship.'},
 
@@ -583,37 +583,25 @@ const SEED_ROLES = [
 /* ---- TECH — other MBA tracks (Consideration) ---- */
 {cat:'tech', track:'other', company:'Microsoft', title:'Finance Manager: MBA Internship Opportunities, Summer 2027',
  location:'Redmond, WA',
- deadline:'2027-02-28', status:'rolling', url:'https://careers.microsoft.com/v2/global/en/students',
+ deadline:'2027-02-28', status:'rolling', url:'https://jobs.careers.microsoft.com/global/en/search?q=Finance%20Manager%20MBA%20Internship&l=en_us',
  why:'12-week role on Microsoft’s Central Finance Team owning a high-impact project for senior finance leaders. Strong corporate-finance seat and a well-trodden path into Business Planning, which is strategy-adjacent.',
  note:'DEADLINE FLAG: POSTED ON THE YALE SOM CDO BOARD — the strongest-sourced non-strategy role here.\nELIGIBILITY: FP&A experience preferred, 3+ yrs relevant experience listed.\nNOTE: Requires a full-time MBA with 1+ semester remaining; Same first-week-of-month application mechanic as the PM req.'},
 
 {cat:'tech', track:'other', company:'Microsoft', title:'Treasury Finance Manager: MBA Internship, Summer 2027',
  location:'Redmond, WA',
- deadline:'2027-02-28', status:'rolling', url:'https://careers.microsoft.com/v2/global/en/students',
+ deadline:'2027-02-28', status:'rolling', url:'https://jobs.careers.microsoft.com/global/en/search?q=Finance%20Manager%20MBA%20Internship&l=en_us',
  why:'Treasury, capital structure and liquidity management. Narrow corporate-finance function, well outside your four target areas.',
  note:'NOTE: ESTIMATED. Sister req to the Central Finance role above.'},
 
-{cat:'tech', track:'other', company:'Google', title:'Finance MBA Intern, 2027',
- location:'Multiple US offices',
- deadline:'2026-12-31', status:'rolling', url:'https://www.google.com/about/careers/applications/jobs/results/?q=Finance%20MBA%20Intern%202027',
- why:'Google lists Finance as one of its MBA intern functions: forecasting, accounting, compliance and project management. A distinct req from the Strategy & Operations track.',
- note:'DEADLINE FLAG: Google publishes no close dates.\nELIGIBILITY: 12 weeks May–Sep 2027, first-year MBAs preferred.\nNOTE: ESTIMATED.'},
-
-{cat:'tech', track:'other', company:'Google', title:'Marketing MBA Intern, 2027',
- location:'Multiple US offices',
- deadline:'2026-12-31', status:'rolling', url:'https://www.google.com/about/careers/applications/jobs/results/?q=Marketing%20MBA%20Intern%202027',
- why:'Marketing is listed among Google’s MBA intern functions alongside Business Strategy, Finance, Operations & Support, People Operations, Product Management and Sales.',
- note:'NOTE: ESTIMATED — function confirmed on Google’s MBA listing, specific req not individually verified.'},
-
-{cat:'tech', track:'other', company:'Amazon', title:'MBA Supply Chain Internship — Summer 2027',
- location:'Seattle, WA · Bellevue, WA',
- deadline:'2026-12-15', status:'rolling', url:'https://www.amazon.jobs/en/search?base_query=MBA+supply+chain+intern+2027',
- why:'Supply chain and fulfilment network management. Operations, but execution and network optimisation rather than operations strategy.',
- note:'DEADLINE FLAG: Retail-side supply chain roles post earliest, rolling from ~Aug 2026 into early 2027.\nNOTE: ESTIMATED.'},
+{cat:'tech', track:'other', company:'Amazon', title:'2027 MBA Pathways Operations Manager Intern',
+ location:'US fulfilment / delivery sites — 12 weeks',
+ deadline:'2026-12-15', status:'rolling', url:'https://cdo.som.yale.edu/jobs/amazon-com-2027-mba-pathways-operations-manager-intern/',
+ why:'Site-level operations management at a fulfilment or delivery centre. Operations execution rather than operations strategy.',
+ note:'VERIFIED: 11 Nov 2026\nROUTE: REFERRAL ONLY — the req sits on Amazon’s internal portal for employee referrals and surfaces publicly only through the Yale SOM CDO board. You need an Amazon referral to apply.\nELIGIBILITY: Enrolled MBA or Master’s.\nNOTE: I previously listed this row as an "MBA Supply Chain Internship". That was wrong — Amazon’s 2027 supply-chain intern reqs are Bachelor’s/Master’s engineering roles, not MBA ones.'},
 
 {cat:'tech', track:'other', company:'Amazon', title:'Finance Leadership Development Program — MBA, Summer 2027',
  location:'Seattle, WA · Arlington, VA',
- deadline:'2026-12-15', status:'rolling', url:'https://www.amazon.jobs/en/search?base_query=finance+MBA+intern+2027',
+ deadline:'2026-12-15', status:'rolling', url:'https://www.amazon.jobs/en/search?base_query=2027+MBA+Finance+Leadership+Development+Program',
  why:'Corporate finance rotation feeding Amazon’s FP&A and business-finance organisation.',
  note:'ELIGIBILITY: Same MBA conferral window as the PM reqs (Dec 2027–Jun 2028).\nNOTE: ESTIMATED.'},
 
