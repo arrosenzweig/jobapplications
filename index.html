@@ -177,12 +177,23 @@
   .note b{color:var(--ink)}
 
   /* company tab */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:10px}
+  /* Six company cards per row on a wide screen, stepping down as it narrows. */
+  .grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px}
+  @media(max-width:1500px){ .grid{grid-template-columns:repeat(5,minmax(0,1fr))} }
+  @media(max-width:1240px){ .grid{grid-template-columns:repeat(4,minmax(0,1fr))} }
+  @media(max-width:980px){  .grid{grid-template-columns:repeat(3,minmax(0,1fr))} }
+  @media(max-width:720px){  .grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+  @media(max-width:470px){  .grid{grid-template-columns:1fr} }
   .cocard{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
     padding:11px 13px;display:flex;flex-direction:column;gap:6px}
-  .cocard h3{margin:0;font-size:14px;font-weight:650}
-  .cocard .sector{font-size:10px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
-  .cocard .hits{font-size:12.5px;color:var(--ink-2)}
+  .cocard h3{margin:0;font-size:13.5px;font-weight:650;line-height:1.3;overflow-wrap:break-word}
+  .cocard .sector{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.05em;
+    text-transform:uppercase;padding:1px 6px;border-radius:20px;background:var(--line-2);
+    color:var(--ink-3);white-space:nowrap}
+  .cocard .sector.tech{background:var(--accent-soft);color:var(--accent)}
+  .cocard .sector.consulting{background:var(--ok-soft);color:var(--ok)}
+  .cocard .sector.other{background:var(--star-soft);color:var(--star)}
+  .cocard .hits{font-size:11.5px;color:var(--ink-2);line-height:1.4}
   .cocard .hits b{color:var(--ink)}
   .cocard .norole{font-size:11.5px;color:var(--ink-3);line-height:1.4}
   .cocard .row{display:flex;gap:8px;align-items:center;margin-top:auto;padding-top:4px}
@@ -280,9 +291,10 @@
 
 <section class="panel" id="p-cos" role="tabpanel">
   <div class="note">
-    <b>Every company you asked me to watch.</b> Each card links to that company's student / early-careers
-    board. Companies where no MBA internship of any kind exists are dimmed, with the reason — they are kept
-    here so you still have the link, but they no longer clutter the role tabs.
+    <b>Every company you asked me to watch</b>, in one alphabetical list. Each card links to that company's
+    student / early-careers board and shows its industry. Narrow the list with the industry filter below.
+    Companies with nothing open sink to the bottom and are dimmed, with the reason — kept so you still have
+    the link, without cluttering the role tabs.
   </div>
   <div class="addbox">
     <h3>Add a company to the target list</h3>
@@ -298,6 +310,18 @@
       <button class="btn btn-primary" id="addCo">Add company</button>
       <button class="btn" id="clearAdded">Clear my additions</button>
     </div>
+  </div>
+  <div class="controls">
+    <select id="coIndustry" aria-label="Filter companies by industry">
+      <option value="">All industries</option>
+      <option value="tech">Tech</option>
+      <option value="consulting">Consulting</option>
+      <option value="other">Other industries</option>
+    </select>
+    <input type="search" id="coSearch" placeholder="Find a company…" aria-label="Find a company">
+    <label class="chk"><input type="checkbox" id="coOpenOnly"> Only companies with roles</label>
+    <div class="spacer"></div>
+    <span class="count" id="coCount"></span>
   </div>
   <div id="coGroups"></div>
 </section>
@@ -347,7 +371,7 @@
 
 <!-- Bump ?v= whenever data.js changes, otherwise browsers serve a stale cached copy
      and the dashboard silently shows old deadlines. -->
-<script src="data.js?v=20261111-090658-f4e76c7"></script>
+<script src="data.js?v=20261111-091058-5a13810"></script>
 <script>
 /* Countdowns run off the real current date, not the research date, so
    "in N days" stays correct every time the dashboard is opened.
@@ -871,6 +895,7 @@ function coCard(c, dim){
   else                  label = 'Not yet searched';
   return `<div class="cocard ${c.user?'user':''} ${dim?'dim':''}">
       <h3>${esc(c.name)}${c.user?'<span class="mineflag">added</span>':''}</h3>
+      <div><span class="sector ${esc(c.cat)}">${esc(CATS[c.cat]||'Other')}</span></div>
       <div class="hits">${label}</div>
       <div class="row">
         ${c.url?`<a class="lnk" href="${esc(c.url)}" target="_blank" rel="noopener noreferrer">Job board ↗</a>`
@@ -884,28 +909,46 @@ function renderCos(){
   const byName = (a,b)=>a.name.localeCompare(b.name,'en',{sensitivity:'base'});
   const hasSomething = c => ROLES.some(r=>r.company.toLowerCase()===c.name.toLowerCase()
                             && (CAT_TABS.includes(r.tab) || r.tab==='consider' || r.tab==='applied'));
-  let total = 0;
+  const total = all.length;
 
-  document.getElementById('coGroups').innerHTML = Object.keys(CATS).map(cat=>{
-    const list = all.filter(c=>c.cat===cat);
-    total += list.length;
-    // Companies with something to apply to come first, alphabetically.
-    // Everything else sinks to the bottom of its industry, greyed.
-    const live = list.filter(hasSomething).sort(byName);
-    const none = list.filter(c=>!hasSomething(c)).sort(byName);
-    return `<div class="cogroup">
-      <h2>${CATS[cat]}<span class="cogcount">${live.length} with roles${none.length?` · ${none.length} without`:''}</span></h2>
-      ${live.length?`<div class="grid">${live.map(c=>coCard(c,false)).join('')}</div>`:''}
-      ${none.length?`<div class="cosub">Nothing open right now — boards kept for monitoring</div>
-        <div class="grid">${none.map(c=>coCard(c,true)).join('')}</div>`:''}
-    </div>`;
-  }).join('');
+  const indEl = document.getElementById('coIndustry');
+  const qEl   = document.getElementById('coSearch');
+  const openEl= document.getElementById('coOpenOnly');
+  const ind = indEl ? indEl.value : '';
+  const q   = qEl ? qEl.value.trim().toLowerCase() : '';
+  const openOnly = openEl ? openEl.checked : false;
+
+  // One alphabetical list, no industry sections. Companies with something to
+  // apply to come first; everything else sinks to the bottom, greyed.
+  let list = all.filter(c=>{
+    if(ind && c.cat!==ind) return false;
+    if(q && !c.name.toLowerCase().includes(q)) return false;
+    if(openOnly && !hasSomething(c)) return false;
+    return true;
+  });
+  const live = list.filter(hasSomething).sort(byName);
+  const none = list.filter(c=>!hasSomething(c)).sort(byName);
+
+  document.getElementById('coGroups').innerHTML =
+    (live.length ? `<div class="grid">${live.map(c=>coCard(c,false)).join('')}</div>` : '') +
+    (none.length ? `<div class="cosub">Nothing open right now — boards kept for monitoring</div>
+       <div class="grid">${none.map(c=>coCard(c,true)).join('')}</div>` : '') +
+    (!live.length && !none.length ? '<div class="empty">No companies match that filter.</div>' : '');
+
+  const cEl = document.getElementById('coCount');
+  if(cEl) cEl.textContent = (live.length+none.length)===total
+    ? `${total} companies · ${live.length} with roles`
+    : `${live.length+none.length} of ${total} companies`;
   document.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',()=>{
     S.companies = S.companies.filter(x=>x.name!==b.dataset.del); save(); renderCos();
   }));
   document.getElementById('c-cos').textContent = total;
   document.getElementById('coTotal').textContent = total+' companies';
 }
+['coIndustry','coSearch','coOpenOnly'].forEach(id=>{
+  const el = document.getElementById(id);
+  if(el) el.addEventListener('input', renderCos);
+});
 document.getElementById('addCo').addEventListener('click',()=>{
   const n=document.getElementById('newName').value.trim(); if(!n) return;
   let u=document.getElementById('newUrl').value.trim();
@@ -958,7 +1001,7 @@ if(SANDBOX){
    fetched with a cache-busting query (and no-store) so it always comes from the
    network; if its build id differs from the one baked into this file, the page
    says so and offers a reload. Reloading loses nothing — state is in localStorage. */
-const BUILD_ID = '20261111-090658-f4e76c7';
+const BUILD_ID = '20261111-091058-5a13810';
 async function checkForUpdate(){
   try{
     const res = await fetch('version.json?t=' + Date.now(), {cache:'no-store'});
