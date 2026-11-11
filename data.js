@@ -441,9 +441,9 @@ const SEED_ROLES = [
 
 {cat:'tech', track:'strategy', company:'Nvidia', title:'Product Management MBA Intern, Data Center GPU — Summer 2027',
  location:'Santa Clara, CA',
- deadline:'2026-11-20', status:'rolling', url:'https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite?q=Product%20Management%20MBA%20Intern',
+ deadline:'2026-10-17', status:'closed', url:'https://jobs.nvidia.com/careers/job/893397711858',
  why:'Product strategy with a business-strategy core — the posting lists market sizing, segmentation and pricing analysis as the actual intern work, defining AI systems for enterprise and cloud customers. The most strategy-weighted of NVIDIA’s MBA reqs.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: One aggregator shows "Apply by 17 Oct" (passed); NVIDIA’s own page states no deadline.\nELIGIBILITY: MBA graduating winter 2027–summer 2028.\nPAY: $38–$94/hr.\nNOTE: STATUS GENUINELY UNCLEAR. another says "still accepting applications". Open jobs.nvidia.com and check this req directly before writing it off.'},
+ note:'VERIFIED: 11 Nov 2026\nNOTE: RESOLVED — CLOSED. NVIDIA’s own posting states "applications for this job will be accepted at least until October 17, 2026". That date has passed. Last week I could not tell whether this was open; now I can.\nELIGIBILITY: MBA graduating winter 2027–summer 2028.\nPAY: $38–$94/hr.'},
 
 {cat:'tech', track:'strategy', company:'Nvidia', title:'Product Management MBA Intern, Gaming, Content Creation & PC AI — Summer 2027',
  location:'Santa Clara, CA',
@@ -647,9 +647,9 @@ const SEED_ROLES = [
 
 {cat:'tech', track:'other', company:'Nvidia', title:'Technical Product Marketing MBA Intern, AI Infrastructure — Summer 2027',
  location:'Santa Clara, CA',
- deadline:'2027-05-01', status:'confirmed', url:'https://jobs.nvidia.com/careers/job/893398510317',
+ deadline:'2026-11-06', status:'closed', url:'https://jobs.nvidia.com/careers/job/893398510317',
  why:'Positioning and technical marketing for NVIDIA’s AI infrastructure line. Marketing rather than strategy — but it is the NVIDIA MBA req whose status is least in doubt.',
- note:'VERIFIED: 5 Nov 2026\nNOTE: Posted 3 Nov 2026, the freshest NVIDIA MBA req. If the PM reqs turn out to have closed, this is the live NVIDIA door.'},
+ note:'VERIFIED: 11 Nov 2026\nNOTE: CORRECTION — CLOSED 6 NOV. I previously read a validThrough of 1 May 2027 from the page metadata and called this the live NVIDIA door. The application deadline was 6 Nov 2026. The metadata date was not the deadline.'},
 
 {cat:'tech', track:'other', company:'Nvidia', title:'Product Marketing Management MBA Intern — Summer 2027',
  location:'Santa Clara, CA',
@@ -790,7 +790,7 @@ const SEED_ROLES = [
  location:'New York, NY — Hudson Yards (hybrid)',
  deadline:'2027-01-31', status:'notposted', url:'https://careers.tapestry.com/search/',
  why:'The closest fit to your four target functions anywhere in luxury — an explicitly MBA-level strategy and consumer-insights internship at Coach/Kate Spade/Stuart Weitzman’s parent. Programme runs 1 Jun – 6 Aug 2027.',
- note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: NOT YET OPEN. Reqs are expected on Tapestry’s Workday board in LATE NOVEMBER 2026, based on last cycle. The date on this row is a placeholder, not a published deadline.\nROUTE: Watch careers.tapestry.com weekly from late November.\nPAY: Listings disagree — $30/hr on the careers page, $20/hr in one guide.'},
+ note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: NOT YET OPEN as of 11 Nov. Both the 2025 and 2026 cycles opened in LATE NOVEMBER with a MID-JANUARY deadline, so the window should open within weeks. The date on this row is a placeholder.\nROUTE: Applications include a HireVue video — one submitted without it is automatically rejected.\nROUTE: Watch careers.tapestry.com weekly from late November.\nPAY: Listings disagree — $30/hr on the careers page, $20/hr in one guide.'},
 
 {cat:'other', track:'strategy', company:'Nordstrom', title:'Global Leader Program — MBA Internship, Summer 2027',
  location:'Seattle, WA — corporate headquarters',
@@ -808,7 +808,7 @@ const SEED_ROLES = [
  location:'New York, NY',
  deadline:'2027-01-15', status:'notposted', url:'https://www.lvmh.com/en/join-us/our-job-offers',
  why:'The LVMH programme most open to MBAs — its posting prefers "a current Master’s degree candidate (MBA or other analytical degree)". Functions span corporate affairs, data analytics, digital innovation, HR and learning & development.',
- note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: NOT YET OPEN. Applications opened via HANDSHAKE on 24 Nov last cycle, so the window is likely days away. Placeholder date.\nROUTE: Applications go through Handshake, not lvmh.com — check Handshake from late November.\nNOTE: Moët Hennessy USA runs a separate commercial summer programme, 1 Jun – 6 Aug 2027.'},
+ note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: NOT YET OPEN as of 11 Nov. Revised: the North America corporate cohort is now expected ~EARLY DECEMBER with a window of only about 2.5 weeks, not 24 Nov as I first had it. Placeholder date.\nNOTE: Moët Hennessy USA’s separate summer programme HAS been open since 10 Sep 2026 (1 Jun – 6 Aug 2027) — that one is commercial/sales, not strategy.\nROUTE: Applications go through Handshake, not lvmh.com — check Handshake from late November.\nNOTE: Moët Hennessy USA runs a separate commercial summer programme, 1 Jun – 6 Aug 2027.'},
 
 {cat:'other', track:'other', company:'PVH', title:'MBA Intern, Finance — Finance Leadership Development Program, Summer 2027',
  location:'New York, NY',
