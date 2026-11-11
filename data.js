@@ -109,7 +109,29 @@ const BASE_COMPANIES = [
   {name:'Figure AI',         cat:'other', url:'https://www.figure.ai/careers'},
   {name:'GE Aerospace',      cat:'other', url:'https://careers.geaerospace.com/global/en/students'},
   {name:'Hyatt',             cat:'other', url:'https://careers.hyatt.com/en-US/careers/SearchJobs/intern'},
-  {name:'Universal',         cat:'other', url:'https://www.nbcunicareers.com/early-careers'}
+  {name:'Universal',         cat:'other', url:'https://www.nbcunicareers.com/early-careers'},
+
+  /* --- LUXURY FASHION, BEAUTY & RETAIL ---
+     Added 11 Nov 2026. These recruit MUCH later than tech and consulting —
+     most open late November through February for the following summer — so
+     none has a live Summer 2027 MBA req yet. Every URL below was fetched and
+     checked. Notes on each card say where the programme stands. */
+  {name:'Estée Lauder Companies', cat:'other', url:'https://www.elcompanies.com/en/careers/students'},
+  {name:'L’Oréal',           cat:'other', url:'https://careers.loreal.com/en_US/jobs/SearchJobs/'},
+  {name:'Tapestry',               cat:'other', url:'https://careers.tapestry.com/search/'},
+  {name:'LVMH',                   cat:'other', url:'https://www.lvmh.com/en/join-us/our-job-offers'},
+  {name:'Tiffany & Co.',          cat:'other', url:'https://www.tiffany.com/careers/'},
+  {name:'PVH',                    cat:'other', url:'https://careers.pvh.com/jobs'},
+  {name:'Richemont',              cat:'other', url:'https://www.richemont.com/talent/students-graduates/early-career-programmes/'},
+  {name:'Chanel',                 cat:'other', url:'https://cc.wd3.myworkdayjobs.com/en-US/ChanelCareers'},
+  {name:'Nordstrom',              cat:'other', url:'https://careers.nordstrom.com/'},
+  {name:'Ralph Lauren',           cat:'other', url:'https://corporate.ralphlauren.com/careers'},
+  {name:'Kering',                 cat:'other', url:'https://www.kering.com/en/talent/'},
+  {name:'Capri Holdings',         cat:'other', url:'https://www.capriholdings.com/careers/'},
+  {name:'Burberry',               cat:'other', url:'https://www.burberryplc.com/careers'},
+  {name:'Prada Group',            cat:'other', url:'https://www.pradagroup.com/en.html'},
+  {name:'Hermès',                 cat:'other', url:'https://www.hermes.com/us/en/careers/'},
+  {name:'Coty',                   cat:'other', url:'https://careers.coty.com/'}
 ];
 
 /* Companies searched where no MBA internship of any kind was found.
@@ -146,7 +168,25 @@ const NO_ROLE_COMPANIES = {
   '1X':'No internship programme at all. Direct outreach to a Chief of Staff or BizOps lead is the realistic route.',
   'Figure AI':'Winter 2027 reqs are engineering and CS/Robotics masters only. Watch the "Special Projects Intern" req.',
   'Agility Robotics':'Only a Spring 2027 technical internship (11 Jan – 14 May), which clashes with the SOM academic year.',
-  'Boston Dynamics':'No internship listings. Now wholly Hyundai-owned — check Hyundai Motor Group MBA programmes instead.'
+  'Boston Dynamics':'No internship listings. Now wholly Hyundai-owned — check Hyundai Motor Group MBA programmes instead.',
+
+  /* --- luxury / beauty / retail, researched 11 Nov 2026 --- */
+  'Estée Lauder Companies':'STRONGEST PRECEDENT HERE. The CEO Global Presidential Program has run MBA summer internships for years; the MBA tier is Presidential Management Associate, across marketing, finance and supply chain, feeding a 2-year rotational programme. Summer 2027 dates already published: 7 Jun – 13 Aug 2027, New York. Wants 5+ yrs pre-MBA experience. Caveat: the careers page now folds it into a "Lauder Summer Internship", so confirm the MBA pathway.',
+  'L’Oréal':'11-week MBA marketing internship in New York, placed on one Luxe Division brand team — the stated primary route to the Luxe Marketing Chief of Staff role. Historically 15–25 MBA interns a year, ~50–60% conversion target. SUMMER 2027 WINDOW ALREADY CLOSED (30 Sep 2026); next cycle opens ~Aug 2027.',
+  'Tapestry':'Runs an explicit MBA Strategy & Consumer Insights internship at Hudson Yards, New York — the closest fit to your strategy target anywhere in luxury. Summer 2027 dates listed as 1 Jun – 6 Aug 2027. Reqs expected on its Workday board in LATE NOVEMBER 2026, so watch it now.',
+  'LVMH':'The North America corporate cohort is the MBA-friendly one — its posting prefers "a current Master’s degree candidate (MBA or other analytical degree)", across corporate affairs, data analytics, digital innovation, L&D. Applications opened via Handshake on 24 Nov last cycle, so roughly now. Moët Hennessy USA runs a separate commercial summer programme (1 Jun – 6 Aug 2027).',
+  'Tiffany & Co.':'LVMH-owned, runs its own summer programme. The 2026 edition ran 1 Jun – 7 Aug. Nothing was open as of 10 Nov 2026; the next window is expected around DECEMBER 2026. A 2026 listing sought MBA candidates in supply chain, business analytics or retail management.',
+  'PVH':'The MBA summer internship is the EXCLUSIVE entry point to PVH’s three-year Finance Leadership Development Program, New York. Applications expected around NOVEMBER 2026. Premium rather than true luxury, but a genuine MBA programme.',
+  'Richemont':'Cartier, Van Cleef & Arpels, IWC. Bespoke 10-week Americas summer internship across New York, Dallas, Shelton and Canada. Applications normally open in DECEMBER. Source pages look dated — confirm the current cycle.',
+  'Chanel':'Runs a US summer programme out of New York and Piscataway NJ, and a "Summer MBA Intern" listing has appeared on LinkedIn. The most recent posting I could date (2024) targeted rising juniors and seniors, so the MBA route is unconfirmed. Worth a direct check.',
+  'Nordstrom':'Runs a Global Leader Program MBA internship at headquarters, with placements in merchandising, finance, supply chain and strategy and a path to full-time. Also a separate (non-MBA) merchandising internship in Seattle at ~$25/hr.',
+  'Ralph Lauren':'MBA track appears DORMANT — no evidence the MBA version of RL Inspire has run since summer 2022, and no US corporate internships were listed as of early Oct 2026. Watch rather than plan around.',
+  'Kering':'Gucci, Bottega Veneta, Saint Laurent. Does NOT run a branded US internship programme — its American houses post one-off paid intern reqs when a team needs one, mainly Bottega Veneta and Boucheron. Nothing posted for summer 2027.',
+  'Capri Holdings':'Michael Kors, Versace, Jimmy Choo. The 10-week corporate programme (NYC + New Jersey) accepts graduate students but has NO dedicated MBA track. $20/hr, no housing or travel stipend. Application deadline was 6 Feb last cycle.',
+  'Burberry':'No current US MBA programme found — the only recent evidence is a 2022 student profile in a Europe-facing client engagement role. Monitoring only.',
+  'Prada Group':'No US MBA programme found; the only US intern listing that surfaced was an unofficial aggregator page for 2025. Monitoring only.',
+  'Hermès':'No Americas MBA internship information surfaced at all. Monitoring only — direct outreach to US HR is the realistic route.',
+  'Coty':'US offering is mainly a 4–7.5 month ENGINEERING CO-OP in North Carolina or Maryland, not a summer business internship. Business-function summer internships exist but are in Amsterdam, Paris and London.'
 };
 
 /* ---------------- ROLE DATABASE ---------------- */
