@@ -169,7 +169,7 @@ const SEED_ROLES = [
 
 {cat:'consulting', track:'strategy', company:'Bain', title:'Summer Associate (1st-year MBA), Summer 2027',
  location:'All US offices — Los Angeles available; Miami via the Atlanta/Southeast system',
- deadline:'2026-11-11', status:'confirmed', url:'https://www.bain.com/careers/find-a-role/?experience=MBA',
+ deadline:'2026-11-11', status:'confirmed', url:'https://www.bain.com/careers/find-a-role/?experience=MBA&search=summer%20associate',
  why:'Ten-week case-team role on live corporate and business-unit strategy work. Bain weights the office-fit conversation heavily, so name LA explicitly and give a reason.',
  note:'VERIFIED: 5 Nov 2026\nROUTE: Verify the exact hour on the Bain portal and check whether SOM runs its own window.'},
 
@@ -181,7 +181,7 @@ const SEED_ROLES = [
 
 {cat:'consulting', track:'strategy', company:'AlixPartners', title:'MBA Intern — Strategy & Analysis, Summer 2027',
  location:'Any US location (weekly travel to the project site)',
- deadline:'', status:'rolling', url:'https://www.alixpartners.com/careers/students-and-recent-graduates/internships/',
+ deadline:'', status:'rolling', url:'https://www.alixpartners.com/careers/7810004003/',
  why:'The pure-strategy half of AlixPartners: growth strategy, commercial diligence and performance improvement. Closer to your stated targets than the restructuring track, and location-flexible, which suits your Miami/LA preference.',
  note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: NO DEADLINE PUBLISHED and applications are OPEN on AlixPartners’ own internships page. My earlier assumption that it shared the 12 Nov expiry was wrong — this req is separate and has no stated close. seats go on a rolling basis.\nNOTE: 10-week programme, 7 Jun – 13 Aug 2027. Apply early anyway'},
 
@@ -247,7 +247,7 @@ const SEED_ROLES = [
 
 {cat:'consulting', track:'strategy', company:'Booz Allen Hamilton', title:'Summer 2027 Consulting Internship (graduate-eligible reqs)',
  location:'McLean VA, Washington DC, and client sites nationwide',
- deadline:'2026-12-10', status:'rolling', url:'https://careers.boozallen.com/teams/students',
+ deadline:'2026-12-10', status:'rolling', url:'https://careers.boozallen.com/search?q=summer%20hire%20consulting',
  why:'Strategy and operations consulting for federal and commercial clients. Worth a look for operations strategy, though the work is more delivery-weighted than MBB and much of it is government.',
  note:'DEADLINE FLAG: ESTIMATED from Workday end dates in early-to-mid Dec 2026.\nNOTE: 70+ reqs live as of Sep 2026. US citizenship required on cleared roles — check each req.'},
 
@@ -265,19 +265,19 @@ const SEED_ROLES = [
 
 {cat:'consulting', track:'strategy', company:'Cornerstone Research', title:'Summer Associate — MBA, Summer 2027',
  location:'Boston · New York · Chicago · San Francisco · Los Angeles',
- deadline:'2026-12-31', status:'rolling', url:'https://www.cornerstone.com/careers/open-positions/',
+ deadline:'2026-12-31', status:'rolling', url:'https://www.cornerstone.com/careers/',
  why:'Economic and financial consulting on litigation. Analytically rigorous and well paid ($7,500 bi-weekly) but narrower than your four target functions — expert-witness analysis, not corporate strategy. LA office available.',
  note:'DEADLINE FLAG: ESTIMATED from a valid-through date of 31 Dec 2026 on a posting carrying a 2025 requisition ID — the 2027 req may not be live yet.\nNOTE: Verify before investing time.'},
 
 {cat:'consulting', track:'strategy', company:'Simon-Kucher', title:'Summer 2027 Consultant Intern — Americas / Healthcare & Life Sciences',
  location:'Boston, New York, San Francisco, Chicago, Atlanta',
- deadline:'2027-01-15', status:'rolling', url:'https://www.simon-kucher.com/en/careers/job-search',
+ deadline:'2027-01-15', status:'rolling', url:'https://simon-kucher.csod.com/ux/ats/careersite/6/home?c=simon-kucher',
  why:'The pricing and commercial-strategy specialist. Narrow but deep: pricing strategy, monetisation and go-to-market design. A strong complement to a product-strategy target since pricing is where product strategy becomes revenue.',
  note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: Reqs went live 13 Jul 2026 with NO published close date; the firm reviews MBA applications Oct–Jan on a rolling basis.\nELIGIBILITY: The MBA posting asks for graduation May–Jun 2028 (fits you) and runs 9 weeks, 7 Jun – 6 Aug 2027.'},
 
 {cat:'consulting', track:'strategy', company:'ZS Associates', title:'Summer 2027 Consulting Intern (MBA-eligible)',
  location:'Evanston IL, New York, Boston, San Francisco, Philadelphia',
- deadline:'2027-01-15', status:'rolling', url:'https://jobs.zs.com/search-jobs/intern',
+ deadline:'2027-01-15', status:'rolling', url:'https://jobs.zs.com/',
  why:'Commercial strategy for pharma and life sciences — market access, launch strategy and salesforce design. An 11-week programme. Industry-specific, so only pursue if healthcare appeals.',
  note:'DEADLINE FLAG: Nine North America intern reqs live as of 1 Oct 2026 with rolling review and no printed deadline.\nNOTE: ESTIMATED.'},
 
@@ -289,7 +289,7 @@ const SEED_ROLES = [
 
 {cat:'consulting', track:'strategy', company:'Charles River Associates', title:'Summer 2027 Consulting Intern (Economics and other tracks)',
  location:'Boston, New York, Chicago, DC, Los Angeles',
- deadline:'2027-01-15', status:'rolling', url:'https://ecp.crai.com/careers/',
+ deadline:'2027-01-15', status:'rolling', url:'https://ecp.crai.com/careers/?search=intern',
  why:'Four US summer 2027 intern tracks, 8–10 weeks on live client engagements. Economic consulting rather than strategy — same caveat as Analysis Group and Cornerstone.',
  note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: Open since 28 Aug 2026, résumé review from 15 Oct, rolling until roles fill — one source says intake runs to March 2027. No single hard deadline.'},
 
@@ -374,7 +374,7 @@ const SEED_ROLES = [
 
 {cat:'consulting', track:'other', company:'EY', title:'EY-Parthenon — Transactions / Transaction Strategy MBA Intern 2027',
  location:'New York, Boston, Chicago, Dallas',
- deadline:'2026-11-29', status:'rolling', url:'https://usearlycareers.ey.com/job/los-angeles/usa-ey-parthenon-strategy-and-execution-summer-consultant-2027/39053/101558399744',
+ deadline:'2026-11-29', status:'rolling', url:'https://usearlycareers.ey.com/search-jobs?k=EY-Parthenon%20Transaction%20Strategy%20MBA',
  why:'Transaction support and due diligence — deal-side analytical work rather than corporate strategy formulation.',
  note:'DEADLINE FLAG: EY’s MBA window is 5 Oct – 29 Nov 2026\nNOTE: ESTIMATED. transactions work is referenced in EY’s internship offerings but a specific 2027 req was not confirmed.'},
 
@@ -389,13 +389,13 @@ const SEED_ROLES = [
 
 {cat:'tech', track:'strategy', company:'Stripe', title:'MBA Intern — Partnerships & Strategic Business Development',
  location:'Seattle, WA · San Francisco, CA · New York, NY',
- deadline:'', status:'notposted', url:'https://stripe.com/jobs/search?query=MBA',
+ deadline:'', status:'notposted', url:'https://stripe.com/jobs/search?query=MBA%20intern%20partnerships',
  why:'Corporate development and partnership strategy: evaluating partners, shaping product roadmaps around them and structuring commercial deals. Financial Partnerships and Payments & Commerce teams.',
  note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: Stripe reviews on a rolling basis and reposts, so watch the board — but do not plan around this one.\nNOTE: CORRECTION: NO MBA REQ IS LIVE. Stripe’s Summer 2027 postings are Software Engineering (opened 31 Aug), US Data Analyst and PhD Data Scientist (1 Oct), and a high-school programme. The MBA Partnerships listing I had came from a prior cycle.'},
 
 {cat:'tech', track:'strategy', company:'Block (Square)', title:'Business / Operations Intern — Summer 2027',
  location:'San Francisco, CA · New York, NY · Oakland, CA (remote-friendly)',
- deadline:'2026-11-15', status:'notposted', url:'https://block.xyz/careers/jobs?search=intern',
+ deadline:'2026-11-15', status:'notposted', url:'https://block.xyz/careers/jobs?search=business%20operations%20intern',
  why:'Track covers business analytics, operations and go-to-market strategy over 12 weeks — a legitimate business/operations strategy seat, and Block is one of the more remote-friendly employers on your list.',
  note:'DEADLINE FLAG: NOT YET POSTED. Projected from the prior cycle: window late Aug–early Sep, practical deadline mid-Nov 2026. That projection is now suspect given the date — check the board this week.'},
 
@@ -443,7 +443,7 @@ const SEED_ROLES = [
 
 {cat:'tech', track:'strategy', company:'Intuit', title:'Summer 2027: MBA Business Operations Intern, Consumer Group',
  location:'San Diego, CA',
- deadline:'2026-11-30', status:'rolling', url:'https://jobs.intuit.com/search-jobs/MBA%202027/27595/1',
+ deadline:'2026-11-30', status:'rolling', url:'https://jobs.intuit.com/search-jobs/MBA%20Business%20Operations/27595/1',
  why:'Business operations for the TurboTax consumer business — operating cadence, performance management and growth analytics.',
  note:'NOTE: ESTIMATED. San Diego rather than Mountain View; worth noting if you have a Bay Area preference.'},
 
@@ -509,13 +509,13 @@ const SEED_ROLES = [
 
 {cat:'tech', track:'strategy', company:'Databricks', title:'Product Management Intern (Summer 2027)',
  location:'San Francisco, CA · Mountain View, CA',
- deadline:'2027-01-15', status:'rolling', url:'https://www.databricks.com/company/careers/open-positions?department=University%20Recruiting',
+ deadline:'2027-01-15', status:'rolling', url:'https://www.databricks.com/company/careers/open-positions?search=Product%20Management%20Intern',
  why:'Product strategy for data and AI infrastructure. $54–$56/hr.',
  note:'ROUTE: Worth a recruiter email first.\nELIGIBILITY FLAG: .\nELIGIBILITY: ESTIMATED — Posted eligibility is "graduating Fall 2027 or Spring 2028", which may exclude a 2028 MBA depending on how they read it.'},
 
 {cat:'tech', track:'strategy', company:'DoorDash', title:'Intern, Growth and Strategy — Drive (MBA preferred)',
  location:'San Francisco, CA · New York, NY',
- deadline:'2027-01-15', status:'rolling', url:'https://careersatdoordash.com/university/',
+ deadline:'2027-01-15', status:'rolling', url:'https://careersatdoordash.com/jobs/?search=strategy%20intern',
  why:'DoorDash Strategy & Ops is a canonical tech business-strategy internship — market-level P&L ownership, growth strategy and operating analytics. The Drive (white-label logistics) req states MBA preferred.',
  note:'DEADLINE FLAG: The req found is undated and may be from a prior cycle\nNOTE: ESTIMATED — NEEDS VERIFYING. the only confirmed Summer 2027 ops req is a PhD Operations Research role.'},
 
@@ -527,13 +527,13 @@ const SEED_ROLES = [
 
 {cat:'tech', track:'strategy', company:'Snap', title:'Product Manager Intern — Summer 2027 (MBA preferred)',
  location:'Santa Monica, CA (Los Angeles) · New York, NY',
- deadline:'2027-01-15', status:'notposted', url:'https://careers.snap.com/jobs?search=intern',
+ deadline:'2027-01-15', status:'notposted', url:'https://careers.snap.com/jobs?search=product%20manager%20intern',
  why:'13-week PM internship with "MBA preferred" stated — and Santa Monica is Los Angeles, hitting your location preference squarely. One of the few LA-headquartered tech companies on your list.',
  note:'DEADLINE FLAG: NOT YET POSTED as of 22 Oct 2026, though last cycle opened late Aug–early Sep. Rolling review.\nNOTE: Worth a weekly check given the LA fit.'},
 
 {cat:'tech', track:'strategy', company:'PayPal', title:'Product Management Intern — Summer 2027',
  location:'San Jose, CA · New York, NY · Austin, TX',
- deadline:'2027-01-15', status:'notposted', url:'https://careers.pypl.com/Students-and-Graduates/',
+ deadline:'2027-01-15', status:'notposted', url:'https://careers.pypl.com/search-results?keywords=product%20management%20intern',
  why:'Product strategy, feature planning and market analysis for payments products.',
  note:'DEADLINE FLAG: Postings were expected Sep–Oct 2026 with rolling review. The window may be open now — check the board.\nNOTE: NOT CONFIRMED. Estimated 3–5% acceptance rate.'},
 
@@ -545,19 +545,19 @@ const SEED_ROLES = [
 
 {cat:'tech', track:'strategy', company:'Microsoft', title:'Product Manager MBA Intern, Summer 2027',
  location:'Redmond, WA · Mountain View, CA',
- deadline:'2027-02-28', status:'rolling', url:'https://jobs.careers.microsoft.com/global/en/search?q=Finance%20Manager%20MBA%20Internship&l=en_us',
+ deadline:'2027-02-28', status:'rolling', url:'https://jobs.careers.microsoft.com/global/en/search?q=Product%20Manager%20MBA%20Internship&l=en_us',
  why:'Posting language is product strategy outright: set product vision and strategy from customer insight and competitive market analysis, then work with Product Marketing, Business Planning and Engineering on release criteria and monetisation.',
  note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: MBA roles have no published window and stay open until filled, so there is no reason to wait for December — apply now.\nELIGIBILITY: CORRECTION: the "first week of each month" rule applies to Microsoft EXPLORE, a second-year UNDERGRADUATE programme, NOT the MBA track.\nNOTE: Needs one quarter/semester remaining after the internship.'},
 
 {cat:'tech', track:'strategy', company:'Apple', title:'MBA Internships 2027 (umbrella req)',
  location:'Various US — Cupertino, Austin, Culver City (LA)',
- deadline:'2027-02-28', status:'rolling', url:'https://jobs.apple.com/en-us/search?location=united-states-USA&team=internships-STDNT-INTRN',
+ deadline:'2027-02-28', status:'rolling', url:'https://jobs.apple.com/en-us/search?search=MBA%20internship&location=united-states-USA',
  why:'Single MBA req routing into strategy, product management, operations, business process improvement and programme management. Apple’s Strategy & Operations track covers financial modelling, pricing research and business process analysis.',
  note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: Apple’s US umbrella postings state they accept applications ON AN ONGOING BASIS, with hiring per team as headcount opens — so there is no fixed deadline to miss. The 23 Oct expiry I flagged earlier appears on one campus repost only, not Apple’s own page.\nNOTE: Culver City / LA placements exist via Apple Services and Apple TV+.'},
 
 {cat:'tech', track:'strategy', company:'Spotify', title:'Summer MBA Intern — Business Strategy and Product Management',
  location:'New York, NY',
- deadline:'2027-02-05', status:'notposted', url:'https://www.lifeatspotify.com/start-your-journey/students',
+ deadline:'2027-02-05', status:'notposted', url:'https://www.lifeatspotify.com/jobs?q=MBA',
  why:'A near-perfect title match Spotify has run in prior cycles: strategy modelling, senior-leadership presentations and PM rotations over 10 weeks in NYC.',
  note:'DEADLINE FLAG: NOT YET POSTED. projections put the window mid-to-late Jan 2027 with a hard deadline in early Feb. Spotify refuses late applications and will not accept approaches by email or LinkedIn — you must catch the window.\nNOTE: Spotify’s student page says 2027 information is "coming soon"'},
 
@@ -589,7 +589,7 @@ const SEED_ROLES = [
 
 {cat:'tech', track:'other', company:'Microsoft', title:'Treasury Finance Manager: MBA Internship, Summer 2027',
  location:'Redmond, WA',
- deadline:'2027-02-28', status:'rolling', url:'https://jobs.careers.microsoft.com/global/en/search?q=Finance%20Manager%20MBA%20Internship&l=en_us',
+ deadline:'2027-02-28', status:'rolling', url:'https://jobs.careers.microsoft.com/global/en/search?q=Treasury%20MBA%20Internship&l=en_us',
  why:'Treasury, capital structure and liquidity management. Narrow corporate-finance function, well outside your four target areas.',
  note:'NOTE: ESTIMATED. Sister req to the Central Finance role above.'},
 
@@ -643,19 +643,19 @@ const SEED_ROLES = [
 
 {cat:'tech', track:'other', company:'Adobe', title:'2027 MBA Intern — Product Marketing Manager',
  location:'San Jose · San Francisco, CA',
- deadline:'2026-10-26', status:'closed', url:'https://careers.adobe.com/us/en/job/R172261/2027-MBA-Intern-Product-Manager',
+ deadline:'2026-10-26', status:'closed', url:'https://careers.adobe.com/us/en/search-results?keywords=MBA%20Intern',
  why:'Go-to-market and positioning strategy for Adobe’s Creative and Document Cloud lines.',
  note:'DEADLINE FLAG: CLOSED — apply-by 26 Oct 2026. Posted 30 Sep.\nNOTE: Noted so you know Adobe’s PMM door has shut.'},
 
 {cat:'tech', track:'other', company:'Databricks', title:'Sales Intern — Summer 2027',
  location:'San Francisco, CA · Mountain View, CA',
- deadline:'2027-01-15', status:'rolling', url:'https://www.databricks.com/company/careers/open-positions?department=University%20Recruiting',
+ deadline:'2027-01-15', status:'rolling', url:'https://www.databricks.com/company/careers/open-positions?search=Sales%20Intern',
  why:'Enterprise sales for data and AI infrastructure. Commercial exposure but not a strategy seat.',
  note:'ELIGIBILITY FLAG: Same flag as the Databricks PM req — graduating Fall 2027 or Spring 2028.\nNOTE: ESTIMATED. Same'},
 
 {cat:'tech', track:'other', company:'Apple', title:'MBA Internship — Supply Chain / Operations Management, 2027',
  location:'Cupertino, CA · Austin, TX',
- deadline:'2027-02-28', status:'rolling', url:'https://jobs.apple.com/en-us/search?location=united-states-USA&team=internships-STDNT-INTRN',
+ deadline:'2027-02-28', status:'rolling', url:'https://jobs.apple.com/en-us/search?search=MBA%20supply%20chain&location=united-states-USA',
  why:'Apple’s MBA req explicitly welcomes master’s candidates in supply chain, engineering and operations management. Procurement, supply-chain planning and sourcing placements sit here.',
  note:'DEADLINE FLAG: One university listing for the Apple 2027 MBA req showed an expiry of 23 Oct 2026 — verify the req is still live before applying.\nNOTE: ESTIMATED.'},
 
@@ -664,13 +664,13 @@ const SEED_ROLES = [
    ============================================================ */
 {cat:'other', track:'strategy', company:'Epic Games', title:'Product Management Intern (MBA) — Summer 2027',
  location:'Cary, NC',
- deadline:'2026-11-30', status:'rolling', url:'https://www.epicgames.com/site/earlycareers',
+ deadline:'2026-11-30', status:'rolling', url:'https://www.epicgames.com/site/careers?search=product%20management%20intern',
  why:'MBA-gated and explicitly asks for prior product, strategy, analytics or consulting experience — they are recruiting the consultant-to-PM profile directly. Also asks for hands-on AI/LLM tooling experience.',
  note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: A Harvard career-services listing gives a 30 Nov 2026 expiry (recruitment opened 30 Sep). Epic publishes no official deadline and fills roles "as soon as we find the best match", so treat 30 Nov as the outer limit, not a target.\nNOTE: EARLIER THAN I ESTIMATED.'},
 
 {cat:'other', track:'strategy', company:'Epic Games', title:'Business and Marketing Strategy Intern (MBA) — Summer 2027',
  location:'Cary, NC',
- deadline:'2026-11-30', status:'rolling', url:'https://www.epicgames.com/site/earlycareers',
+ deadline:'2026-11-30', status:'rolling', url:'https://www.epicgames.com/site/careers?search=business%20marketing%20strategy',
  why:'Business strategy in the title, MBA enrollment in marketing/strategy/analytics required. Commercial strategy for Fortnite and the wider Epic ecosystem.',
  note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: Same 30 Nov 2026 listing expiry as the PM req. Rolling, filled when matched — apply well before.'},
 
@@ -682,7 +682,7 @@ const SEED_ROLES = [
 
 {cat:'other', track:'strategy', company:'Expedia', title:'MBA Product Management Intern, Summer 2027',
  location:'Seattle, WA',
- deadline:'2027-01-15', status:'rolling', url:'https://careers.expediagroup.com/earlycareers/',
+ deadline:'2027-01-15', status:'rolling', url:'https://expedia.wd108.myworkdayjobs.com/search?q=MBA%20Product%20Management',
  why:'Product strategy for a marketplace business — pricing, supply/demand balance and partner strategy. A strong adjacency if you want travel without the airline operating-company path.',
  note:'ELIGIBILITY FLAG: .\nELIGIBILITY: ESTIMATED — Summer 2027 reqs went live 12 Oct 2026 but require graduation Dec 2027–Jul 2028\nNOTE: The MBA PM req that surfaced was a London 2026 role. Programme runs 200–300 spots across 10+ tracks. Verify a US MBA req exists.'},
 
@@ -732,13 +732,13 @@ const SEED_ROLES = [
 
 {cat:'other', track:'other', company:'GE Aerospace', title:'Summer 2027 Intern — HR / Financial Management Program (master’s eligible)',
  location:'Cincinnati, OH · Evendale, OH',
- deadline:'2027-01-31', status:'rolling', url:'https://careers.geaerospace.com/global/en/students',
+ deadline:'2027-01-31', status:'rolling', url:'https://careers.geaerospace.com/global/en/search-results?keywords=2027%20intern',
  why:'GE Aerospace has no MBA strategy or corporate development internship. The closest master’s-eligible reqs are HR (10–12 weeks, including acquisition integration) and the Financial Management Program (Commercial Finance, Supply Chain Finance, FP&A).',
  note:'ROUTE: If GE matters, email a recruiter about a strategy seat — it is not on the board.\nNOTE: ESTIMATED. ~48 US reqs titled 2027 live in early Oct. HR req requires a business or HR master’s and 3.0 GPA, Cincinnati-based, and can lead into the HR Leadership Program.'},
 
 {cat:'other', track:'other', company:'Disney', title:'Accounting & Finance Rotation Program / other MBA tracks, Summer 2027',
  location:'Burbank, CA (Los Angeles) · Orlando, FL',
- deadline:'2027-01-31', status:'notposted', url:'https://www.disneycareers.com/en/search-jobs',
+ deadline:'2027-01-31', status:'notposted', url:'https://www.disneycareers.com/en/search-jobs/MBA',
  why:'Disney’s finance rotation and other business tracks. LA-based, which fits your location preference, but finance rather than strategy.',
  note:'DEADLINE FLAG: NOT POSTED / PARTLY CLOSED. As of 1 Nov 2026 the Accounting & Finance Rotation Program had closed and no summer 2027 tech internship had posted. Disney posts summer reqs Dec–Jan — watch for the next wave.'},
 
