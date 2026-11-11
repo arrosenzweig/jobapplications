@@ -27,7 +27,7 @@ const BASE_COMPANIES = [
   {name:'Apple',             cat:'tech', url:'https://jobs.apple.com/en-us/search?location=united-states-USA&team=internships-STDNT-INTRN'},
   {name:'Meta',              cat:'tech', url:'https://www.metacareers.com/jobs?q=MBA%20intern&is_intern=true'},
   {name:'Nvidia',            cat:'tech', url:'https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite?q=MBA%20intern'},
-  {name:'Adobe',             cat:'tech', url:'https://adobe.wd5.myworkdayjobs.com/external_university?q=MBA%20intern'},
+  {name:'Adobe',             cat:'tech', url:'https://careers.adobe.com/us/en/job/R172261/2027-MBA-Intern-Product-Manager'},
   {name:'Salesforce',        cat:'tech', url:'https://careers.salesforce.com/en/jobs/?search=MBA+intern+2027&pagesize=20'},
   {name:'Oracle',            cat:'tech', url:'https://careers.oracle.com/jobs/#en/sites/jobsearch/jobs?keyword=MBA%20intern'},
   {name:'IBM',               cat:'tech', url:'https://www.ibm.com/careers/search?field_keyword_08[0]=Internship'},
@@ -53,7 +53,7 @@ const BASE_COMPANIES = [
   {name:'Pinterest',         cat:'tech', url:'https://www.pinterestcareers.com/university/'},
   {name:'Snap',              cat:'tech', url:'https://careers.snap.com/jobs?search=intern'},
   {name:'Dropbox',           cat:'tech', url:'https://jobs.dropbox.com/all-jobs?search=intern'},
-  {name:'Atlassian',         cat:'tech', url:'https://www.atlassian.com/company/careers/all-jobs?search=intern'},
+  {name:'Atlassian',         cat:'tech', url:'https://www.atlassian.com/company/careers/details/10992806'},
   {name:'HubSpot',           cat:'tech', url:'https://www.hubspot.com/careers/jobs?search=intern'},
   {name:'Zoom',              cat:'tech', url:'https://careers.zoom.us/jobs?search=intern'},
   {name:'Tesla',             cat:'tech', url:'https://www.tesla.com/careers/search/?type=3&site=US'},
@@ -165,19 +165,19 @@ const SEED_ROLES = [
  location:'All US offices — Miami and Los Angeles both available',
  deadline:'2026-11-10', status:'confirmed', url:'https://careers.bcg.com/global/en/on-campus/united-states-associate-job-opportunities',
  why:'The benchmark MBA strategy internship. One or two client cases over ~10 weeks spanning corporate strategy, growth and operations. Office preference is part of the application and BCG staffs both Miami and LA.',
- note:'VERIFIED: 5 Nov 2026\nROUTE: BCG’s public US associate page explicitly says MBA candidates are NOT eligible to apply through it and that BCG contacts MBA candidates directly. Apply via the SOM campus page on careers.bcg.com or the CDO — not the general board. Highest-priority item on this dashboard.\nDEADLINE FLAG: CONFIRMED 10 Nov 2026, 11:59pm — one application covers 22 US offices.'},
+ note:'VERIFIED: 5 Nov 2026\nROUTE: BCG’s public US associate page explicitly says MBA candidates are NOT eligible to apply through it and that BCG contacts MBA candidates directly. Apply via the SOM campus page on careers.bcg.com or the CDO — not the general board. Highest-priority item on this dashboard.\nNOTE: One application covers 22 US offices.'},
 
 {cat:'consulting', track:'strategy', company:'Bain', title:'Summer Associate (1st-year MBA), Summer 2027',
  location:'All US offices — Los Angeles available; Miami via the Atlanta/Southeast system',
  deadline:'2026-11-11', status:'confirmed', url:'https://www.bain.com/careers/find-a-role/?experience=MBA',
  why:'Ten-week case-team role on live corporate and business-unit strategy work. Bain weights the office-fit conversation heavily, so name LA explicitly and give a reason.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: CONFIRMED 11 Nov 2026 on the Management Consulted firm-confirmed table (prior cycle was 13 Nov 2025, consistent). Verify the exact hour on the Bain portal and check whether SOM runs its own window.'},
+ note:'VERIFIED: 5 Nov 2026\nROUTE: Verify the exact hour on the Bain portal and check whether SOM runs its own window.'},
 
 {cat:'consulting', track:'strategy', company:'AlixPartners', title:'MBA Intern — Turnaround & Restructuring, Summer 2027',
  location:'New York · Chicago · Dallas · Houston',
  deadline:'2026-11-12', status:'confirmed', url:'https://www.alixpartners.com/careers/7810004003/turnaround--restructuring-mba-intern/',
  why:'Operations strategy under pressure — liquidity, cost structure and operating-model turnaround for distressed companies. The most operationally hands-on strategy internship on this list.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: CONFIRMED 12 Nov 2026 — and it is ON THE YALE SOM CDO BOARD, so apply through SOM.\nELIGIBILITY: Requires MBA graduation Dec 2027–Aug 2028.\nPAY: Posted salary $35,000 for the term.\nNOTE: Internship runs 7 Jun – 13 Aug 2027. Locations corrected — Houston, not Detroit.'},
+ note:'VERIFIED: 5 Nov 2026\nROUTE: ON THE YALE SOM CDO BOARD — apply through SOM.\nELIGIBILITY: Requires MBA graduation Dec 2027–Aug 2028.\nPAY: Posted salary $35,000 for the term.\nNOTE: Internship runs 7 Jun – 13 Aug 2027. Locations corrected — Houston, not Detroit.'},
 
 {cat:'consulting', track:'strategy', company:'AlixPartners', title:'MBA Intern — Strategy & Analysis, Summer 2027',
  location:'Any US location (weekly travel to the project site)',
@@ -189,61 +189,61 @@ const SEED_ROLES = [
  location:'US offices — strongest in NY, SF, Boston',
  deadline:'2026-11-17', status:'confirmed', url:'https://careers.bcg.com/global/en/on-campus/united-states-associate-job-opportunities',
  why:'BCG’s build-and-design unit. Product strategy with real engineering adjacency — digital product, AI ventures and new-business building rather than classic slide-based casework.',
- note:'VERIFIED: 5 Nov 2026\nROUTE: Same MBA routing caveat: go via the SOM campus page.\nDEADLINE FLAG: 17 Nov 2026, a week later than the core BCG req — corroborated by one specialist source only, so treat as likely rather than certain.\nNOTE: A separate application from the core Summer Consultant req; you may apply to both, but BCG will ask which you prefer.'},
+ note:'VERIFIED: 5 Nov 2026\nROUTE: Same MBA routing caveat: go via the SOM campus page.\nNOTE: A week later than the core BCG req, and corroborated by one specialist source only — treat the date as likely rather than certain.\nNOTE: A separate application from the core Summer Consultant req; you may apply to both, but BCG will ask which you prefer.'},
 
 {cat:'consulting', track:'strategy', company:'PwC', title:'Strategy& — Strategy Consulting Senior Associate Intern, Summer 2027',
  location:'Rosemont IL, New York, Chicago, Dallas, San Francisco, Boston, Los Angeles',
  deadline:'2026-11-18', status:'confirmed', url:'https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/Strategy--Strategy-Consulting-Senior-Associate-Intern---Summer-2027_765647WD',
  why:'Strategy&’s MBA-level intern track and a direct corporate-strategy hit: growth strategy, deals diligence and operating-model design for Fortune 500 clients. $84k–$202k prorated.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: On PwC’s own Workday: posting end date 18 Nov 2026, posted 2 Oct. One guide says MBA applications close 17 Nov at 5pm ET — APPLY BY 17 NOV to be safe. PwC also closes reqs by office as offers are accepted, so a posting can shut before its listed date.'},
+ note:'VERIFIED: 5 Nov 2026\nROUTE: One guide says MBA applications close 17 Nov at 5pm ET — APPLY BY 17 NOV to be safe. PwC also closes reqs by office as offers are accepted, so a posting can shut before its listed date.'},
 
 {cat:'consulting', track:'strategy', company:'PwC', title:'Strategy& — Deals Strategy Senior Associate Intern, Summer 2027',
  location:'Multiple US offices',
  deadline:'2026-11-18', status:'confirmed', url:'https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/Strategy--Deals-Strategy-Senior-Associate-Intern---Summer-2027_765700WD',
  why:'Commercial due diligence and deal-side strategy — market attractiveness, growth cases and synergy analysis for PE and corporate acquirers. A distinct req from the Strategy Consulting track and a strong corporate-strategy fit.',
- note:'VERIFIED: 5 Nov 2026\nROUTE: Found during verification — this req was not on the dashboard before.\nDEADLINE FLAG: VERIFIED posting end date 18 Nov 2026 on PwC’s own Workday (req 765700WD), posted 2 Oct. Apply by 17 Nov to be safe.'},
+ note:'VERIFIED: 5 Nov 2026\nROUTE: Found during verification — this req was not on the dashboard before.\nROUTE: Req 765700WD. Apply by 17 Nov to be safe — PwC closes reqs by office as offers are accepted.'},
 
 {cat:'consulting', track:'strategy', company:'PwC', title:'Strategy& — Sustainability Strategy Senior Associate Intern, Summer 2027',
  location:'Multiple US offices',
  deadline:'2026-11-18', status:'confirmed', url:'https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/Strategy--Sustainability-Strategy-Senior-Associate-Intern---Summer-2027_765703WD',
  why:'Corporate strategy through a decarbonisation and transition lens — portfolio choices, operating-model change and growth strategy for climate-exposed businesses.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: VERIFIED apply-by 18 Nov 2026 (req 765703WD).\nNOTE: . Sits inside Strategy& rather than the separate Sustainability consulting practice, so the casework is strategy-led.'},
+ note:'VERIFIED: 5 Nov 2026\nROUTE: Req 765703WD.\nNOTE: . Sits inside Strategy& rather than the separate Sustainability consulting practice, so the casework is strategy-led.'},
 
 {cat:'consulting', track:'strategy', company:'PwC', title:'Strategy& — Strategy Consulting Intern, Summer 2027',
  location:'Multiple US offices',
  deadline:'2026-11-18', status:'confirmed', url:'https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/Strategy--Strategy-Consulting-Intern---Summer-2027_757258WD',
  why:'Companion req to the Senior Associate track. Same casework; office allocation differs by req, so applying to both widens your geography.',
- note:'DEADLINE FLAG: CONFIRMED 18 Nov 2026. Check which req the SOM cohort is routed to before doubling up.'},
+ note:'ROUTE: Check which req the SOM cohort is routed to before doubling up.'},
 
 {cat:'consulting', track:'strategy', company:'Accenture', title:'Strategy Summer Consultant — MBA Internship (NAELFY27)',
  location:'New York, NY · Chicago, IL',
  deadline:'2026-11-29', status:'confirmed', url:'https://www.accenture.com/us-en/careers/jobdetails?id=R00361148_en',
  why:'Explicitly an MBA strategy internship covering business-model innovation, operating strategy, post-merger integration and tech-enabled transformation — a direct hit on all four target strategy types. ~10 weeks from June.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: On Accenture’s own posting — STILL OPEN, apply by 29 Nov 2026.\nELIGIBILITY: MBA graduation Dec 2027–Aug 2028 (fits SOM 2028).\nPAY: $66.3k–$188.1k NY / $59.1k–$188.1k IL.\nNOTE: In-person, NY or Chicago. This is the ONLY MBA req among nine US NAELFY27 postings — the other eight are Summer Analyst.'},
+ note:'VERIFIED: 5 Nov 2026\nELIGIBILITY: MBA graduation Dec 2027–Aug 2028 (fits SOM 2028).\nPAY: $66.3k–$188.1k NY / $59.1k–$188.1k IL.\nNOTE: In-person, NY or Chicago. This is the ONLY MBA req among nine US NAELFY27 postings — the other eight are Summer Analyst.'},
 
 {cat:'consulting', track:'strategy', company:'EY-Parthenon', title:'Strategy & Execution Summer Consultant 2027',
  location:'Boston, New York, Chicago, San Francisco, Los Angeles, Dallas, Atlanta',
- deadline:'2026-11-29', status:'confirmed', url:'https://usearlycareers.ey.com/business/job_type/intern/39053/5',
+ deadline:'2026-11-29', status:'confirmed', url:'https://usearlycareers.ey.com/job/los-angeles/usa-ey-parthenon-strategy-and-execution-summer-consultant-2027/39053/101558399744',
  why:'EY-Parthenon is the strategy house inside EY — corporate strategy, commercial due diligence and growth strategy casework. LA is a staffed office. ~$3,800/week.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: On EY’s own early-careers timelines page: the MBA intern window for Consulting and EY-Parthenon opens 5 Oct and closes 29 Nov 2026. IMPORTANT: EY asks candidates to apply to NO MORE THAN TWO jobs in any six-month period — so you must choose at most two of the three EY reqs on this dashboard. Some roles stay posted only until filled.'},
+ note:'VERIFIED: 5 Nov 2026\nROUTE: EY asks candidates to apply to NO MORE THAN TWO jobs in any six-month period — choose at most two of the three EY reqs on this dashboard. Some roles stay posted only until filled.'},
 
 {cat:'consulting', track:'strategy', company:'EY', title:'Consulting — Supply Chain & Operations MBA Intern, Summer 2027',
- location:'Washington DC, New York, Chicago, Dallas, Atlanta',
- deadline:'2026-11-29', status:'confirmed', url:'https://usearlycareers.ey.com/business/job_type/intern/39053/5',
+ location:'Washington DC, New York, Chicago, Dallas, Austin',
+ deadline:'2026-11-29', status:'confirmed', url:'https://usearlycareers.ey.com/search-jobs?k=1740057',
  why:'Your operations-strategy slot: operating-model redesign, network and supply-chain strategy, and cost transformation. Strategy work, not execution/PMO.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: Same MBA window, 5 Oct – 29 Nov 2026.\nNOTE: Counts against EY’s two-applications-per-six-months cap — see the EY-Parthenon row.'},
+ note:'VERIFIED: 5 Nov 2026\nROUTE: Counts against EY’s two-applications-per-six-months cap — see the EY-Parthenon row.\nNOTE: Counts against EY’s two-applications-per-six-months cap — see the EY-Parthenon row.'},
 
 {cat:'consulting', track:'strategy', company:'McKinsey', title:'Summer Associate (MBA), Summer 2027',
  location:'All US offices — Miami and Los Angeles both available',
  deadline:'2026-11-12', status:'confirmed', url:'https://www.mckinsey.com/careers/search-jobs?filters=InterestedIn:Internships',
  why:'The flagship MBA strategy internship: ~10 weeks on a single client study spanning corporate, business-unit or operations strategy. Office preference is part of the application and both Miami and LA take Summer Associates.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: DATE MOVED UP 18 DAYS. Two independent sources now give 12 Nov 2026 for Summer Associate (1Y MBA); my earlier 30 Nov estimate was wrong and would have cost you the application. Window was confirmed still open as of 26 Oct.\nROUTE: McKinsey can also set school-specific dates, and missing a school deadline means the application is not considered — confirm the SOM date with the CDO immediately.'},
+ note:'VERIFIED: 5 Nov 2026\nNOTE: This date moved up 18 days from my earlier estimate; the window was confirmed still open as of 26 Oct.\nROUTE: McKinsey can also set school-specific dates, and missing a school deadline means the application is not considered — confirm the SOM date with the CDO immediately.'},
 
 {cat:'consulting', track:'strategy', company:'Kearney', title:'2027 Kearney Summer Associate',
  location:'Atlanta, Boston, Chicago, Dallas, New York, San Francisco, DC (no Miami or LA)',
  deadline:'2026-12-01', status:'confirmed', url:'https://cdo.som.yale.edu/jobs/kearney-2027-kearney-summer-associate/',
  why:'Generalist MBA summer associate with a genuine operations-strategy tilt — Kearney’s heritage is supply chain, procurement and operations transformation.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: On the Yale SOM CDO listing: submit by TUESDAY 1 DEC 2026, 11:59pm CT. Round 1 and Round 2 interviews are VIRTUAL in January 2027.\nELIGIBILITY: First-year MBA required.\nNOTE: 10-week internship; You rank a practice on the application — General Practice, Strategic Operations, or Digital & Analytics. PERLab is Chicago-only and PEPI is Chicago or New York. No Miami or LA option.'},
+ note:'VERIFIED: 5 Nov 2026\nROUTE: Submit via the Yale SOM CDO listing, by 11:59pm CT. Round 1 and Round 2 interviews are VIRTUAL in January 2027.\nELIGIBILITY: First-year MBA required.\nNOTE: 10-week internship; You rank a practice on the application — General Practice, Strategic Operations, or Digital & Analytics. PERLab is Chicago-only and PEPI is Chicago or New York. No Miami or LA option.'},
 
 {cat:'consulting', track:'strategy', company:'Booz Allen Hamilton', title:'Summer 2027 Consulting Internship (graduate-eligible reqs)',
  location:'McLean VA, Washington DC, and client sites nationwide',
@@ -259,7 +259,7 @@ const SEED_ROLES = [
 
 {cat:'consulting', track:'strategy', company:'Deloitte', title:'Summer Associate — Enterprise Tech Strategy',
  location:'Multiple US offices',
- deadline:'2027-02-28', status:'rolling', url:'https://apply.deloitte.com/en_US/careers/SearchJobs/enterprise%20tech%20strategy',
+ deadline:'2027-02-28', status:'rolling', url:'https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Summer-Associate-Enterprise-Tech-Strategy/369078',
  why:'Technology strategy: IT operating model, platform and architecture choices tied to business outcomes. A strong bridge between your product-strategy and business-strategy targets.',
  note:'DEADLINE FLAG: Listed as a rolling summer associate track.\nELIGIBILITY: Same eligibility as the other Deloitte strategy reqs.\nNOTE: ESTIMATED.'},
 
@@ -285,7 +285,7 @@ const SEED_ROLES = [
  location:'Boston, New York, Chicago, San Francisco, Los Angeles, DC',
  deadline:'2026-12-01', status:'confirmed', url:'https://www.analysisgroup.com/careers/career-path/summer-associate-intern/',
  why:'Economic consulting with generalist and healthcare tracks. Analytical litigation and health-economics work rather than corporate strategy — on your list, but off-target for product and operations strategy.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: A separate full Associate posting already closed 23 Sep 2026.\nELIGIBILITY: The Summer Associate Intern — Generalist (MBA/MA), 2027 start, carries a CONFIRMED deadline of 1 Dec 2026 and asks for graduation by summer 2028, which fits you.'},
+ note:'VERIFIED: 5 Nov 2026\nNOTE: A separate full Associate posting already closed 23 Sep 2026.\nELIGIBILITY: The Summer Associate Intern — Generalist (MBA/MA), 2027 start, carries a CONFIRMED deadline of 1 Dec 2026 and asks for graduation by summer 2028, which fits you.'},
 
 {cat:'consulting', track:'strategy', company:'Charles River Associates', title:'Summer 2027 Consulting Intern (Economics and other tracks)',
  location:'Boston, New York, Chicago, DC, Los Angeles',
@@ -303,19 +303,19 @@ const SEED_ROLES = [
  location:'Multiple US offices — Miami and Los Angeles available',
  deadline:'2027-01-28', status:'confirmed', url:'https://apply.deloitte.com/en_US/careers/JobDetail/Deloitte-Strategy-Summer-Associate-Corporate-Strategy-Transactions-Customer-Commercial-Strategy/316711',
  why:'Closest title-and-description match to "corporate strategy" anywhere on this list: M&A strategy, portfolio choices and commercial/growth strategy. Deloitte staffs Miami and LA.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: Deadline 28 JAN 2027 — but note an EARLY deadline of 23 Oct 2026 has already passed, so you are now in the second window. Deloitte fills per office on a rolling basis well before the posting expires.\nELIGIBILITY: Requires graduation Spring/Summer 2028 and 3+ yrs full-time experience.\nPAY: ~$3,750/week.'},
+ note:'VERIFIED: 5 Nov 2026\nNOTE: An EARLY deadline of 23 Oct 2026 has already passed, so you are in the second window. Deloitte fills per office on a rolling basis well before the posting expires.\nELIGIBILITY: Requires graduation Spring/Summer 2028 and 3+ yrs full-time experience.\nPAY: ~$3,750/week.'},
 
 {cat:'consulting', track:'strategy', company:'Deloitte', title:'Summer Associate — Functional & Operations Strategy',
  location:'Atlanta, GA + multiple US offices',
  deadline:'2027-03-01', status:'confirmed', url:'https://apply.deloitte.com/en_US/careers/SearchJobs/functional%20operations%20strategy',
  why:'Direct match to operations strategy: operating-model design, cost and margin strategy, and functional transformation across finance and supply chain.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: The listing says apply by 1 Mar 2027. Deloitte fills per office on a rolling basis, so do not wait for March.\nELIGIBILITY: 3+ yrs full-time experience required.'},
+ note:'VERIFIED: 5 Nov 2026\nNOTE: Deloitte fills per office on a rolling basis — do not wait for the posted date.\nELIGIBILITY: 3+ yrs full-time experience required.'},
 
 {cat:'consulting', track:'strategy', company:'Deloitte', title:'Consultative Offerings — Summer Associate, Enterprise Strategy',
  location:'Multiple US offices',
  deadline:'2027-03-01', status:'confirmed', url:'https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Summer-Associate-Enterprise-Strategy/368915',
  why:'Enterprise-wide strategy: growth agendas, operating model and enterprise transformation for large clients. Business-strategy core.',
- note:'DEADLINE FLAG: CONFIRMED valid-through 1 Mar 2027, but seats go much earlier on a rolling basis.\nPAY: ~$3,750/week.'},
+ note:'NOTE: Seats go much earlier than the posted date, on a rolling basis.\nPAY: ~$3,750/week.'},
 
 {cat:'consulting', track:'strategy', company:'L.E.K. Consulting', title:'Summer Associate 2027 (MBA)',
  location:'Boston, New York, Chicago, San Francisco, Los Angeles',
@@ -327,7 +327,7 @@ const SEED_ROLES = [
  location:'Washington, DC',
  deadline:'2026-12-15', status:'confirmed', url:'https://careers.alvarezandmarsal.com/jobs/18120866-summer-2027-associate-public-sector-services-pss',
  why:'Performance improvement and operations strategy for government and public-sector clients. Narrower than A&M’s corporate work and DC-only, but it is the one A&M graduate req actually open.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: CONFIRMED on A&M’s own careers site — accepting applications until 15 DECEMBER at midnight EST, posted 27 Aug. My earlier mid-Nov placeholder was wrong in both directions.\nELIGIBILITY: 7-week internship for graduate students finishing within ~a year\nNOTE: A&M calls it the main pathway to a full-time offer.'},
+ note:'VERIFIED: 5 Nov 2026\nNOTE: Confirmed on A&M’s own careers site, posted 27 Aug.\nELIGIBILITY: 7-week internship for graduate students finishing within ~a year\nNOTE: A&M calls it the main pathway to a full-time offer.'},
 
 {cat:'consulting', track:'strategy', company:'Alvarez & Marsal', title:'2027 Summer Intern — Corporate Performance Improvement',
  location:'New York, NY',
@@ -352,19 +352,19 @@ const SEED_ROLES = [
  location:'Multiple US offices',
  deadline:'2026-11-18', status:'confirmed', url:'https://jobs-us.pwc.com/us/en/search-results?keywords=Senior%20Associate%20Intern%20Summer%202027',
  why:'Operations and transformation delivery rather than strategy formulation. Same MBA eligibility and pay band as the Strategy& reqs, broader client mix.',
- note:'DEADLINE FLAG: CONFIRMED 18 Nov 2026. One of ~16 Senior Associate intern reqs PwC posted 2 Oct across Advisory, Consulting, Technology and Sustainability.'},
+ note:'NOTE: One of ~16 Senior Associate intern reqs PwC posted 2 Oct across Advisory, Consulting, Technology and Sustainability.'},
 
 {cat:'consulting', track:'other', company:'PwC', title:'Senior Associate Intern — Technology Consulting, Summer 2027',
  location:'Multiple US offices',
  deadline:'2026-11-18', status:'confirmed', url:'https://jobs-us.pwc.com/us/en/search-results?keywords=Technology%20Consulting%20Senior%20Associate%20Intern',
  why:'Enterprise technology delivery — cloud, ERP and digital transformation. Tech-adjacent but implementation-weighted.',
- note:'DEADLINE FLAG: CONFIRMED 18 Nov 2026.'},
+ note:''},
 
 {cat:'consulting', track:'other', company:'PwC', title:'Senior Associate Intern — Sustainability, Summer 2027',
  location:'Multiple US offices',
  deadline:'2026-11-18', status:'confirmed', url:'https://jobs-us.pwc.com/us/en/search-results?keywords=Sustainability%20Senior%20Associate%20Intern',
  why:'Climate and sustainability advisory — reporting, decarbonisation and transition planning.',
- note:'DEADLINE FLAG: CONFIRMED 18 Nov 2026.'},
+ note:''},
 
 {cat:'consulting', track:'other', company:'Deloitte', title:'Summer Associate — Human Capital',
  location:'Multiple US offices',
@@ -374,7 +374,7 @@ const SEED_ROLES = [
 
 {cat:'consulting', track:'other', company:'EY', title:'EY-Parthenon — Transactions / Transaction Strategy MBA Intern 2027',
  location:'New York, Boston, Chicago, Dallas',
- deadline:'2026-11-29', status:'rolling', url:'https://usearlycareers.ey.com/business/job_type/intern/39053/5',
+ deadline:'2026-11-29', status:'rolling', url:'https://usearlycareers.ey.com/job/los-angeles/usa-ey-parthenon-strategy-and-execution-summer-consultant-2027/39053/101558399744',
  why:'Transaction support and due diligence — deal-side analytical work rather than corporate strategy formulation.',
  note:'DEADLINE FLAG: EY’s MBA window is 5 Oct – 29 Nov 2026\nNOTE: ESTIMATED. transactions work is referenced in EY’s internship offerings but a specific 2027 req was not confirmed.'},
 
@@ -449,13 +449,13 @@ const SEED_ROLES = [
 
 {cat:'tech', track:'strategy', company:'Adobe', title:'2027 MBA Intern — Corporate Strategy',
  location:'San Francisco, CA',
- deadline:'2026-11-30', status:'rolling', url:'https://adobe.wd5.myworkdayjobs.com/external_experienced/job/San-Francisco/XMLNAME-2027-MBA-Intern---Corporate-Strategy_R172471',
+ deadline:'2026-11-30', status:'rolling', url:'https://careers.adobe.com/us/en/job/R172471/2027-MBA-Intern-Corporate-Strategy',
  why:'Outstanding fit. The posting describes product strategy development, technological trend assessment, competitive landscape analysis, future positioning of Adobe, and build/buy/partner evaluation of market adjacencies — and says the intern owns and drives a project focused on Adobe’s long-term growth.',
  note:'VERIFIED: 5 Nov 2026\nROUTE: Confirm with the recruiter before investing in the application.\nDEADLINE FLAG: Live on Adobe’s careers site, posted 14 Oct 2026, no published close date. The PMM sibling req already closed 26 Oct.\nELIGIBILITY FLAG: One aggregator says graduation Dec 2026–Jun 2027 (which would EXCLUDE you), another says Dec 2027–Jun 2028 (which includes you), and Adobe’s own page shows no window.\nPAY: Pay $37–$50/hr.'},
 
 {cat:'tech', track:'strategy', company:'Adobe', title:'2027 MBA Intern — Product Manager',
  location:'San Jose · San Francisco, CA',
- deadline:'2026-11-30', status:'rolling', url:'https://adobe.wd5.myworkdayjobs.com/external_university?q=MBA%20intern',
+ deadline:'2026-11-30', status:'rolling', url:'https://careers.adobe.com/us/en/job/R172261/2027-MBA-Intern-Product-Manager',
  why:'Product management with strategy ownership across Adobe’s Creative Cloud and Document Cloud lines.',
  note:'DEADLINE FLAG: Posted 30 Sep 2026 alongside the PMM req that has since closed — treat as time-sensitive.\nNOTE: ESTIMATED.'},
 
@@ -473,9 +473,9 @@ const SEED_ROLES = [
 
 {cat:'tech', track:'strategy', company:'Amazon', title:'2027 MBA Leadership Development Program (MLDP) Intern',
  location:'Seattle, WA (relocation assistance provided)',
- deadline:'2026-11-06', status:'confirmed', url:'https://cdo.som.yale.edu/jobs/amazon-com-2027-mba-leadership-development-program-mldp-intern/',
+ deadline:'2026-11-06', status:'confirmed', url:'https://amazon.jobs/en/jobs/10491603/2027-mba-leadership-development-program-mldp-intern',
  why:'The intern OWNS A STRATEGIC BUSINESS PROBLEM WITH REAL P&L IMPACT and presents the solution to senior leadership — business strategy in about as pure a form as exists on this dashboard. Cross-functional, AI-enabled, data-driven work, and the 12-week internship feeds a three-year full-time MLDP rotation programme.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: DUE TOMORROW, 6 NOV, and it is ON THE YALE SOM CDO BOARD.\nELIGIBILITY: Opened 5 Aug 2026. Eligibility fits you exactly: enrolled MBA, graduation 1 Dec 2027–30 Jun 2028.\nPAY: Pay $121,200–$163,900. Prefers 3+ yrs full-time experience and a retail / e-commerce / supply-chain background.\nNOTE: Cohorts start 24 May or 14 Jun 2027.'},
+ note:'VERIFIED: 5 Nov 2026\nROUTE: ON THE YALE SOM CDO BOARD.\nELIGIBILITY: Opened 5 Aug 2026. Eligibility fits you exactly: enrolled MBA, graduation 1 Dec 2027–30 Jun 2028.\nPAY: Pay $121,200–$163,900. Prefers 3+ yrs full-time experience and a retail / e-commerce / supply-chain background.\nNOTE: Cohorts start 24 May or 14 Jun 2027.'},
 
 {cat:'tech', track:'strategy', company:'Amazon', title:'Product Manager Technical (PMT) Intern — Summer 2027',
  location:'Seattle, WA',
@@ -493,7 +493,7 @@ const SEED_ROLES = [
  location:'Multiple US offices',
  deadline:'2026-11-13', status:'confirmed', url:'https://www.google.com/about/careers/applications/jobs/results/121103710599160518-mba-intern-summer-2027',
  why:'Umbrella req routing into Business Strategy, Product Management, Corporate Development, Finance, Marketing, Operations, People Ops and Sales — a single door onto three of your four target functions, with team preference expressed in the application. THIS is the US req.',
- note:'VERIFIED: 10 Nov 2026\nROUTE: Handshake lists Chicago and Seattle.\nDEADLINE FLAG: DEADLINE IS 13 NOV, NOT 6 NOV. The live Google listing now reads "complete your application by November 13, 2026"; my 5 Nov reading of 6 Nov was either wrong or has since been extended. The US MBA Intern, Summer 2027 posting states applications are due by 6 Nov 2026, with interviews rolling through Q1 2027. My earlier 31 Dec estimate was badly wrong. Google warns reqs also close early once projects fill.\nELIGIBILITY: Requires attending an MBA programme IN THE US\nNOTE: STILL OPEN as of today. 12 consecutive weeks May–Sep 2027.'},
+ note:'VERIFIED: 10 Nov 2026\nROUTE: Handshake lists Chicago and Seattle.\nROUTE: Requires attending an MBA programme IN THE US. Interviews run rolling through Q1 2027, and Google warns reqs can close early once projects fill.\nELIGIBILITY: Requires attending an MBA programme IN THE US\nNOTE: STILL OPEN as of today. 12 consecutive weeks May–Sep 2027.'},
 
 {cat:'tech', track:'strategy', company:'Meta', title:'Business Product Strategy Intern (MBA)',
  location:'Menlo Park, CA',
@@ -503,7 +503,7 @@ const SEED_ROLES = [
 
 {cat:'tech', track:'strategy', company:'Atlassian', title:'Product Management Intern — Summer 2027',
  location:'San Francisco, CA · Remote (US)',
- deadline:'2027-01-15', status:'rolling', url:'https://www.atlassian.com/company/careers/all-jobs?search=intern',
+ deadline:'2027-01-15', status:'rolling', url:'https://www.atlassian.com/company/careers/details/10992806',
  why:'One of the few genuinely remote-eligible product roles on this dashboard, which matters given remote is fine for you. Atlassian PM work is strategy-heavy and well documented.',
  note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: The Summer 2027 PM intern req was confirmed open as of 9 Oct 2026, rolling.\nNOTE: 12 weeks, May/June to Aug/Sep 2027.'},
 
@@ -621,7 +621,7 @@ const SEED_ROLES = [
  location:'Santa Clara, CA',
  deadline:'2027-05-01', status:'confirmed', url:'https://jobs.nvidia.com/careers/job/893398510317',
  why:'Positioning and technical marketing for NVIDIA’s AI infrastructure line. Marketing rather than strategy — but it is the NVIDIA MBA req whose status is least in doubt.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: POSTED 3 NOV 2026, the freshest NVIDIA MBA req, with a validThrough date of 1 May 2027 on NVIDIA’s own careers page. If the PM reqs turn out to have closed, this is the live NVIDIA door.'},
+ note:'VERIFIED: 5 Nov 2026\nNOTE: Posted 3 Nov 2026, the freshest NVIDIA MBA req. If the PM reqs turn out to have closed, this is the live NVIDIA door.'},
 
 {cat:'tech', track:'other', company:'Nvidia', title:'Product Marketing Management MBA Intern — Summer 2027',
  location:'Santa Clara, CA',
@@ -655,7 +655,7 @@ const SEED_ROLES = [
 
 {cat:'tech', track:'other', company:'Adobe', title:'2027 MBA Intern — Product Marketing Manager',
  location:'San Jose · San Francisco, CA',
- deadline:'2026-10-26', status:'closed', url:'https://adobe.wd5.myworkdayjobs.com/external_university?q=MBA%20intern',
+ deadline:'2026-10-26', status:'closed', url:'https://careers.adobe.com/us/en/job/R172261/2027-MBA-Intern-Product-Manager',
  why:'Go-to-market and positioning strategy for Adobe’s Creative and Document Cloud lines.',
  note:'DEADLINE FLAG: CLOSED — apply-by 26 Oct 2026. Posted 30 Sep.\nNOTE: Noted so you know Adobe’s PMM door has shut.'},
 

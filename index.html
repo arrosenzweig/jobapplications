@@ -347,7 +347,7 @@
 
 <!-- Bump ?v= whenever data.js changes, otherwise browsers serve a stale cached copy
      and the dashboard silently shows old deadlines. -->
-<script src="data.js?v=20261110-142453-1dcc362"></script>
+<script src="data.js?v=20261111-090658-f4e76c7"></script>
 <script>
 /* Countdowns run off the real current date, not the research date, so
    "in N days" stays correct every time the dashboard is opened.
@@ -545,9 +545,13 @@ function dlCell(r){
 /* Notes are stored as newline-separated "LABEL: text" fields. Render each on its
    own line with the label called out, so the eye can jump to the one it wants. */
 const FLAG_LABELS = /FLAG|CONFLICT|CORRECTION/;
-function noteHTML(note){
+function noteHTML(note, status){
   if(!note) return '';
-  const rows = String(note).split('\n').map(l=>l.trim()).filter(Boolean).map(line=>{
+  let lines = String(note).split('\n').map(l=>l.trim()).filter(Boolean);
+  // A confirmed deadline is already stated in the Deadline column — restating it
+  // in the research notes is noise, so the flag is dropped for confirmed roles.
+  if(status === 'confirmed') lines = lines.filter(l => !/^DEADLINE FLAG:/.test(l));
+  const rows = lines.map(line=>{
     const m = line.match(/^([A-Z][A-Z0-9 &/-]*):\s*([\s\S]*)$/);
     if(!m) return `<span class="nline"><span class="ntext">${esc(line)}</span></span>`;
     const cls = FLAG_LABELS.test(m[1]) ? 'nlabel flag' : 'nlabel';
@@ -625,7 +629,7 @@ function render(tab){
       <td class="loc">${esc(r.location)}</td>
       <td class="research">${r.needsResearch
           ? '<span class="needres">Needs research — ask Claude to fill this in</span>'
-          : noteHTML(r.note)}${
+          : noteHTML(r.note, r.status)}${
         r.viaBoard?'<span class="via" title="No stable direct link exists for this req — the link opens the board">via board</span>':''}${
         r.mynote?`<span class="mynote">${esc(r.mynote)}</span>`:''}</td>
       <td>${manageBtns(r)}</td>
@@ -954,7 +958,7 @@ if(SANDBOX){
    fetched with a cache-busting query (and no-store) so it always comes from the
    network; if its build id differs from the one baked into this file, the page
    says so and offers a reload. Reloading loses nothing — state is in localStorage. */
-const BUILD_ID = '20261110-142453-1dcc362';
+const BUILD_ID = '20261111-090658-f4e76c7';
 async function checkForUpdate(){
   try{
     const res = await fetch('version.json?t=' + Date.now(), {cache:'no-store'});
