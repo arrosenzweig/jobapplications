@@ -281,9 +281,27 @@ const SEED_ROLES = [
 
 {cat:'consulting', track:'strategy', company:'EY', title:'Consulting — Supply Chain & Operations MBA Intern, Summer 2027',
  location:'Washington DC, New York, Chicago, Dallas, Austin',
- deadline:'2026-11-29', status:'confirmed', url:'https://usearlycareers.ey.com/search-jobs?k=1740057',
+ deadline:'2026-11-29', status:'confirmed', url:'https://usearlycareers.ey.com/job/los-angeles/usa-consulting-supply-chain-and-operations-mba-intern-summer-2027/39053/100310764224',
  why:'Your operations-strategy slot: operating-model redesign, network and supply-chain strategy, and cost transformation. Strategy work, not execution/PMO.',
  note:'VERIFIED: 13 Nov 2026 — re-confirmed. Req 1740057 live on the EY board.\nDEADLINE FLAG: 29 Nov per ey.com/us/application-review (MBA intern window, Consulting and EY-Parthenon).\nROUTE: Counts against EY’s two-applications-per-six-months cap — see the EY-Parthenon row.\nNOTE: Counts against EY’s two-applications-per-six-months cap — see the EY-Parthenon row.'},
+
+{cat:'consulting', track:'other', company:'EY', title:'Consulting — Finance MBA Intern, Summer 2027',
+ location:'Multiple US offices — Los Angeles listed',
+ deadline:'2026-11-29', status:'confirmed', url:'https://usearlycareers.ey.com/job/los-angeles/usa-consulting-finance-mba-intern-summer-2027/39053/100313490736',
+ why:'Finance transformation — operating-model redesign for CFO organisations. Strategy-adjacent but functionally finance.',
+ note:'VERIFIED: 13 Nov 2026 — NEW. Live on the EY early-careers board.\nDEADLINE FLAG: 29 Nov per ey.com/us/application-review (MBA intern window for Consulting and EY-Parthenon, opens 5 Oct).\nROUTE: Req 1740038.\nNOTE: Counts against EY’s cap of TWO applications per six months. You already have EY-Parthenon Strategy & Execution and Supply Chain & Operations on the board — adding these does not raise the limit, it only widens the choice of which two to use.'},
+
+{cat:'consulting', track:'other', company:'EY', title:'Consulting — Health MBA Intern, Summer 2027',
+ location:'Multiple US offices — Los Angeles listed',
+ deadline:'2026-11-29', status:'confirmed', url:'https://usearlycareers.ey.com/job/los-angeles/usa-consulting-health-mba-intern-summer-2027/39053/100313490720',
+ why:'Provider and payer consulting — care-model and operations work. Sector-specific rather than generalist strategy.',
+ note:'VERIFIED: 13 Nov 2026 — NEW. Live on the EY early-careers board.\nDEADLINE FLAG: 29 Nov per ey.com/us/application-review (MBA intern window for Consulting and EY-Parthenon, opens 5 Oct).\nROUTE: Req 1740054.\nNOTE: Counts against EY’s cap of TWO applications per six months. You already have EY-Parthenon Strategy & Execution and Supply Chain & Operations on the board — adding these does not raise the limit, it only widens the choice of which two to use.'},
+
+{cat:'consulting', track:'other', company:'EY', title:'Consulting — Transformation Architecture & Delivery MBA Intern, Summer 2027',
+ location:'Multiple US offices — Los Angeles listed',
+ deadline:'2026-11-29', status:'confirmed', url:'https://usearlycareers.ey.com/job/los-angeles/usa-consulting-transformation-architecture-and-delivery-mba-intern-summer-2027/39053/100310763808',
+ why:'Large-programme transformation design and delivery. Execution-weighted — the least strategy-like of the EY MBA reqs.',
+ note:'VERIFIED: 13 Nov 2026 — NEW. Live on the EY early-careers board.\nDEADLINE FLAG: 29 Nov per ey.com/us/application-review (MBA intern window for Consulting and EY-Parthenon, opens 5 Oct).\nROUTE: Req 1740060.\nNOTE: Counts against EY’s cap of TWO applications per six months. You already have EY-Parthenon Strategy & Execution and Supply Chain & Operations on the board — adding these does not raise the limit, it only widens the choice of which two to use.'},
 
 {cat:'consulting', track:'strategy', company:'McKinsey', title:'Summer Associate (MBA), Summer 2027',
  location:'All US offices — Miami and Los Angeles both available',
@@ -405,6 +423,42 @@ const SEED_ROLES = [
  deadline:'2026-11-18', status:'confirmed', url:'https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/IL-Rosemont/Management-Consulting---Operations---Supply-Chain-Solutions-Senior-Associate-Intern---Summer-2027_765632WD',
  why:'Operations and transformation delivery rather than strategy formulation. Same MBA eligibility and pay band as the Strategy& reqs, broader client mix.',
  note:'VERIFIED: 13 Nov 2026 — re-confirmed live on Workday (req 765632WD).\nDEADLINE FLAG: endDate 2026-11-18. The jobs-us.pwc.com mirror wrongly shows this req as filled; apply on Workday.\nNOTE: One of ~16 Senior Associate intern reqs PwC posted 2 Oct across Advisory, Consulting, Technology and Sustainability.'},
+
+{cat:'consulting', track:'other', company:'PwC', title:'Delivering Deal Value (DDV) Senior Associate Intern, Summer 2027',
+ location:'Rosemont IL (req base) — staffed across US offices',
+ deadline:'2026-11-18', status:'confirmed', url:'https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/IL-Rosemont/Delivering-Deal-Value--DDV--Senior-Associate-Intern---Summer-2027_765612WD',
+ why:'Operational due diligence and post-merger value capture — the delivery side of deals rather than the strategy case, but the closest Consideration row to operations strategy.',
+ note:'VERIFIED: 13 Nov 2026 — NEW. Workday startDate 2 Oct 2026, endDate 18 Nov 2026.\nROUTE: Req 765612WD. Apply on Workday — the jobs-us.pwc.com mirror reports PwC intern reqs as filled when they are not.\nNOTE: Consideration row — not one of your four target functions. PwC closes reqs by office as offers are accepted, so a posting can shut before 18 Nov.'},
+
+{cat:'consulting', track:'other', company:'PwC', title:'Accelerated Solutions Consulting Senior Associate Intern, Summer 2027',
+ location:'Rosemont IL (req base) — staffed across US offices',
+ deadline:'2026-11-18', status:'confirmed', url:'https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/IL-Rosemont/Accelerated-Solutions-Consulting-Senior-Associate-Intern---Summer-2027_765697WD',
+ why:'Rapid-delivery consulting pods working on scoped client problems. Broad exposure, lighter on strategy framing than Strategy&.',
+ note:'VERIFIED: 13 Nov 2026 — NEW. Workday startDate 2 Oct 2026, endDate 18 Nov 2026.\nROUTE: Req 765697WD. Apply on Workday — the jobs-us.pwc.com mirror reports PwC intern reqs as filled when they are not.\nNOTE: Consideration row — not one of your four target functions. PwC closes reqs by office as offers are accepted, so a posting can shut before 18 Nov.'},
+
+{cat:'consulting', track:'other', company:'PwC', title:'Management Consulting — Sales, Service and Marketing Senior Associate Intern, Summer 2027',
+ location:'Rosemont IL (req base) — staffed across US offices',
+ deadline:'2026-11-18', status:'confirmed', url:'https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/IL-Rosemont/Management-Consulting---Sales--Service-and-Marketing-Senior-Associate-Intern---Summer-2027_765704WD',
+ why:'Commercial operating-model work — go-to-market design, sales effectiveness and customer experience. Business-strategy adjacent.',
+ note:'VERIFIED: 13 Nov 2026 — NEW. Workday startDate 2 Oct 2026, endDate 18 Nov 2026.\nROUTE: Req 765704WD. Apply on Workday — the jobs-us.pwc.com mirror reports PwC intern reqs as filled when they are not.\nNOTE: Consideration row — not one of your four target functions. PwC closes reqs by office as offers are accepted, so a posting can shut before 18 Nov.'},
+
+{cat:'consulting', track:'other', company:'PwC', title:'Management Consulting — Sector Operations, Financial Services Senior Associate Intern, Summer 2027',
+ location:'Rosemont IL (req base) — staffed across US offices',
+ deadline:'2026-11-18', status:'confirmed', url:'https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/IL-Rosemont/Management-Consulting---Sector-Operations---Financial-Services-Senior-Associate-Intern---Summer-2027_765388WD',
+ why:'Operations transformation for banks and insurers. Sector-specific, delivery-weighted.',
+ note:'VERIFIED: 13 Nov 2026 — NEW. Workday startDate 2 Oct 2026, endDate 18 Nov 2026.\nROUTE: Req 765388WD. Apply on Workday — the jobs-us.pwc.com mirror reports PwC intern reqs as filled when they are not.\nNOTE: Consideration row — not one of your four target functions. PwC closes reqs by office as offers are accepted, so a posting can shut before 18 Nov.'},
+
+{cat:'consulting', track:'other', company:'PwC', title:'Management Consulting — Sector Operations, Health Senior Associate Intern, Summer 2027',
+ location:'Rosemont IL (req base) — staffed across US offices',
+ deadline:'2026-11-18', status:'confirmed', url:'https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/IL-Rosemont/Management-Consulting---Sector-Operations---Health-Senior-Associate-Intern---Summer-2027_765646WD',
+ why:'Operations transformation for providers and payers. Sector-specific, delivery-weighted.',
+ note:'VERIFIED: 13 Nov 2026 — NEW. Workday startDate 2 Oct 2026, endDate 18 Nov 2026.\nROUTE: Req 765646WD. Apply on Workday — the jobs-us.pwc.com mirror reports PwC intern reqs as filled when they are not.\nNOTE: Consideration row — not one of your four target functions. PwC closes reqs by office as offers are accepted, so a posting can shut before 18 Nov.'},
+
+{cat:'consulting', track:'other', company:'PwC', title:'Sustainability CP&I Senior Associate Intern, Summer 2027',
+ location:'Rosemont IL (req base) — staffed across US offices',
+ deadline:'2026-11-18', status:'confirmed', url:'https://pwc.wd3.myworkdayjobs.com/en-US/US_Entry_Level_Careers/job/IL-Rosemont/Sustainability-CP-I---Senior-Associate-Intern---Summer-2027_765702WD',
+ why:'Climate, policy and infrastructure advisory. Distinct from the Strategy& Sustainability Strategy req already on your board — this one sits outside Strategy&, so the casework is less strategy-led.',
+ note:'VERIFIED: 13 Nov 2026 — NEW. Workday startDate 2 Oct 2026, endDate 18 Nov 2026.\nROUTE: Req 765702WD. Apply on Workday — the jobs-us.pwc.com mirror reports PwC intern reqs as filled when they are not.\nNOTE: Consideration row — not one of your four target functions. PwC closes reqs by office as offers are accepted, so a posting can shut before 18 Nov.'},
 
 {cat:'consulting', track:'other', company:'PwC', title:'Senior Associate Intern — Technology Consulting, Summer 2027',
  location:'Multiple US offices',
