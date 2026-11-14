@@ -275,6 +275,7 @@
   <button class="tab" data-p="tech"       role="tab" aria-selected="false">Tech<span class="cnt" id="c-tech"></span></button>
   <button class="tab" data-p="consulting" role="tab" aria-selected="false">Consulting<span class="cnt" id="c-consulting"></span></button>
   <button class="tab" data-p="other"      role="tab" aria-selected="false">Other Industries<span class="cnt" id="c-other"></span></button>
+  <button class="tab" data-p="rolling"    role="tab" aria-selected="false">Rolling<span class="cnt" id="c-rolling"></span></button>
   <button class="tab" data-p="consider"   role="tab" aria-selected="false">Consideration<span class="cnt" id="c-consider"></span></button>
   <button class="tab" data-p="applied"    role="tab" aria-selected="false">Applied<span class="cnt" id="c-applied"></span></button>
   <button class="tab" data-p="archived"   role="tab" aria-selected="false">Archived<span class="cnt" id="c-archived"></span></button>
@@ -285,6 +286,7 @@
 <section class="panel"        id="p-tech"       role="tabpanel"></section>
 <section class="panel"        id="p-consulting" role="tabpanel"></section>
 <section class="panel"        id="p-other"      role="tabpanel"></section>
+<section class="panel"        id="p-rolling"    role="tabpanel"></section>
 <section class="panel"        id="p-consider"   role="tabpanel"></section>
 <section class="panel"        id="p-applied"    role="tabpanel"></section>
 <section class="panel"        id="p-archived"   role="tabpanel"></section>
@@ -371,14 +373,14 @@
 
 <!-- Bump ?v= whenever data.js changes, otherwise browsers serve a stale cached copy
      and the dashboard silently shows old deadlines. -->
-<script src="data.js?v=20261113-150010-b7d5efe"></script>
+<script src="data.js?v=20261114-170812-15d65d4"></script>
 <script>
 /* Countdowns run off the real current date, not the research date, so
    "in N days" stays correct every time the dashboard is opened.
    BUILD_DATE is only the timestamp of the seed research. */
 const TODAY = (()=>{ const d=new Date(); d.setHours(0,0,0,0); return d; })();
 const CATS = {tech:'Tech', consulting:'Consulting', other:'Other Industries'};
-const ROLE_TABS = ['all','tech','consulting','other','consider','applied','archived'];
+const ROLE_TABS = ['all','tech','consulting','other','rolling','consider','applied','archived'];
 const CAT_TABS  = ['tech','consulting','other'];   // what "All Roles" pools together
 const APPLIED_DELAY_MS = 5*60*1000;                // grace period before a submitted role moves
 const PENDING_CO = 'Pending research';             // company placeholder for URL-only additions
@@ -461,8 +463,19 @@ function build(){
 
 /* ================= panels ================= */
 function panelHTML(tab){
-  const isC = tab==='consider', isA = tab==='archived', isAll = tab==='all', isApp = tab==='applied';
-  const lead = isAll ? `<div class="note"><b>Every live role, all industries in one list.</b>
+  const isC = tab==='consider', isA = tab==='archived', isAll = tab==='all', isApp = tab==='applied',
+        isRoll = tab==='rolling';
+  const lead = isRoll ? `<div class="note"><b>Roles that take applications on a rolling basis.</b>
+      No published close date — the employer reviews as applications arrive and stops when the seats are
+      gone. Every date shown here is <b>my estimate</b>, not something the employer committed to, so treat
+      the countdown as a prompt rather than a deadline.
+      <br>These roles are also in their industry tabs; this is a view across them, not a separate bucket.
+      Because a rolling role can close early and without warning, the ones you care about are worth doing
+      first — a confirmed deadline will still be there next week, and these may not be.
+      <br>A rolling role whose estimated date passes is flagged
+      <span class="pill p-urgent">Estimate lapsed — verify</span> and deliberately stays put rather than
+      auto-archiving, since a wrong guess must never hide a live role.</div>`
+    : isAll ? `<div class="note"><b>Every live role, all industries in one list.</b>
       Tech, consulting and other industries pooled and sorted by deadline. Consideration roles are
       excluded until you press <b>Add to my list</b> on them; submitted roles move to <b>Applied</b>.</div>`
     : isApp ? `<div class="note"><b>Roles you have submitted.</b> Ticking <b>Submitted</b> starts a
@@ -490,13 +503,13 @@ function panelHTML(tab){
   <div class="controls">
     <input type="search" id="q-${tab}" placeholder="Search company, title, location, notes…">
     <select id="co-${tab}"><option value="">All companies</option></select>
-    ${isA||isC?'':`<select id="st-${tab}">
+    ${isA||isC||isRoll?'':`<select id="st-${tab}">
       <option value="">Any status</option>
       <option value="confirmed">Confirmed deadline</option>
       <option value="rolling">Rolling / estimated</option>
       <option value="notposted">Not yet posted</option>
     </select>`}
-    ${isC||isAll||isApp?`<select id="cat-${tab}"><option value="">All industries</option>
+    ${isC||isAll||isApp||isRoll?`<select id="cat-${tab}"><option value="">All industries</option>
       <option value="tech">Tech</option><option value="consulting">Consulting</option>
       <option value="other">Other industries</option></select>`:''}
     ${isA||isC||isApp?'':`<select id="ap-${tab}">
@@ -604,14 +617,20 @@ function manageBtns(r){
 /* ================= render ================= */
 function render(tab){
   const g = id => document.getElementById(id+'-'+tab);
-  const isC = tab==='consider', isA = tab==='archived', isAll = tab==='all', isApp = tab==='applied';
+  const isC = tab==='consider', isA = tab==='archived', isAll = tab==='all', isApp = tab==='applied',
+        isRoll = tab==='rolling';
   const q = g('q').value.trim().toLowerCase();
   const co = g('co').value;
   const st = g('st') ? g('st').value : '';
   const ap = g('ap') ? g('ap').value : '';
   const catF = g('cat') ? g('cat').value : '';
   const showDism = g('dism') ? g('dism').checked : false;
-  const inPool = r => isAll ? CAT_TABS.includes(r.tab) : r.tab===tab;
+  // "All Roles" and "Rolling" are views across the industry tabs rather than
+  // destinations of their own — a rolling role still lives in Tech or Consulting,
+  // it is only gathered here as well.
+  const inPool = r => isAll  ? CAT_TABS.includes(r.tab)
+                    : isRoll ? CAT_TABS.includes(r.tab) && r.status === 'rolling'
+                    : r.tab===tab;
 
   let rows = ROLES.filter(r=>{
     if(isC){ if(r.tab!=='consider' && !(showDism && (r.decision==='dismissed' || r.expiredUnadopted))) return false; }
@@ -643,7 +662,7 @@ function render(tab){
       <td class="ctr"><input type="checkbox" class="appchk sub" data-f="submitted" data-key="${esc(r.key)}" ${r.app.submitted?'checked':''} title="Submitted application"></td>`}
       <td>${dlCell(r)}${badge(r)}</td>
       <td class="co">${esc(r.company)}${
-        isAll||isApp?`<span class="tag cat">${esc(CATS[r.cat]||r.cat)}</span>`:''}${
+        isAll||isApp||isRoll?`<span class="tag cat">${esc(CATS[r.cat]||r.cat)}</span>`:''}${
         r.decision==='added'?'<span class="tag added">added</span>':''}${
         !r._seed?'<span class="tag mine">mine</span>':''}</td>
       <td class="title"><a href="${esc(r.url)}" target="_blank" rel="noopener noreferrer"
@@ -684,6 +703,12 @@ function render(tab){
     <div class="stat is-ok"><div class="n">${pool.length}</div><div class="l">Applied</div></div>
     <div class="stat"><div class="n">${CAT_TABS.reduce((n,c)=>n+ROLES.filter(r=>r.tab===c).length,0)}</div><div class="l">Still to do</div></div>
     ${CAT_TABS.map(c=>`<div class="stat"><div class="n">${pool.filter(r=>r.cat===c).length}</div><div class="l">${CATS[c]}</div></div>`).join('')}`
+  : isRoll ? `
+    <div class="stat"><div class="n">${pool.length}</div><div class="l">Rolling roles</div></div>
+    <div class="stat is-urgent"><div class="n">${pool.filter(r=>r.lapsedGuess).length}</div><div class="l">Estimate lapsed</div></div>
+    <div class="stat"><div class="n">${soon.length}</div><div class="l">Est. within 30 days</div></div>
+    ${CAT_TABS.map(c=>`<div class="stat"><div class="n">${pool.filter(r=>r.cat===c).length}</div><div class="l">${CATS[c]}</div></div>`).join('')}
+    <div class="stat"><div class="n">${started}</div><div class="l">Started</div></div>`
   : `
     <div class="stat"><div class="n">${pool.length}</div><div class="l">Live roles</div></div>
     <div class="stat is-urgent"><div class="n">${pool.filter(r=>r.deadline && days(r.deadline)>=0 && days(r.deadline)<=3).length}</div><div class="l">Due in 3 days</div></div>
@@ -1001,7 +1026,7 @@ if(SANDBOX){
    fetched with a cache-busting query (and no-store) so it always comes from the
    network; if its build id differs from the one baked into this file, the page
    says so and offers a reload. Reloading loses nothing — state is in localStorage. */
-const BUILD_ID = '20261113-150010-b7d5efe';
+const BUILD_ID = '20261114-170812-15d65d4';
 async function checkForUpdate(){
   try{
     const res = await fetch('version.json?t=' + Date.now(), {cache:'no-store'});

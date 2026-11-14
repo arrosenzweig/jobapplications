@@ -355,7 +355,7 @@ const SEED_ROLES = [
  location:'Boston, New York, Chicago, San Francisco, Los Angeles, DC',
  deadline:'2026-11-20', status:'confirmed', url:'https://www.analysisgroup.com/careers/career-path/summer-associate-intern/',
  why:'Economic consulting with generalist and healthcare tracks. Analytical litigation and health-economics work rather than corporate strategy — on your list, but off-target for product and operations strategy.',
- note:'VERIFIED: 13 Nov 2026 — could NOT re-confirm the 20 Nov date from a primary source today.\nDEADLINE FLAG: CONFLICT. The 20 Nov date is carried over from the 11 Nov check. Analysis Group publishes no deadline on its own careers pages, and a third-party mirror of the Boston Summer Associate Intern posting shows 1 DEC 2026 instead. Treat 20 Nov as the safe date and confirm with associate.recruiter@analysisgroup.com.\nELIGIBILITY: MBA or Master’s graduating by summer 2028, which fits you.\nNOTE: The firm keeps reviewing on a rolling basis after the posted date. A separate full-time Associate posting closed 23 Sep 2026.'},
+ note:'VERIFIED: 14 Nov 2026 — date STILL UNCONFIRMED after a second attempt.\nDEADLINE FLAG: CONFLICT, UNRESOLVED. Analysis Group publishes no deadline on any reachable page. Its applications run through an iCIMS portal (professionalcareers-analysisgroup.icims.com) that renders results in the browser only, so the posting text cannot be read automatically. Several independent mirrors of the firm’s own Summer Associate Intern (MBA/MA) posting — Boston, LA, Chicago and DC — all say 1 DEC 2026, which is 11 days later than the 20 Nov on this row.\nROUTE: KEEPING 20 NOV as the working date on purpose: it is the earlier of the two, and applying early costs nothing while applying late costs the role. Confirm the real date with associate.recruiter@analysisgroup.com or the SOM CDO, then correct this row.'},
 
 {cat:'consulting', track:'strategy', company:'Charles River Associates', title:'Summer 2027 Consulting Intern (Economics and other tracks)',
  location:'Boston, New York, Chicago, DC, Los Angeles',
@@ -798,23 +798,23 @@ const SEED_ROLES = [
 /* ============================================================
    OTHER INDUSTRIES
    ============================================================ */
-{cat:'other', track:'strategy', company:'Epic Games', title:'Product Management Intern (MBA) — Summer 2027',
+{cat:'other', track:'strategy', company:'Epic Games', title:'Product Management Intern — Summer 2027',
  location:'Cary, NC',
- deadline:'2026-11-30', status:'rolling', url:'https://www.epicgames.com/site/careers?search=product%20management%20intern',
- why:'MBA-gated and explicitly asks for prior product, strategy, analytics or consulting experience — they are recruiting the consultant-to-PM profile directly. Also asks for hands-on AI/LLM tooling experience.',
- note:'VERIFIED: 13 Nov 2026 — COULD NOT CHECK — Epic’s careers site returned 403 to automated requests.\nDEADLINE FLAG: Unverified since 5 Nov. 30 Nov is an estimate. Epic blocks automated checks, so this row needs a manual look.\nNOTE: EARLIER THAN I ESTIMATED.'},
+ deadline:'2026-11-30', status:'rolling', url:'https://www.epicgames.com/careers/jobs/6161289004?gh_jid=6161289004',
+ why:'Fortnite Engagement Team — product strategy and engagement insight for Battle Royale and the shooter modes, inside Epic’s Growth org. Real product-strategy work, but open to interns generally rather than reserved for MBAs.',
+ note:'VERIFIED: 14 Nov 2026 — live. Reached Epic through its Greenhouse board after the careers site kept returning 403.\nCORRECTION: NOT MBA-gated. The posting carries no MBA requirement and the title has no (MBA) tag — the earlier "MBA-gated, asks for consulting experience" note was wrong. You can still apply; expect a wider applicant pool than an MBA-reserved req.\nDEADLINE FLAG: NO close date published. Epic states only "a flexible start date in 2027" and fills these when matched. 30 Nov is an estimate.\nROUTE: Greenhouse req 6161289004, Cary NC. The epicgames.com careers search blocks automated checks, so this row is verified against the Greenhouse board instead.'},
 
 {cat:'other', track:'strategy', company:'Epic Games', title:'Business and Marketing Strategy Intern (MBA) — Summer 2027',
  location:'Morrisville, NC',
- deadline:'2026-11-30', status:'rolling', url:'https://www.epicgames.com/site/careers?search=business%20marketing%20strategy',
+ deadline:'2026-11-30', status:'closed', url:'https://www.epicgames.com/site/careers?search=business%20marketing%20strategy',
  why:'Business strategy in the title, MBA enrollment in marketing/strategy/analytics required. Commercial strategy for Fortnite and the wider Epic ecosystem.',
- note:'VERIFIED: 13 Nov 2026 — COULD NOT CHECK — Epic’s careers site returned 403 to automated requests.\nDEADLINE FLAG: Unverified since 5 Nov. 30 Nov is an estimate. Epic blocks automated checks, so this row needs a manual look.'},
+ note:'VERIFIED: 14 Nov 2026 — GONE.\nNOTE: Checked all 142 live reqs on Epic’s Greenhouse board. There is no Business and Marketing Strategy Intern req, and the only marketing roles are two Director postings plus the Player Marketing Intern (MBA) already on this board. The req has been pulled or filled.\nROUTE: If you want this seat, Player Marketing Intern (MBA) is the nearest live Epic equivalent — it sits in Consideration.'},
 
 {cat:'other', track:'other', company:'Epic Games', title:'Player Marketing Intern (MBA) — Summer 2027',
  location:'Cary, NC',
- deadline:'2027-03-07', status:'confirmed', url:'https://www.epicgames.com/site/careers?search=player%20marketing',
+ deadline:'2027-03-07', status:'confirmed', url:'https://www.epicgames.com/careers/jobs/6218206004?gh_jid=6218206004',
  why:'Player-facing marketing for Fortnite and the Epic ecosystem. Marketing rather than strategy, but MBA-gated and with by far the longest runway of any Epic req.',
- note:'VERIFIED: 11 Nov 2026\nNOTE: FOUND TODAY — not previously on the board. The only Epic req with an explicit expiry date (7 Mar 2027); the two strategy reqs have none and are filled when matched.'},
+ note:'VERIFIED: 14 Nov 2026 — live on Epic’s Greenhouse board, last updated by Epic on 6 Nov 2026.\nROUTE: Greenhouse req 6218206004, Cary NC. Swapped off the careers-board search onto the direct req.\nNOTE: The only Epic req with a stated expiry (7 Mar 2027), and now the ONLY live Epic MBA req — the Business and Marketing Strategy intern has gone. Marketing rather than strategy, so it stays in Consideration until you add it.'},
 
 {cat:'other', track:'strategy', company:'Universal', title:'NBCUniversal Summer 2027 Internship — strategy tracks',
  location:'New York · Universal City, CA (Los Angeles) · Orlando, FL',

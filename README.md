@@ -15,6 +15,7 @@ school career boards **5 November 2026** — those rows carry a note beginning `
 |---|---|
 | **All Roles** | Every live role, all industries pooled, sorted by deadline. The default view |
 | **Tech** / **Consulting** / **Other Industries** | The same roles split by industry |
+| **Rolling** | Roles with no published close date, reviewed as applications arrive. A view across the industry tabs, not a separate bucket — a rolling role stays in Tech or Consulting too. Every date shown there is an estimate |
 | **Consideration** | Non-strategy MBA internships at the same companies. Excluded from All Roles until you press **Add to my list** |
 | **Applied** | Roles you have submitted. Ticking **Submitted** moves a role here and out of its industry tab |
 | **Archived** | Closed roles, auto-moved the day after a confirmed deadline passes |
