@@ -137,6 +137,8 @@ const BASE_COMPANIES = [
 /* Companies searched where no MBA internship of any kind was found.
    Shown only on the Company Job Boards tab so you keep the link. */
 const NO_ROLE_COMPANIES = {
+  'Salesforce':'Summer 2027 Intern - Pro Serve Strategy & Change Management (JR366222, Chicago) went live 18 Nov 2026 and reads like a perfect fit, but the posting requires an UNDERGRADUATE degree in progress with Spring 2028 graduation. Not MBA-eligible. Salesforce has 34 Summer 2027 intern reqs and no MBA track. Checked 19 Nov 2026.',
+  'ServiceNow':'832 live postings on SmartRecruiters, no MBA or business internship of any kind for Summer 2027. Checked 19 Nov 2026.',
   'Databricks':'Product Management Intern (Summer 2027) is live in Bellevue, Mountain View and San Francisco, but the posting requires a bachelor’s or master’s in COMPUTER SCIENCE or a related engineering field. Not MBA-eligible as written. Checked 18 Nov 2026.',
   'Airbnb':'A Strategic Finance & Analytics Intern (MBA) req for Summer 2027 existed and is now GONE — Greenhouse and careers.airbnb.com both 404 on it as of 18 Nov 2026. Aggregators still show it, which is why it looks open. Live Airbnb interns are Paris, Milan and Barcelona marketing/sales plus one SWE req. Watch for the MBA req to repost.',
   'Palantir':'30 US reqs live on Lever 6 Oct 2026, all engineering and forward-deployed. Palantir hires business staff as FDEs, not strategy interns.',
@@ -155,7 +157,7 @@ const NO_ROLE_COMPANIES = {
   'Zoom':'No internship results at all for the 2027 cycle. Research gap.',
   'LinkedIn':'No 2027 results surfaced. Historically runs an MBA product / business-ops internship. Research gap — worth a direct check.',
   'HubSpot':'Grouped with ServiceNow and Intuit as fall PM-intern hirers, but no req details found. Remote-friendly.',
-  'Workday':'A PM Intern req in Pleasanton surfaced via an aggregator but could not be verified and MBA eligibility is unknown.',
+  'Workday':'Board read directly 19 Nov 2026 via its own Workday tenant: the only product roles live are Senior and Principal Product Manager, both full-time. No intern req of any kind. The Pleasanton PM Intern an aggregator showed earlier does not exist on the board.',
   'Anthropic':'No traditional internship. Student track is a research fellowship (Jan 2027 cohort), not an MBA seat.',
   'KPMG':'Summer/Fall 2027 reqs are Audit, Tech Assurance and Advisory Associate, aimed at undergrads and MAcc. Route in is KPMG Strategy directly.',
   'West Monroe':'67 postings live but the programme is explicitly for college juniors. Not MBA-eligible as structured.',
@@ -387,11 +389,11 @@ const SEED_ROLES = [
  why:'Enterprise-wide strategy: growth agendas, operating model and enterprise transformation for large clients. Business-strategy core.',
  note:'NOTE: Seats go much earlier than the posted date, on a rolling basis.\nPAY: ~$3,750/week.'},
 
-{cat:'consulting', track:'strategy', company:'L.E.K. Consulting', title:'Summer Associate 2027 (MBA)',
- location:'Boston, New York, Chicago, San Francisco, Los Angeles',
- deadline:'', status:'rolling', url:'https://www.lek.com/careers/apply-now',
+{cat:'consulting', track:'strategy', company:'L.E.K. Consulting', title:'U.S. Summer Consultant 2027 (first-year MBA)',
+ location:'Boston, Chicago, Houston, New York, Los Angeles, San Francisco',
+ deadline:'2026-11-30', status:'confirmed', url:'https://cdo.som.yale.edu/jobs/lek-l-e-k-consulting-2027-u-s-summer-consultant/',
  why:'Strategy boutique with real strength in commercial due diligence, growth strategy and healthcare. LA is a major L.E.K. office, which matters for your location preference.',
- note:'VERIFIED: 5 Nov 2026\nDEADLINE FLAG: The MBA Summer Consultant (US) posting opened 3 Aug 2026 with NO published closing date. My earlier read that the window had passed was wrong — that was the UNDERGRAD Summer Associate track, which closed ~15 Sep. L.E.K. sets deadlines per school in the fall, so get the SOM date from the CDO.\nNOTE: GOOD NEWS, STILL OPEN.'},
+ note:'VERIFIED: 19 Nov 2026 — DEADLINE FOUND. This row previously had NO deadline at all and the wrong title.\nCORRECTION: The MBA role is Summer CONSULTANT, not Summer Associate. Summer Associate is the undergraduate track and its window closed 15 Sep 2026 — applying to that one would have been a wasted application.\nROUTE: Posted on the Yale SOM CDO board, which states "Expires on November 30, 2026" for a first-year MBA graduating in 2028. Apply through the CDO link or lek.com directly; selection includes an online assessment.\nNOTE: Los Angeles is one of the six offices. Confirm the exact cut-off time with the CDO — third-party trackers say 11:55pm PT but the CDO listing gives no time.'},
 
 {cat:'consulting', track:'strategy', company:'Alvarez & Marsal', title:'Summer 2027 Associate — Public Sector Services',
  location:'Washington, DC',
@@ -894,11 +896,11 @@ const SEED_ROLES = [
  why:'Player-facing marketing for Fortnite and the Epic ecosystem. Marketing rather than strategy, but MBA-gated and with by far the longest runway of any Epic req.',
  note:'VERIFIED: 15 Nov 2026 — live on Epic’s Greenhouse board, last updated by Epic on 6 Nov 2026.\nROUTE: Greenhouse req 6218206004, Cary NC. Swapped off the careers-board search onto the direct req.\nNOTE: The only Epic req with a stated expiry (7 Mar 2027), and now the ONLY live Epic MBA req — the Business and Marketing Strategy intern has gone. Marketing rather than strategy, so it stays in Consideration until you add it.'},
 
-{cat:'other', track:'strategy', company:'Universal', title:'NBCUniversal Summer 2027 Internship — strategy tracks',
- location:'New York · Universal City, CA (Los Angeles) · Orlando, FL',
- deadline:'2027-01-15', status:'notposted', url:'https://www.nbcunicareers.com/early-careers',
- why:'NBCU runs strategy and corporate development placements inside the summer programme. Universal City is LA and Universal Destinations sits in Orlando — two of your geography boxes.',
- note:'DEADLINE FLAG: NOT YET POSTED for US MBA. Virtual info sessions are the week of 9 Nov 2026 for the Jun–Aug 2027 programme — ATTEND ONE.\nELIGIBILITY: Eligibility reads "actively enrolled in a degree-granting program", which does include MBA confirm on the call.'},
+{cat:'other', track:'strategy', company:'Universal', title:'International Strategy & Ad Sales Internship — Summer 2027',
+ location:'Miami, FL (on-site, 40 hrs/week)',
+ deadline:'2026-12-04', status:'confirmed', url:'https://jobs.smartrecruiters.com/NBCUniversal3/744000160645039-nbcuniversal-international-strategy-ad-sales-internships-summer-2027',
+ why:'Business strategy, advertising and audience insight for NBCUniversal’s international business, based in Miami — one of the two cities you want to be in.',
+ note:'VERIFIED: 19 Nov 2026 — OPEN NOW. This row was marked Not posted with a 31 Jan estimate; both were wrong.\nROUTE: Req REF39073G on NBCUniversal’s SmartRecruiters board. 108 Summer 2027 intern reqs are live across the company.\nELIGIBILITY FLAG: READ THIS BEFORE SPENDING TIME. The programme is pitched at undergraduates — "class standing of sophomore or above", "junior or above preferred". An MBA satisfies "actively enrolled in a degree-granting program", and Spring 2027 graduates are excluded while you graduate in 2028, so you are eligible. But this is not an MBA-reserved seat and the pay will reflect that.\nNOTE: Deadline is 4 Dec 2026 at 11:59pm ET, from NBCUniversal’s own programme page, and reqs may close earlier on volume. Programme runs 7 Jun — 13 Aug 2027. Other US business tracks in the same window: Platform Distribution & Partnerships (Business Development), Universal City and New York; Franchise, Products & Partnerships (Strategy), Universal City; Program Management & Operations, three cities.'},
 
 {cat:'other', track:'strategy', company:'Expedia', title:'MBA Product Management Intern, Summer 2027',
  location:'Seattle, WA',
@@ -966,17 +968,23 @@ const SEED_ROLES = [
    Added 11 Nov 2026 so the openings surface here rather than being remembered.
    Every deadline below is a PLACEHOLDER: what is known is roughly when each
    programme OPENS, which each note states. ---- */
-{cat:'other', track:'strategy', company:'Tapestry', title:'MBA Strategy & Consumer Insights Intern, Summer 2027',
- location:'New York, NY — Hudson Yards (hybrid)',
- deadline:'2027-01-31', status:'notposted', url:'https://careers.tapestry.com/search/',
- why:'The closest fit to your four target functions anywhere in luxury — an explicitly MBA-level strategy and consumer-insights internship at Coach/Kate Spade/Stuart Weitzman’s parent. Programme runs 1 Jun – 6 Aug 2027.',
- note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: NOT YET OPEN as of 11 Nov. Both the 2025 and 2026 cycles opened in LATE NOVEMBER with a MID-JANUARY deadline, so the window should open within weeks. The date on this row is a placeholder.\nROUTE: Applications include a HireVue video — one submitted without it is automatically rejected.\nROUTE: Watch careers.tapestry.com weekly from late November.\nPAY: Listings disagree — $30/hr on the careers page, $20/hr in one guide.'},
+{cat:'other', track:'strategy', company:'Tapestry', title:'MBA Intern, Strategy — Summer 2027',
+ location:'New York, NY — Hudson Yards, hybrid Tue—Thu',
+ deadline:'2026-12-04', status:'confirmed', url:'https://tapestry.wd108.myworkdayjobs.com/Tapestry_Careers/job/New-York-New-York-USA-Corporate-Headquarters/MBA-Intern--Strategy_JR20544-1',
+ why:'Corporate strategy for the Coach and Kate Spade house — the one explicitly MBA-reserved strategy seat anywhere in luxury, and the role the earlier research singled out as the closest fit in the sector.',
+ note:'VERIFIED: 19 Nov 2026 — NOW OPEN. Posted to Tapestry’s Workday board on 17 Nov 2026, two days before this check.\nROUTE: Req JR20544, New York. This row previously pointed at the Tapestry careers search and was marked Not posted — it is now the direct req.\nPAY: $30/hour. Programme runs 1 Jun — 6 Aug 2027, hybrid Tuesday to Thursday at Hudson Yards.\nELIGIBILITY: Open to undergraduate students, master’s students and recent graduates, but the title is MBA Intern and the seat is MBA-targeted.\nNOTE: Deadline is quoted from the posting itself — "please submit your online application by December 4th, 2026". Aggregators are circulating 28 Nov and 1 Jan for this req; both are wrong. Shortlisted candidates get a HireVue video interview.'},
+
+{cat:'other', track:'other', company:'Tapestry', title:'MBA Intern, E-Commerce — Summer 2027',
+ location:'New York, NY — Hudson Yards, hybrid Tue—Thu',
+ deadline:'2026-12-04', status:'confirmed', url:'https://tapestry.wd108.myworkdayjobs.com/Tapestry_Careers/job/New-York-New-York-USA-Corporate-Headquarters/MBA-Intern--E-Commerce_JR20545',
+ why:'Digital commerce for Coach and Kate Spade — merchandising, site experience and online growth. Commercial rather than strategy, but the same programme and the same deadline as the Strategy req.',
+ note:'VERIFIED: 19 Nov 2026 — NEW. Posted 17 Nov 2026 on Tapestry’s Workday board.\nROUTE: Req JR20545, New York. Separate application from the Strategy req — you can submit both.\nPAY: $30/hour, 1 Jun — 6 Aug 2027.\nNOTE: Consideration row. Deadline quoted from the posting: "please submit your online application by December 4th, 2026".'},
 
 {cat:'other', track:'strategy', company:'Nordstrom', title:'Global Leader Program — MBA Internship, Summer 2027',
  location:'Seattle, WA — corporate headquarters',
  deadline:'2027-01-31', status:'notposted', url:'https://careers.nordstrom.com/',
  why:'MBA internship placing interns on projects across merchandising, finance, supply chain and strategy, with a path to full-time. Strategy is a named placement area, which is why this sits in the strategy track.',
- note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: NOT YET OPEN for Summer 2027 — date shown is a placeholder.\nELIGIBILITY: Minimum 3.0 cumulative GPA; details come from a third-party listing rather than Nordstrom directly, so confirm.'},
+ note:'VERIFIED: 11 Nov 2026\nDEADLINE FLAG: NOT YET OPEN for Summer 2027 — date shown is a placeholder.\nELIGIBILITY: Minimum 3.0 cumulative GPA; details come from a third-party listing rather than Nordstrom directly, so confirm.\nNOTE: 19 Nov 2026 — board read directly on Nordstrom’s own Workday tenant (nordstrom.wd501). No Summer 2027 intern req of any kind is live yet, so the Global Leader Program has not opened. Nothing is late.'},
 
 {cat:'other', track:'other', company:'Estée Lauder Companies', title:'CEO Global Presidential Program — Presidential Management Associate (MBA)',
  location:'New York, NY',
