@@ -264,6 +264,14 @@
   </div>
 </div>
 
+<div class="note" id="pendingOut" style="display:none">
+  <div id="pendingMsg"></div>
+  <textarea id="pendingText" readonly rows="4" spellcheck="false"
+    style="width:100%;margin-top:8px;font:12px ui-monospace,Consolas,monospace;padding:8px;
+           border:1px solid var(--line);border-radius:6px;background:#fff;color:inherit"></textarea>
+  <button class="btn" id="pendingHide" style="margin-top:8px">Done</button>
+</div>
+
 <div class="update-banner" id="updateBanner">
   <span>A newer version of this dashboard is published. Your saved checkboxes and notes are kept.</span>
   <button id="updateReload" type="button">Reload now</button>
@@ -374,7 +382,7 @@
 
 <!-- Bump ?v= whenever data.js changes, otherwise browsers serve a stale cached copy
      and the dashboard silently shows old deadlines. -->
-<script src="data.js?v=20261124-233300-22238b1"></script>
+<script src="data.js?v=20261124-235153-9e9e67f"></script>
 <script>
 /* Countdowns run off the real current date, not the research date, so
    "in N days" stays correct every time the dashboard is opened.
@@ -844,13 +852,14 @@ function openModal(key){
   document.getElementById('mSub').innerHTML = adding
     ? 'Paste the link to the posting. That is all you need to enter — the row is parked as '+
       '<b>Needs research</b> until the details are filled in.<br>' +
-      'Saving also drops <b>pending-roles.json</b> into your Downloads folder. That file is how the '+
-      'research agent sees the link — it runs on a timer, fills in company, title, location, deadline '+
-      'and eligibility, and sorts the role into its tab. The row then replaces this placeholder on your '+
-      'next reload.<br>' +
-      '<b>If your browser blocks the download, nothing is lost</b> — the link stays parked here. Use '+
-      '<b>Send pending to research</b> at the top of the page to try again, or just ask Claude to '+
-      '"research the pending roles".'
+      'Saving also hands the link over for research: it goes on your clipboard, appears as selectable '+
+      'text at the top of the page, and is offered as <b>pending-roles.json</b> for your Downloads '+
+      'folder. Any one of those is enough — paste the links to Claude, or let the hourly task pick up '+
+      'the file. Company, title, location, deadline and eligibility get filled in, the role is sorted '+
+      'into its tab, and the real row replaces this placeholder on your next reload.<br>' +
+      '<b>Browsers often refuse a download you did not click for, and refuse it silently</b>, which is '+
+      'why the clipboard is the main route and the file is only a convenience. Use '+
+      '<b>Send pending to research</b> at the top of the page to hand them over again at any time.'
     : 'Everything here is editable. Changes save in this browser.';
   document.querySelectorAll('#ovl .f').forEach(el=>{
     el.style.display = (adding && !el.classList.contains('url-only')) ? 'none' : '';
@@ -905,11 +914,24 @@ document.getElementById('mSave').addEventListener('click',()=>{
    queue to your Downloads folder as pending-roles.json. A scheduled task reads
    the newest copy of that file, researches each posting and writes the finished
    row into data.js. Only the pending stubs go in the file — your checkboxes,
-   notes and decisions never leave the browser. */
+   notes and decisions never leave the browser.
+
+   A browser can refuse a download it did not see you ask for, and it refuses it
+   SILENTLY — no error to catch, no file, no warning. That happened on the first
+   real run, so the download is no longer the only way out. Every hand-off also
+   puts the links on your clipboard and shows them as selectable text, and the
+   panel says plainly which of the three worked. */
+function pendingList(){
+  return S.custom.filter(r=>r.company===PENDING_CO).map(r=>r.url).filter(Boolean);
+}
 function dropPendingFile(){
-  const pending = S.custom.filter(r=>r.company===PENDING_CO)
-                          .map(r=>({url:r.url, added:r.note, key:keyOf(r)}));
-  const payload = {generated:new Date().toISOString(), source:'mba-tracker', pending};
+  const urls = pendingList();
+  if(!urls.length) return;
+  const payload = {generated:new Date().toISOString(), source:'mba-tracker',
+                   pending:S.custom.filter(r=>r.company===PENDING_CO)
+                                   .map(r=>({url:r.url, added:r.note, key:keyOf(r)}))};
+  const text = urls.join('\n');
+  let saved = false;
   try{
     const blob = new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
     const a = document.createElement('a');
@@ -917,7 +939,27 @@ function dropPendingFile(){
     a.download = 'pending-roles.json';
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(()=>URL.revokeObjectURL(a.href), 2000);
-  }catch(e){ /* a blocked download must never cost you the parked link */ }
+    saved = true;                      // the attempt was made; the browser may still refuse it
+  }catch(e){ saved = false; }
+  const box = document.getElementById('pendingOut');
+  const ta  = document.getElementById('pendingText');
+  ta.value = text;
+  box.style.display = 'block';
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text)
+      .then(()=>setPendingMsg(urls.length, saved, true))
+      .catch(()=>setPendingMsg(urls.length, saved, false));
+  } else setPendingMsg(urls.length, saved, false);
+  ta.focus(); ta.select();
+}
+function setPendingMsg(n, saved, copied){
+  document.getElementById('pendingMsg').innerHTML =
+    '<b>'+n+' link'+(n===1?'':'s')+' ready for research.</b> ' +
+    (copied ? 'Copied to your clipboard — paste them to Claude and say "research these".'
+            : 'Select the text below and copy it, then paste it to Claude.') +
+    (saved ? ' A copy was also offered as <b>pending-roles.json</b> for your Downloads folder; '+
+             'if your browser blocked it, no matter — the clipboard is enough.'
+           : ' The file download was refused by your browser.');
 }
 document.getElementById('mDelete').addEventListener('click',()=>{
   if(!editingKey) return;
@@ -931,6 +973,9 @@ document.getElementById('mDelete').addEventListener('click',()=>{
 
 /* ================= export / import / reset ================= */
 document.getElementById('sendPending').addEventListener('click',dropPendingFile);
+document.getElementById('pendingHide').addEventListener('click',()=>{
+  document.getElementById('pendingOut').style.display='none';
+});
 document.getElementById('exportBtn').addEventListener('click',()=>{
   const blob = new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
   const a = document.createElement('a');
@@ -1083,7 +1128,7 @@ if(SANDBOX){
    fetched with a cache-busting query (and no-store) so it always comes from the
    network; if its build id differs from the one baked into this file, the page
    says so and offers a reload. Reloading loses nothing — state is in localStorage. */
-const BUILD_ID = '20261124-233300-22238b1';
+const BUILD_ID = '20261124-235153-9e9e67f';
 async function checkForUpdate(){
   try{
     const res = await fetch('version.json?t=' + Date.now(), {cache:'no-store'});
