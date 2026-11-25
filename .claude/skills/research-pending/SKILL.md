@@ -27,8 +27,16 @@ Get-ChildItem "$env:USERPROFILE\Downloads\pending-roles*.json" | Sort-Object Las
 
 Each entry has `url`, `added` (the stub's note, with the date she added it) and `key`.
 
-**Skip any URL already in `data.js`** — compare on the URL, trailing slash and case ignored.
-A role she parked twice is one role.
+**Skip any URL already in `data.js`** — compare on the URL, trailing slash and case ignored,
+**and on the requisition number** (`JR2029639`, `?jobid=109572`, `/job/10163693/`). The same job
+is served at several addresses: Workday gives a req with and without an `/en-US/` segment and
+adds a `-1` when it republishes, so two different-looking links are often one role. Check both
+ways before writing a row, or the board grows duplicates.
+
+A **403 from a Workday posting does not mean the job is gone.** It means that URL is gone. When
+NVIDIA republishes a req it changes the path, and the old one returns `permission denied` while
+the job is still open — this cost a wrong "closed" on two live roles on 24 Nov 2026. Always
+confirm by searching the board for the requisition NUMBER before closing anything.
 
 ## 2. Research each link
 

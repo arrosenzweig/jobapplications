@@ -382,7 +382,7 @@
 
 <!-- Bump ?v= whenever data.js changes, otherwise browsers serve a stale cached copy
      and the dashboard silently shows old deadlines. -->
-<script src="data.js?v=20261124-235153-9e9e67f"></script>
+<script src="data.js?v=20261125-000048-ab522d8"></script>
 <script>
 /* Countdowns run off the real current date, not the research date, so
    "in N days" stays correct every time the dashboard is opened.
@@ -427,11 +427,24 @@ function build(){
      row ever goes away the stub reappears exactly as you left it. A note you wrote
      on the stub is carried across to the real row. */
   const normUrl = u => String(u||'').trim().replace(/\/+$/,'').toLowerCase();
+  /* The same job is often reachable at more than one address — Workday alone
+     serves a req with and without an /en-US/ segment, and re-slugs it with a
+     "-1" when it is republished. Matching the URL string alone would leave your
+     parked stub sitting beside the finished row as though it were a second job,
+     so a requisition number, where the link carries one, is matched too. */
+  const idOf = u => {
+    const s = String(u||'');
+    const m = s.match(/JR\d{5,}/i) || s.match(/[?&]jobid=(\d{4,})/i)
+              || s.match(/\/job\/(\d{5,})(?:\/|$)/);
+    return m ? String(m[1]||m[0]).toUpperCase() : '';
+  };
   const seedByUrl = new Map(seed.filter(r=>r.url).map(r=>[normUrl(r.url), r.key]));
+  const seedById  = new Map(seed.filter(r=>idOf(r.url)).map(r=>[idOf(r.url), r.key]));
   const adopted = new Map();                       // stub key -> researched role key
   const custom = S.custom.map(r=>({...r, _seed:false, key:keyOf(r)}))
     .filter(r=>{
-      const hit = r.company===PENDING_CO && r.url && seedByUrl.get(normUrl(r.url));
+      if(r.company!==PENDING_CO || !r.url) return true;
+      const hit = seedByUrl.get(normUrl(r.url)) || (idOf(r.url) && seedById.get(idOf(r.url)));
       if(hit) adopted.set(r.key, hit);
       return !hit;
     });
@@ -1128,7 +1141,7 @@ if(SANDBOX){
    fetched with a cache-busting query (and no-store) so it always comes from the
    network; if its build id differs from the one baked into this file, the page
    says so and offers a reload. Reloading loses nothing — state is in localStorage. */
-const BUILD_ID = '20261124-235153-9e9e67f';
+const BUILD_ID = '20261125-000048-ab522d8';
 async function checkForUpdate(){
   try{
     const res = await fetch('version.json?t=' + Date.now(), {cache:'no-store'});
