@@ -382,7 +382,7 @@
 
 <!-- Bump ?v= whenever data.js changes, otherwise browsers serve a stale cached copy
      and the dashboard silently shows old deadlines. -->
-<script src="data.js?v=20261125-000048-ab522d8"></script>
+<script src="data.js?v=20261125-010912-584ceda"></script>
 <script>
 /* Countdowns run off the real current date, not the research date, so
    "in N days" stays correct every time the dashboard is opened.
@@ -1141,7 +1141,7 @@ if(SANDBOX){
    fetched with a cache-busting query (and no-store) so it always comes from the
    network; if its build id differs from the one baked into this file, the page
    says so and offers a reload. Reloading loses nothing — state is in localStorage. */
-const BUILD_ID = '20261125-000048-ab522d8';
+const BUILD_ID = '20261125-010912-584ceda';
 async function checkForUpdate(){
   try{
     const res = await fetch('version.json?t=' + Date.now(), {cache:'no-store'});
@@ -1152,9 +1152,22 @@ async function checkForUpdate(){
     }
   }catch(e){ /* offline or opened from file:// — nothing to do */ }
 }
+/* location.reload(true) does NOT force a fresh fetch — the boolean has been
+   ignored by browsers for years, so the reload could serve the same cached
+   index.html and the banner would simply come back, which is exactly what it
+   did. Navigating to a URL the cache has never seen is the only reliable way
+   to get the new file. The marker is stripped again below so the address bar
+   does not slowly fill up with them. */
 document.getElementById('updateReload').addEventListener('click',()=>{
-  location.reload(true);
+  const u = new URL(location.href);
+  u.searchParams.set('build', Date.now());
+  location.replace(u.toString());
 });
+(()=>{ const u = new URL(location.href);
+  if(u.searchParams.has('build')){
+    u.searchParams.delete('build');
+    history.replaceState(null,'',u.pathname + (u.search||'') + u.hash);
+  } })();
 checkForUpdate();
 setInterval(checkForUpdate, 5*60*1000);
 
