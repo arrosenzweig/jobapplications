@@ -52,6 +52,41 @@ have changed. Work this order and stop when you have spent a reasonable effort:
    full list is covered weekly. Skip companies listed in `NO_ROLE_COMPANIES` unless a
    week has passed since their last check.
 
+   **A company you could not read is NOT a company you checked.** This is the rule that
+   was missing, and it cost real roles: Netflix's LA strategy MBA req, Disney's product
+   req and IBM 130063 were all missed because a board that could not be read was quietly
+   treated as a board with nothing on it. Every rotation must end by saying, in the
+   report, which companies could not be read and why.
+
+   If a board cannot be read automatically and the reason looks permanent, add it to
+   `MANUAL_BOARDS` in `data.js` with the evidence and the date. The dashboard then shows
+   "Check this one yourself" on that company's card and counts them at the top of the
+   Company Job Boards tab, so the blind spot is visible to her instead of invisible to
+   both of us. If a board later becomes readable, take it out of that list.
+
+### Finding a board that resists you
+
+Work down this ladder before concluding anything:
+
+1. **Fingerprint the careers page.** Fetch it and grep for `myworkdayjobs.com`,
+   `greenhouse.io`, `lever.co`, `smartrecruiters`, `icims.com`, `phenompeople`,
+   `ashbyhq`, `avature.net`, `eightfold`, `oraclecloud.com`. The ATS decides the recipe.
+2. **Use the ATS API, not the careers page.** Workday `POST /wday/cxs/<org>/<site>/jobs`;
+   Greenhouse `boards-api.greenhouse.io/v1/boards/<slug>/jobs`; SmartRecruiters
+   `api.smartrecruiters.com/v1/companies/<slug>/postings`; Lever
+   `api.lever.co/v0/postings/<slug>`; Eightfold `/api/apply/v2/jobs?domain=…`; Phenom
+   `/search-jobs/results?…&SearchType=5`.
+3. **Look for a sibling host.** Analysis Group's MBA roles were invisible for three
+   checks because they sit on `associatecareers-analysisgroup.icims.com`, a different
+   host from the one the row pointed at. One company often runs several boards, split by
+   track.
+4. **Verify a requisition by NUMBER, never by a stored link.** A 403 or 404 on a saved
+   URL means that address is gone. Workday re-slugs a republished req with a `-1` suffix;
+   reading the 403 as a withdrawal wrongly closed two live NVIDIA roles on 24 Nov 2026.
+5. **If it still cannot be read, say so and record it.** Never infer "nothing posted"
+   from silence, and never fill a field from an aggregator. Aggregators showed Airbnb,
+   Bain and Workday reqs as open after the employer had pulled them.
+
 Screen on the **job description**, not just the title. A "Summer Associate" or "FP&A"
 title may still be strategy work; a "strategy" title may not be.
 

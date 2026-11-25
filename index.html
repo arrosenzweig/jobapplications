@@ -382,7 +382,7 @@
 
 <!-- Bump ?v= whenever data.js changes, otherwise browsers serve a stale cached copy
      and the dashboard silently shows old deadlines. -->
-<script src="data.js?v=20261125-125853-2c14d73"></script>
+<script src="data.js?v=20261125-155620-cb07de8"></script>
 <script>
 /* Countdowns run off the real current date, not the research date, so
    "in N days" stays correct every time the dashboard is opened.
@@ -1019,6 +1019,8 @@ document.getElementById('importFile').addEventListener('change',e=>{
    recoverable, and it has already cost real data once. Import a backup instead. */
 
 /* ================= companies ================= */
+/* Tolerate an older data.js that predates the register, so the page never breaks. */
+const MANUAL = (typeof MANUAL_BOARDS !== 'undefined' && MANUAL_BOARDS) ? MANUAL_BOARDS : {};
 function coCard(c, dim){
   const hits = ROLES.filter(r=>r.company.toLowerCase()===c.name.toLowerCase());
   const live = hits.filter(r=>CAT_TABS.includes(r.tab));
@@ -1035,10 +1037,15 @@ function coCard(c, dim){
   } else if(noRole)     label = `<span class="norole">${esc(noRole)}</span>`;
   else if(hits.length)  label = 'All roles archived or decided';
   else                  label = 'Not yet searched';
+  /* A board nobody can read automatically is a blind spot, and an invisible blind
+     spot is the dangerous kind — roles were missed behind these. Say so on the card. */
+  const manual = MANUAL[c.name];
   return `<div class="cocard ${c.user?'user':''} ${dim?'dim':''}">
       <h3>${esc(c.name)}${c.user?'<span class="mineflag">added</span>':''}</h3>
       <div><span class="sector ${esc(c.cat)}">${esc(CATS[c.cat]||'Other')}</span></div>
       <div class="hits">${label}</div>
+      ${manual?`<div class="hits"><span class="needres">Check this one yourself — cannot be read
+        automatically</span><br><span class="count">${esc(manual)}</span></div>`:''}
       <div class="row">
         ${c.url?`<a class="lnk" href="${esc(c.url)}" target="_blank" rel="noopener noreferrer">Job board ↗</a>`
                :'<span class="count">No board URL yet</span>'}
@@ -1078,9 +1085,11 @@ function renderCos(){
     (!live.length && !none.length ? '<div class="empty">No companies match that filter.</div>' : '');
 
   const cEl = document.getElementById('coCount');
-  if(cEl) cEl.textContent = (live.length+none.length)===total
+  const manualCount = all.filter(c=>MANUAL[c.name]).length;
+  if(cEl) cEl.textContent = ((live.length+none.length)===total
     ? `${total} companies · ${live.length} with roles`
-    : `${live.length+none.length} of ${total} companies`;
+    : `${live.length+none.length} of ${total} companies`)
+    + (manualCount ? ` · ${manualCount} you must check yourself` : '');
   document.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',()=>{
     S.companies = S.companies.filter(x=>x.name!==b.dataset.del); save(); renderCos();
   }));
@@ -1143,7 +1152,7 @@ if(SANDBOX){
    fetched with a cache-busting query (and no-store) so it always comes from the
    network; if its build id differs from the one baked into this file, the page
    says so and offers a reload. Reloading loses nothing — state is in localStorage. */
-const BUILD_ID = '20261125-125853-2c14d73';
+const BUILD_ID = '20261125-155620-cb07de8';
 async function checkForUpdate(){
   try{
     const res = await fetch('version.json?t=' + Date.now(), {cache:'no-store'});

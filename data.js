@@ -609,6 +609,12 @@ const SEED_ROLES = [
  why:'THE closest match on this entire dashboard. The posting literally promises "a defined product strategy project with a named business owner and a measurable outcome — a market sizing analysis, a build/buy/partner assessment, a roadmap prioritization framework, or a competitive assessment that leadership will act on." Product strategy and business strategy in one req.',
  note:'VERIFIED: 24 Nov 2026 — re-confirmed live on the Intuit board.\nDEADLINE FLAG: No close date published; 30 Nov is an estimate. 98 Intuit MBA reqs are live.\nELIGIBILITY: REQUIRES 2+ YEARS OF PRE-MBA WORK EXPERIENCE, with management consulting strongly preferred — which plays directly to your profile.\nPAY: Pay $48–$57/hr.\nNOTE: Job ID 23011. 12 weeks, two cohorts: 17 May–6 Aug or 14 Jun–3 Sep 2027.\nNOTE: 24 Nov 2026 — re-checked. Intuit’s own posting still resolves and is accepting applications.'},
 
+{cat:'tech', track:'strategy', company:'IBM', title:'Job 130063 — posting could not be read',
+ location:'Unknown — not stated anywhere reachable',
+ deadline:'', status:'rolling', url:'https://careers.ibm.com/en_US/careers/JobDetail?jobId=130063',
+ why:'Added from a link you sent. What this role actually is has NOT been established — everything below is about the link, not the job.',
+ note:'VERIFIED: 25 Nov 2026 — NOT VERIFIED, and this row says so rather than guessing.\nNOTE: READ THIS FIRST. I could not open this posting. IBM runs its board on Avature, which answers automated requests with HTTP 202 and an empty body. Four other routes were tried and all failed: careers.ibm.com/job/130063 returns 404, www.ibm.com/careers/search/130063 returns IBM’s generic careers landing page with no posting in it, the widgets and api endpoints 404, and a fetch-only agent got the same empty 202. The browser available here cannot reach external sites. So the title, location, deadline, eligibility and pay on this row are UNKNOWN, not pending.\nDEADLINE FLAG: NO DATE. None is guessed. The row is left undated on purpose.\nNEXT: Open the link yourself and paste the page text into the chat — the whole thing is fine, formatting does not matter. The row gets filled in properly within a minute. That is the only route that works for IBM.\nNOTE: IBM was never swept. It sat on the known coverage-gap list from 18 Nov 2026 and the gap was reported but never closed. That is why this role was not already here, and it is the same reason the Netflix LA strategy req and the Disney product req were missed.'},
+
 {cat:'tech', track:'other', company:'Intuit', title:'Summer 2027: MBA Product Marketing Intern, Mid Market',
  location:'Mountain View, CA',
  deadline:'2026-11-30', status:'rolling', url:'https://jobs.intuit.com/job/mountain-view/summer-2027-mba-product-marketing-intern-mid-market/27595/101313096032',
@@ -1052,3 +1058,22 @@ const SEED_ROLES = [
  why:'The broader NBCU summer programme spans marketing, finance, communications and content roles alongside the strategy placements.',
  note:'DEADLINE FLAG: NOT YET POSTED.\nELIGIBILITY: Same info sessions the week of 9 Nov 2026 cover all tracks — one call tells you which are MBA-eligible.'}
 ];
+
+/* Boards that CANNOT be checked automatically from here, with the evidence and the
+   date it was established. This list exists because a blind spot nobody can see is
+   worse than one everybody can: these companies were being skipped silently, and
+   real roles were missed behind them — Netflix, Disney, IBM. A company here needs
+   YOUR eyes, or a job alert set up in your own account. Anything not on this list
+   is read directly from the employer's own board. */
+const MANUAL_BOARDS = {
+  'IBM':'Avature. Answers automated requests with HTTP 202 and an empty body; every other IBM route 404s or serves a generic landing page. Confirmed 25 Nov 2026.',
+  'Delta':'Avature, and careers.delta.com does not resolve at all (NXDOMAIN). Confirmed 15 Nov 2026.',
+  'Disney':'Migrated to join.disneycareers.com, JavaScript-only. Its own search returns an empty result even for terms that must match. A single job URL can be read if you have it. Confirmed 24 Nov 2026.',
+  'Meta':'metacareers.com returns a 25-character page shell to a fetch; listings never render. Confirmed 24 Nov 2026.',
+  'Spotify':'lifeatspotify.com renders its job count and listings in the browser only. Its student page also says 2027 information is still "coming soon". Confirmed 24 Nov 2026.',
+  'Microsoft':'Its search API host does not resolve from here (connection fails, not a refusal). Confirmed 24 Nov 2026.',
+  'Apple':'jobs.apple.com search API returns 401 User Unauthorized. Confirmed 18 Nov 2026.',
+  'Amazon':'amazon.jobs carries no recognisable ATS and renders results in the browser only. Confirmed 25 Nov 2026.',
+  'Intel':'Careers site returns HTTP 403 to automated requests. Confirmed 25 Nov 2026.',
+  'Tesla':'Careers site returns HTTP 403 to automated requests. Confirmed 25 Nov 2026.'
+};
