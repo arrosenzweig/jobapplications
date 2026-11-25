@@ -1,2 +1,6 @@
-.claude/
+# Local app settings stay out of the repo, but the research instructions the
+# scheduled task follows must travel with it — DAILY-CHECK.md points at them,
+# and a fresh clone without them cannot run the intake at all.
+.claude/*
+!.claude/skills/
 .DS_Store
