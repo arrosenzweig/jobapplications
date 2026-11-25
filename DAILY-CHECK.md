@@ -33,6 +33,12 @@ If the working directory no longer exists, skip all file edits and report findin
 Do not attempt all 101 company boards every day — that is wasteful and most will not
 have changed. Work this order and stop when you have spent a reasonable effort:
 
+0. **Clear the pending queue first.** If `C:\Users\AlexandriaRosenzweig\Downloads\pending-roles.json`
+   holds a URL that is not yet in `data.js`, she has parked a role from the dashboard's
+   **+ Add role** button and is waiting on it. Follow
+   `.claude/skills/research-pending/SKILL.md`. An hourly task (`tracker-pending-intake`)
+   normally handles this, but it only runs while the Claude app is open, so the queue can
+   be stale by morning.
 1. **Re-verify every live role with a deadline inside 21 days.** These are the ones
    where being wrong costs her an application. Confirm the posting is still up and the
    date has not moved. Deadlines have moved twice before: Google read 6 Nov then 13 Nov,

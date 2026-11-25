@@ -257,6 +257,7 @@
   </header>
   <div class="hdbtns">
     <button class="btn btn-primary" id="addRole">+ Add role</button>
+    <button class="btn" id="sendPending" style="display:none">Send pending to research</button>
     <button class="btn" id="exportBtn">Export backup</button>
     <button class="btn" id="importBtn">Import</button>
     <input type="file" id="importFile" accept="application/json" style="display:none">
@@ -373,7 +374,7 @@
 
 <!-- Bump ?v= whenever data.js changes, otherwise browsers serve a stale cached copy
      and the dashboard silently shows old deadlines. -->
-<script src="data.js?v=20261124-232503-89d85cb"></script>
+<script src="data.js?v=20261124-233300-22238b1"></script>
 <script>
 /* Countdowns run off the real current date, not the research date, so
    "in N days" stays correct every time the dashboard is opened.
@@ -411,13 +412,31 @@ let ROLES = [];
 function build(){
   const seed = SEED_ROLES.map(r=>({...r, _seed:true, key:keyOf(r)}))
                          .filter(r=>!S.deleted.includes(r.key));
-  const custom = S.custom.map(r=>({...r, _seed:false, key:keyOf(r)}));
+  /* A "Pending research" stub is a placeholder for a link you pasted. Once that
+     posting has been researched into the seed data, the real row carries the same
+     URL, and showing both would double the role on the board. The stub is dropped
+     from the VIEW only — nothing is removed from your saved state, so if the seed
+     row ever goes away the stub reappears exactly as you left it. A note you wrote
+     on the stub is carried across to the real row. */
+  const normUrl = u => String(u||'').trim().replace(/\/+$/,'').toLowerCase();
+  const seedByUrl = new Map(seed.filter(r=>r.url).map(r=>[normUrl(r.url), r.key]));
+  const adopted = new Map();                       // stub key -> researched role key
+  const custom = S.custom.map(r=>({...r, _seed:false, key:keyOf(r)}))
+    .filter(r=>{
+      const hit = r.company===PENDING_CO && r.url && seedByUrl.get(normUrl(r.url));
+      if(hit) adopted.set(r.key, hit);
+      return !hit;
+    });
+  const notesFromStubs = {};                       // researched key -> note off its stub
+  adopted.forEach((roleKey, stubKey)=>{
+    if(S.notes[stubKey] && !S.notes[roleKey]) notesFromStubs[roleKey] = S.notes[stubKey];
+  });
   ROLES = [...seed, ...custom].map(r=>{
     const e = S.edits[r.key]||{};
     const m = {...r, ...e};
     m.key = r.key;                       // key never changes once created
     m.track = m.track || 'strategy';
-    m.mynote = S.notes[r.key]||'';
+    m.mynote = S.notes[r.key] || notesFromStubs[r.key] || '';
     m.app = S.app[r.key]||{};
     m.decision = S.consider[r.key]||'';  // '', 'added', 'dismissed'
     // Does the link land on the exact posting, or on a careers board you still have to search?
@@ -721,7 +740,17 @@ function render(tab){
   g('count').textContent = `${rows.length} of ${pool.length}`;
   document.getElementById('c-'+tab).textContent = pool.length;
 }
-function renderAll(){ build(); ROLE_TABS.forEach(render); renderCos(); renderAlert(); renderTotals(); }
+function renderAll(){ build(); ROLE_TABS.forEach(render); renderCos(); renderAlert(); renderTotals();
+                      renderPendingBtn(); }
+
+/* The re-send button only appears when something is actually waiting, so it is a
+   repair for a blocked download rather than one more control to ignore. */
+function renderPendingBtn(){
+  const n = ROLES.filter(r=>r.needsResearch).length;
+  const b = document.getElementById('sendPending');
+  b.style.display = n ? 'inline-block' : 'none';
+  b.textContent = 'Send ' + n + ' pending to research';
+}
 
 const ALERT_DAYS = 3;
 function renderAlert(){
@@ -815,8 +844,13 @@ function openModal(key){
   document.getElementById('mSub').innerHTML = adding
     ? 'Paste the link to the posting. That is all you need to enter — the row is parked as '+
       '<b>Needs research</b> until the details are filled in.<br>' +
-      '<b>The page cannot research on its own</b> — it is a static file with no internet access. ' +
-      'Ask Claude to "research the pending roles" and the company, title, deadline and eligibility get written in.'
+      'Saving also drops <b>pending-roles.json</b> into your Downloads folder. That file is how the '+
+      'research agent sees the link — it runs on a timer, fills in company, title, location, deadline '+
+      'and eligibility, and sorts the role into its tab. The row then replaces this placeholder on your '+
+      'next reload.<br>' +
+      '<b>If your browser blocks the download, nothing is lost</b> — the link stays parked here. Use '+
+      '<b>Send pending to research</b> at the top of the page to try again, or just ask Claude to '+
+      '"research the pending roles".'
     : 'Everything here is editable. Changes save in this browser.';
   document.querySelectorAll('#ovl .f').forEach(el=>{
     el.style.display = (adding && !el.classList.contains('url-only')) ? 'none' : '';
@@ -853,16 +887,38 @@ document.getElementById('mSave').addEventListener('click',()=>{
       location: '', url, deadline: '', status: 'notposted',
       cat: 'tech', track: 'strategy', why: '',
       note: 'RESEARCH: Added by you from a link on '+new Date().toLocaleDateString('en-US',{day:'numeric',month:'short',year:'numeric'})+
-            '. Source: '+host+'.\nNEXT: Ask Claude to research the pending roles — company, title, location, deadline and eligibility will be filled in here.'
+            '. Source: '+host+'.\nNEXT: Sent to the research agent, which runs on a timer. Company, title, location, deadline and eligibility get filled in here, and this placeholder is replaced by the real row. If it is still sitting here hours later, ask Claude to research the pending roles.'
     };
     const nk = keyOf(stub);
     if(ROLES.some(r=>r.key===nk)){ alert('That link is already on the board.'); return; }
     S.custom.push(stub);
     if(mynote) S.notes[nk] = mynote;
     const idx = S.deleted.indexOf(nk); if(idx>-1) S.deleted.splice(idx,1);
+    save(); closeModal(); renderAll(); dropPendingFile(); return;
   }
   save(); closeModal(); renderAll();
 });
+
+/* ---------- hand-off to the research agent ----------------------------------
+   This page is a static file: it cannot call out, and nothing outside the browser
+   can read localStorage. So when a link is parked, the page writes the pending
+   queue to your Downloads folder as pending-roles.json. A scheduled task reads
+   the newest copy of that file, researches each posting and writes the finished
+   row into data.js. Only the pending stubs go in the file — your checkboxes,
+   notes and decisions never leave the browser. */
+function dropPendingFile(){
+  const pending = S.custom.filter(r=>r.company===PENDING_CO)
+                          .map(r=>({url:r.url, added:r.note, key:keyOf(r)}));
+  const payload = {generated:new Date().toISOString(), source:'mba-tracker', pending};
+  try{
+    const blob = new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'pending-roles.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 2000);
+  }catch(e){ /* a blocked download must never cost you the parked link */ }
+}
 document.getElementById('mDelete').addEventListener('click',()=>{
   if(!editingKey) return;
   if(!confirm('Delete this role from the dashboard? Use Archive instead if the deadline simply passed.')) return;
@@ -874,6 +930,7 @@ document.getElementById('mDelete').addEventListener('click',()=>{
 });
 
 /* ================= export / import / reset ================= */
+document.getElementById('sendPending').addEventListener('click',dropPendingFile);
 document.getElementById('exportBtn').addEventListener('click',()=>{
   const blob = new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
   const a = document.createElement('a');
@@ -1026,7 +1083,7 @@ if(SANDBOX){
    fetched with a cache-busting query (and no-store) so it always comes from the
    network; if its build id differs from the one baked into this file, the page
    says so and offers a reload. Reloading loses nothing — state is in localStorage. */
-const BUILD_ID = '20261124-232503-89d85cb';
+const BUILD_ID = '20261124-233300-22238b1';
 async function checkForUpdate(){
   try{
     const res = await fetch('version.json?t=' + Date.now(), {cache:'no-store'});
