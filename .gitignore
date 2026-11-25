@@ -4,3 +4,6 @@
 .claude/*
 !.claude/skills/
 .DS_Store
+
+# scratch files from checks, never part of the dashboard
+live.js
