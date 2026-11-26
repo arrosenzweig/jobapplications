@@ -24,6 +24,10 @@ Two standing constraints, set 25 Nov 2026:
   but say plainly in the note that it falls outside what she is applying to now.
 - **Any US location is fine.** The former Miami and Los Angeles preference no longer ranks or
   filters anything.
+- **Do not write application materials.** No cover letters, personal statements, essays or
+  résumé rewriting, and do not offer to. Noting in a row that a posting *requires* a cover
+  letter or a written statement is part of tracking the role and should still be recorded;
+  writing it is not this job.
 
 ## 1. Read the queue
 

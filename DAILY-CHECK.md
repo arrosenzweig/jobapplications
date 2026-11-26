@@ -36,6 +36,12 @@ needs visa sponsorship — do not report sponsorship information.
 - **Any US location is fine.** The earlier Miami and Los Angeles preference no longer filters
   or ranks anything. Do not down-rank a role for being in Seattle, New York or Santa Clara,
   and do not present location as a drawback unless she raises it.
+- **Do not write application materials.** No cover letters, no personal statements, no essays,
+  no "why this company" paragraphs, no résumé rewriting — not as a draft, not as an outline,
+  not as an example to react to, and not offered at the end of a report. The job here is the
+  tracker: find roles, verify them, keep the board honest and current. Recording in a row's
+  note *that* a posting requires a cover letter or a one-page statement is part of tracking it
+  and should still be done; producing the thing is not.
 
 - Working dir: `C:\Users\AlexandriaRosenzweig\AppData\Local\Claude-Data\claude_pzs8sxrjxfjjc\scratch-workspaces\24582520-8a06-4b8f-b335-6546437fcca1\6c3d0f9f-2822-4724-8a8f-b82987be2ad4\scratch-2026-11-04-f4140f`
 - Live site: https://arrosenzweig.github.io/jobapplications/
