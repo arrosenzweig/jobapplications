@@ -12,8 +12,18 @@ parked link into a real row in `data.js`.
 
 Her search, which decides every judgement below: Yale SOM MBA, **Class of 2028**, recruiting
 **Summer 2027** internships in **product, business, corporate and operations strategy**.
-**US roles only.** Preferred locations **Miami and Los Angeles**. She never needs visa
-sponsorship — do not report sponsorship information.
+**US roles only.** She never needs visa sponsorship — do not report sponsorship information.
+
+Two standing constraints, set 25 Nov 2026:
+
+- **No more consulting-firm applications.** Not McKinsey, Bain, BCG, the Big Four strategy
+  arms, the economic-consulting shops or the boutiques. This is about the employer, not the
+  job title — **in-house corporate strategy at an operating company is still in scope even
+  when the role is called "Consultant"** (IBM's Corporate Strategy Summer Consultant is the
+  worked example). If a parked link turns out to be a consulting firm, still write the row,
+  but say plainly in the note that it falls outside what she is applying to now.
+- **Any US location is fine.** The former Miami and Los Angeles preference no longer ranks or
+  filters anything.
 
 ## 1. Read the queue
 

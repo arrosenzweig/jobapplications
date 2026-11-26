@@ -22,6 +22,21 @@ She is recruiting for **Summer 2027** MBA internships in product strategy, busin
 strategy, corporate strategy and operations strategy. **US roles only.** She never
 needs visa sponsorship — do not report sponsorship information.
 
+**Two standing constraints, set by her on 25 Nov 2026. Both replace what came before.**
+
+- **No more consulting-firm applications.** She does not want to apply to any further roles
+  at consulting firms — McKinsey, Bain, BCG, the Big Four and their strategy arms, the
+  economic-consulting shops, the boutiques. Do not surface new ones, do not chase their
+  deadlines, and do not spend a rotation slot on their boards. This is about the *employer*,
+  not the word in the job title: **in-house corporate strategy at an operating company stays
+  in scope even when the role is called "Consultant" and the posting files it under
+  "Consulting"** — IBM's Corporate Strategy Summer Consultant is the worked example, and she
+  is applying to it. Existing consulting rows stay on the board as a record; they are simply
+  not worked any more.
+- **Any US location is fine.** The earlier Miami and Los Angeles preference no longer filters
+  or ranks anything. Do not down-rank a role for being in Seattle, New York or Santa Clara,
+  and do not present location as a drawback unless she raises it.
+
 - Working dir: `C:\Users\AlexandriaRosenzweig\AppData\Local\Claude-Data\claude_pzs8sxrjxfjjc\scratch-workspaces\24582520-8a06-4b8f-b335-6546437fcca1\6c3d0f9f-2822-4724-8a8f-b82987be2ad4\scratch-2026-11-04-f4140f`
 - Live site: https://arrosenzweig.github.io/jobapplications/
 - GitHub: `arrosenzweig/jobapplications`
