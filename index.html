@@ -12,6 +12,10 @@
     --urgent:#b4232b; --urgent-soft:#fdeceb;
     --warn:#9a5b06;  --warn-soft:#fdf3e3;
     --ok:#1f6b45;    --ok-soft:#e9f5ee;
+    /* The two steps between yellow and green, for interview rounds at a company
+       you actually want: Round 2 warms, Final is nearly there. */
+    --lime-1:#6f7d14; --lime-1-soft:#f3f7da;
+    --lime-2:#4a7f23; --lime-2-soft:#e8f4d8;
     --closed:#7a8191;--closed-soft:#f0f2f5;
     --star:#8a5a00;  --star-soft:#fff6e0;
     --radius:10px;
@@ -24,6 +28,8 @@
       --urgent:#ff8d8d; --urgent-soft:#331b1c;
       --warn:#ffc26b;  --warn-soft:#332616;
       --ok:#7cd6a4;    --ok-soft:#162a20;
+      --lime-1:#d2dd72; --lime-1-soft:#2b2e13;
+      --lime-2:#a8db80; --lime-2-soft:#202c17;
       --closed:#8b93a1;--closed-soft:#22262c;
       --star:#ffd27a;  --star-soft:#312710;
     }
@@ -104,6 +110,24 @@
   tbody tr:hover{background:var(--line-2)}
   tbody tr.done{background:var(--ok-soft)}
   tbody tr.arch{opacity:.62}
+  /* Outcome colours on the Applied tab. Declared after .done so they win, and
+     carried on a left edge as well as a tint — colour alone is not a signal
+     everyone can read, and a red and a green row must differ by more than hue. */
+  tbody tr.st-reject{background:var(--urgent-soft);box-shadow:inset 3px 0 0 var(--urgent)}
+  tbody tr.st-live{background:var(--warn-soft);box-shadow:inset 3px 0 0 var(--warn)}
+  tbody tr.st-warm{background:var(--lime-1-soft);box-shadow:inset 3px 0 0 var(--lime-1)}
+  tbody tr.st-close{background:var(--lime-2-soft);box-shadow:inset 3px 0 0 var(--lime-2)}
+  tbody tr.st-offer{background:var(--ok-soft);box-shadow:inset 3px 0 0 var(--ok)}
+  tbody tr.st-reject td:first-child,tbody tr.st-live td:first-child,
+  tbody tr.st-warm td:first-child,tbody tr.st-close td:first-child,
+  tbody tr.st-offer td:first-child{border-left:0}
+  select.stagesel{width:100%;min-width:104px;padding:5px 6px;border:1px solid var(--line);
+    border-radius:7px;background:var(--panel);color:var(--ink);font:inherit;font-size:12px}
+  tr.st-reject select.stagesel{border-color:var(--urgent);color:var(--urgent);font-weight:650}
+  tr.st-live select.stagesel{border-color:var(--warn);color:var(--warn);font-weight:650}
+  tr.st-warm select.stagesel{border-color:var(--lime-1);color:var(--lime-1);font-weight:650}
+  tr.st-close select.stagesel{border-color:var(--lime-2);color:var(--lime-2);font-weight:650}
+  tr.st-offer select.stagesel{border-color:var(--ok);color:var(--ok);font-weight:650}
   /* Company is a short label, not a paragraph: cap it and let it wrap. */
   .co{font-weight:650;width:116px;max-width:116px;min-width:96px;overflow-wrap:break-word}
   .research{max-width:430px;min-width:230px}
@@ -382,7 +406,7 @@
 
 <!-- Bump ?v= whenever data.js changes, otherwise browsers serve a stale cached copy
      and the dashboard silently shows old deadlines. -->
-<script src="data.js?v=20261125-203019-721f368"></script>
+<script src="data.js?v=20261126-012848-8bcf328"></script>
 <script>
 /* Countdowns run off the real current date, not the research date, so
    "in N days" stays correct every time the dashboard is opened.
@@ -404,7 +428,7 @@ const keyOf = r => (r.company+'||'+r.title).replace(/\s+/g,' ').trim();
    ever reading or writing your real checkboxes, notes and decisions. */
 const SANDBOX = new URLSearchParams(location.search).has('sandbox');
 const LS = SANDBOX ? 'mbaTracker.sandbox' : 'mbaTracker.v3';
-const BLANK = {edits:{}, custom:[], deleted:[], app:{}, consider:{}, companies:[], notes:{}};
+const BLANK = {edits:{}, custom:[], deleted:[], app:{}, consider:{}, companies:[], notes:{}, stage:{}};
 let S = (()=>{ try{ return Object.assign({}, BLANK, JSON.parse(localStorage.getItem(LS))||{}) }
                catch(e){ return JSON.parse(JSON.stringify(BLANK)) } })();
 let saveTimer;
@@ -462,6 +486,7 @@ function build(){
     m.mynote = S.notes[r.key] || notesFromStubs[r.key] || '';
     m.app = S.app[r.key]||{};
     m.decision = S.consider[r.key]||'';  // '', 'added', 'dismissed'
+    m.stage = S.stage[r.key]||'';        // where the application got to
     // Does the link land on the exact posting, or on a careers board you still have to search?
     m.viaBoard = !m.url || /(search-results|SearchJobs|searchjobs|jobsearch|\?q=|keywords=|query=|open-positions|all-jobs|careers\/jobs\?|job_type|search-jobs|earlycareers|\/university|\/students|find-a-role|external\/jobs|jobs\?search|job-search|\/careers\/?$)/i.test(m.url);
     m.deadlineSort = m.deadline ? new Date(m.deadline+'T00:00:00').getTime() : 8.64e15;
@@ -566,8 +591,9 @@ function panelHTML(tab){
   </div>
   <div class="tablecard"><div class="scroll"><table>
     <thead><tr>
-      ${isC||isA?'':`<th class="ctr sortable" data-k="started" data-tab="${tab}">Started <span class="arr">▲</span></th>
-      <th class="ctr sortable" data-k="submitted" data-tab="${tab}">${isApp?'Applied':'Submitted'} <span class="arr">▲</span></th>`}
+      ${isC||isA?'':`${isApp?'':`<th class="ctr sortable" data-k="started" data-tab="${tab}">Started <span class="arr">▲</span></th>`}
+      <th class="ctr sortable" data-k="submitted" data-tab="${tab}">${isApp?'Applied':'Submitted'} <span class="arr">▲</span></th>
+      ${isApp?`<th class="sortable" data-k="stage" data-tab="${tab}">Stage <span class="arr">▲</span></th>`:''}`}
       <th class="sortable" data-k="deadlineSort" data-tab="${tab}" data-dir="asc">Deadline <span class="arr">▲</span></th>
       <th class="sortable" data-k="company" data-tab="${tab}">Company <span class="arr">▲</span></th>
       <th class="sortable" data-k="title" data-tab="${tab}">Job Title <span class="arr">▲</span></th>
@@ -578,6 +604,11 @@ function panelHTML(tab){
     <tbody id="tb-${tab}"></tbody>
   </table></div></div>
   <footer style="margin-top:22px;font-size:12px;color:var(--ink-3);line-height:1.65">
+    ${isApp?`<b>Stage</b> records where each application got to. <b>Reject</b> turns the row red and
+    <b>Offer</b> turns it green. The interview rounds warm from yellow toward green as you advance —
+    Round 1, then Round 2, then Final — so the rows closest to an offer stand out. Roles at
+    consulting firms stay plain yellow through all three rounds, since you are no longer applying
+    to those. Nothing here is shared or sent anywhere; it saves in this browser.<br><br>`:''}
     <span class="pill p-ok">Confirmed</span> date published by the employer ·
     <span class="pill p-warn">Estimated</span> rolling or undated, my projection — an "apply by" target, not a cliff ·
     <span class="pill p-closed">Closed</span> window passed.
@@ -640,6 +671,32 @@ function noteHTML(note, status){
   return `<span class="conf">${rows.join('')}</span>`;
 }
 
+/* Where an application got to after you submitted it. Shown only on the Applied
+   tab — before you submit there is nothing to report. The options are listed in
+   the order things actually happen, so the dropdown reads as a path rather than
+   a menu, with the two endings last. */
+const STAGES = ['Round 1','Round 2','Final','Offer','Reject'];
+/* Reject is red and Offer is green wherever they appear. The three interview
+   rounds depend on the employer: at a consulting firm they stay flat yellow,
+   because you are no longer applying to those and progress there is not news.
+   Everywhere else they warm from yellow toward green as you advance, so the
+   Applied tab shows at a glance how close a real target is to an offer. */
+function stageClass(r){
+  if(r.stage==='Reject') return 'st-reject';
+  if(r.stage==='Offer')  return 'st-offer';
+  if(r.cat==='consulting') return STAGES.indexOf(r.stage)>-1 ? 'st-live' : '';
+  if(r.stage==='Round 1') return 'st-live';
+  if(r.stage==='Round 2') return 'st-warm';
+  if(r.stage==='Final')   return 'st-close';
+  return '';
+}
+function stageCell(r){
+  const opts = ['<option value="">—</option>'].concat(
+    STAGES.map(s=>`<option value="${esc(s)}"${r.stage===s?' selected':''}>${esc(s)}</option>`));
+  return `<select class="stagesel" data-key="${esc(r.key)}"
+    title="Where this application got to">${opts.join('')}</select>`;
+}
+
 function manageBtns(r){
   const b=[];
   if(r.tab==='consider'){
@@ -690,6 +747,9 @@ function render(tab){
   rows.sort((a,b)=>{
     let x,y;
     if(s.k==='started'||s.k==='submitted'){ x=a.app[s.k]?1:0; y=b.app[s.k]?1:0; }
+    // Sort Stage by where it sits in the process, not alphabetically — "Final"
+    // before "Round 1" would be nonsense. Unset rows sort first either way.
+    else if(s.k==='stage'){ x=a.stage?STAGES.indexOf(a.stage)+1:0; y=b.stage?STAGES.indexOf(b.stage)+1:0; }
     else { x=a[s.k]; y=b[s.k]; }
     if(typeof x==='string'){ x=x.toLowerCase(); y=(y||'').toLowerCase(); }
     const c = x<y?-1:x>y?1:0;
@@ -698,10 +758,11 @@ function render(tab){
 
   const nCols = isC||isA ? 6 : 8;
   g('tb').innerHTML = rows.length ? rows.map(r=>`
-    <tr class="${isA?'arch':''} ${r.app.submitted?'done':''} ${r.decision==='dismissed'?'arch':''}">
+    <tr class="${isA?'arch':''} ${r.app.submitted&&!isApp?'done':''} ${r.decision==='dismissed'?'arch':''} ${stageClass(r)}">
       ${isC||isA?'':`
-      <td class="ctr"><input type="checkbox" class="appchk" data-f="started" data-key="${esc(r.key)}" ${r.app.started?'checked':''} title="Started application"></td>
-      <td class="ctr"><input type="checkbox" class="appchk sub" data-f="submitted" data-key="${esc(r.key)}" ${r.app.submitted?'checked':''} title="Submitted application"></td>`}
+      ${isApp?'':`<td class="ctr"><input type="checkbox" class="appchk" data-f="started" data-key="${esc(r.key)}" ${r.app.started?'checked':''} title="Started application"></td>`}
+      <td class="ctr"><input type="checkbox" class="appchk sub" data-f="submitted" data-key="${esc(r.key)}" ${r.app.submitted?'checked':''} title="Submitted application"></td>
+      ${isApp?`<td>${stageCell(r)}</td>`:''}`}
       <td>${dlCell(r)}${badge(r)}</td>
       <td class="co">${esc(r.company)}${
         isAll||isApp||isRoll?`<span class="tag cat">${esc(CATS[r.cat]||r.cat)}</span>`:''}${
@@ -824,7 +885,14 @@ ROLE_TABS.forEach(tab=>{
   });
   const tb = document.getElementById('tb-'+tab);
   tb.addEventListener('change',e=>{
-    const el=e.target; if(!el.classList.contains('appchk')) return;
+    const el=e.target;
+    if(el.classList.contains('stagesel')){
+      const sk = el.dataset.key;
+      if(el.value) S.stage[sk] = el.value; else delete S.stage[sk];
+      save(); renderAll();
+      return;
+    }
+    if(!el.classList.contains('appchk')) return;
     const k=el.dataset.key, f=el.dataset.f;
     S.app[k] = S.app[k]||{};
     S.app[k][f] = el.checked;
@@ -1007,7 +1075,7 @@ document.getElementById('importFile').addEventListener('change',e=>{
       const d = JSON.parse(rd.result);
       if(typeof d!=='object' || d===null) throw new Error('not an object');
       S = Object.assign({}, BLANK, d);
-      ['edits','app','consider','notes'].forEach(k=>{ if(typeof S[k]!=='object'||S[k]===null) S[k]={}; });
+      ['edits','app','consider','notes','stage'].forEach(k=>{ if(typeof S[k]!=='object'||S[k]===null) S[k]={}; });
       ['custom','deleted','companies'].forEach(k=>{ if(!Array.isArray(S[k])) S[k]=[]; });
       save(); renderAll(); alert('Backup imported.');
     }catch(err){ alert('That file could not be read as a tracker backup.'); }
@@ -1152,7 +1220,7 @@ if(SANDBOX){
    fetched with a cache-busting query (and no-store) so it always comes from the
    network; if its build id differs from the one baked into this file, the page
    says so and offers a reload. Reloading loses nothing — state is in localStorage. */
-const BUILD_ID = '20261125-203019-721f368';
+const BUILD_ID = '20261126-012848-8bcf328';
 async function checkForUpdate(){
   try{
     const res = await fetch('version.json?t=' + Date.now(), {cache:'no-store'});
